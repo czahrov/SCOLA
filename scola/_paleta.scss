@@ -1,0 +1,28 @@
+// Paleta kolorów
+
+$color-green: #5e9104;		// do menu i wyróżnienia
+$color-facebook: #5e7282;		// do przycisku fejsca po lewej stronie
+$color-light: #fff;
+$color-dark: #3d3d3d;
+$color-filtr: transparentize( #000, 0.5 );
+
+.font-green{
+	color: $color-green;
+	
+}
+
+.bg-green{
+	background-color: $color-green;
+	
+}
+
+.font-dark{
+	color: $color-dark;
+	
+}
+
+.font-light{
+	color: $color-light;
+	
+}
+

@@ -1,0 +1,66 @@
+// Predefiniowane klasy
+
+$grid: 1200px;
+
+*{
+	margin: 0;
+	padding: 0;
+	outline: none;
+	box-sizing: border-box;
+	cursor: default;
+	
+}
+
+.regular{
+	font-family: 'sen-regular';
+	
+}
+
+.bold{
+	font-family: 'sen-bold';
+	
+}
+
+.pointer{
+	&, & *{
+		cursor: pointer;
+	}
+	
+}
+
+.grid{
+	width: 100%;
+	max-width: $grid;
+	padding: 0 20px;
+	margin:{
+		left: auto;
+		right: auto;
+	};
+	
+}
+
+a, img{
+	display: inline-block;
+	
+}
+
+.arrow_slide{
+	
+	.arrow{
+		margin-right: 20px;
+		transition: transform .5s ease-out;
+		
+	}
+	
+	&:hover .arrow{
+		transform: translateX(10px);
+		
+	}
+	
+}
+
+.naglowek{
+	font-size: 36px;
+	line-height: 1.5em;
+	
+}
