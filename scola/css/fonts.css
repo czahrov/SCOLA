@@ -1,0 +1,20 @@
+@font-face{
+	font-family: 'sen-regular';
+	src: url(../fonts/sen.regular.otf);
+}
+@font-face{
+	font-family: 'sen-bold';
+	src: url(../fonts/sen.bold.otf);
+}
+@font-face{
+	font-family: 'sen-extra-bold';
+	src: url(../fonts/sen.extrabold.otf);
+}
+@font-face{
+	font-family: 'Caveat-Bold';
+	src: url(../fonts/Caveat-Bold.ttf);
+}
+@font-face{
+	font-family: 'Caveat-Regular';
+	src: url(../fonts/Caveat-Regular.ttf);
+}
