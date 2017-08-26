@@ -16,46 +16,66 @@ if( !is_admin() ){
 	wp_enqueue_script( "CSSPlugin.min", get_template_directory_uri() . "/js/CSSPlugin.min.js" );
 	wp_enqueue_script( "ScrollToPlugin", get_template_directory_uri() . "/js/ScrollToPlugin.min.js" );
 	wp_enqueue_script( "RoundProps", get_template_directory_uri() . "/js/RoundPropsPlugin.min.js" );
+	wp_enqueue_script( "TextPlugin", get_template_directory_uri() . "/js/TextPlugin.min.js" );
 	wp_enqueue_script( "gmap3", get_template_directory_uri() . "/js/gmap3.min.js" );
 	wp_enqueue_script( "FP", get_template_directory_uri() . "/js/facepalm.js" );
 	
 }
 
-add_action( 'pre_get_posts', 'search_by_cat' );
-
-function search_by_cat()
-{
-    if ( is_search() )
-    {
-        $cat = empty( $_GET['cat'] ) ? '' : (int) $_GET['cat'];
-        add_query_arg( 'cat', $cat );
-    }
+function home_slider_top(){
+	return array(
+		array(
+			'title' => 'Kursy językowe dofinansowane ze środków UE w SCOLA',
+			'img' => 'https://placeimg.com/300/100/tech',
+			'url' => home_url(),
+			'date' => time(),
+			'cats' => array(
+				'ważne informacje',
+				
+			),
+			
+		),
+		array(
+			'title' => 'Lorem ipsum',
+			'img' => 'https://placeimg.com/300/101/tech',
+			'url' => home_url(),
+			'date' => time(),
+			'cats' => array(
+				'ważne informacje',
+				'ogłoszenia',
+				
+			),
+			
+		),
+		array(
+			'title' => 'Inne lorem ipsum',
+			'img' => 'https://placeimg.com/300/102/tech',
+			'url' => home_url(),
+			'date' => time(),
+			'cats' => array(
+				'ogłoszenia',
+				
+			),
+			
+		),
+		
+	);
+	
 }
 
-
-$args = array(
-	'numberposts' => 10,
-	'offset' => 0,
-	'category' => 0,
-	'orderby' => 'post_date',
-	'order' => 'DESC',
-	'include' => '',
-	'exclude' => '',
-	'meta_key' => '',
-	'meta_value' =>'',
-	'post_type' => 'post',
-	'post_status' => 'draft, publish, future, pending, private',
-	'suppress_filters' => true
-);
-
-$recent_posts = wp_get_recent_posts( $args, ARRAY_A );
-
-
-
-
-
-?>
+add_action( 'page_title', function( $arg ){
+	$arr = array();
 	
+	if( is_home() ){
+		$arr[] = "Strona główna";
+	}
+	else{
+		$arr[] = get_post()->post_title;
+		
+	}
 	
+	$arr[] = get_bloginfo( 'name' );
 	
+	echo implode( " | ", $arr );
 	
+} );

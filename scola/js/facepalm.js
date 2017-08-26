@@ -157,6 +157,64 @@
 				console.log('page.default()');
 			}
 			
+			/* rozwijanie menu na mobilu */
+			(function( item ){
+				item
+				.click(function(){
+					$(this)
+					.toggleClass( 'open' )
+					.siblings()
+					.removeClass( 'open' );
+					
+				});
+				
+			})
+			( $( '#top > .menu > li' ) );
+			
+			/* obsługa toggle */
+			(function( toggle, menu ){
+				var lock = false;
+				
+				toggle
+				.click(function(){
+					if( lock ) return false;
+					lock = true;
+					toggle.add( menu ).toggleClass( 'open' );
+					menu.children( 'li.open' ).removeClass( 'open' );
+					window.setTimeout(function(){
+						lock = false;
+						
+					}, 300);
+					
+				});
+				
+			})
+			( $( '#top > .toggle' ), $( '#top > .menu' ) );
+			
+			/* obsługa strzałek przewijania */
+			(function( link ){
+				link.click(function( e ){
+					var self = $(this);
+					
+					TweenLite.to(
+						$( 'html, body' ),
+						.5,
+						{
+							scrollTop: function(){
+								return $( self.attr( 'slide-to' ) ).offset().top;
+								
+							},
+							ease: Power2.easeInOut,
+							
+						}
+					);
+					
+				});
+				
+				
+			})
+			( $('[slide-to]') );
+			
 		},
 		alternate: function(){
 			var addon = root.addon;
@@ -170,6 +228,338 @@
 			var logger = addon.isLogger();
 			
 			if(logger) console.log('page.index()');
+			
+			/* slider główny */
+			(function( slider, view, slides, notify, numer, pagin, nav ){
+				var config = {
+					delay: 3000,
+					duration: 500,
+					
+				};
+				var slides = slider.find( '.view > .slide' );
+				var itrv;
+				var current = 0;
+				var lock = false;
+				
+				pagin.children( '.mark' ).css({
+					width: function(){
+						return String(100 / slides.length) + '%';
+					},
+					
+				});
+				
+				numer.text( String( current + 1 ) + '/' + String( slides.length ) );
+				
+				slider
+				.on({
+					set: function( e ){
+						lock = true;
+						if( current < 0 ) current = slides.length - 1;
+						current %= slides.length;
+						
+						pagin.children( '.mark' ).css({
+							transform: 'translateX(' + current * 100 + '%)',
+							
+						});
+						
+						numer.text( String( current + 1 ) + '/' + String( slides.length ) );
+						
+						new TimelineLite({
+							onComplete: function(){
+								lock = false;
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.to(
+								view,
+								config.duration / 1000,
+								{
+									scrollLeft: current * slides.first().outerWidth( true ),
+									roundProps: 'scrollLeft',
+									ease: Power2.easeInOut,
+									
+								}
+							), 'start'
+						)
+						.add(
+							TweenLite.to(
+								numer,
+								config.duration / 1000,
+								{
+									text:{
+										value: String( current + 1 ) + '/' + String( slides.length ),
+										delimiter: "",
+									},
+									
+								}
+							), 'start'
+						)
+						.add(
+							TweenLite.to(
+								notify.find( '.content' ),
+								config.duration / 1000,
+								{
+									text:{
+										value: slides.eq( current ).find( '.box > .title' ).text(),
+										delimiter: "",
+									},
+									
+								}
+							), 'start'
+						)
+						.add(
+							TweenLite.to(
+								notify.find( '.title' ),
+								config.duration / 1000,
+								{
+									text:{
+										value: slides.eq( current ).find( '.head > .kategoria' ).text(),
+										delimiter: "",
+									},
+									
+								}
+							), 'start'
+						)
+						
+					},
+					next: function( e ){
+						if( lock ) return false;
+						current++;
+						slider.triggerHandler( 'set' );
+						
+					},
+					prev: function( e ){
+						if( lock ) return false;
+						current--;
+						slider.triggerHandler( 'set' );
+						
+					},
+					start: function( e ){
+						slider.triggerHandler( 'stop' );
+						itrv = window.setInterval(function(){
+							slider.triggerHandler( 'next' );
+							
+						}, config.delay);
+						
+					},
+					stop: function( e ){
+						window.clearInterval( itrv );
+						
+					},
+					mouseenter: function( e ){
+						slider.triggerHandler( 'stop' );
+						
+					},
+					mouseleave: function( e ){
+						slider.triggerHandler( 'start' );
+						
+					},
+					
+				})
+				.swipe({
+					swipeLeft: function(){
+						slider.triggerHandler( 'next' );
+						
+					},
+					swipeRight: function(){
+						slider.triggerHandler( 'prev' );
+						
+					},
+					
+				});
+				
+				nav.children( '.prev' ).click(function(){
+					slider.triggerHandler( 'prev' );
+					
+				});
+				
+				nav.children( '.next' ).click(function(){
+					slider.triggerHandler( 'next' );
+					
+				});
+				
+				slider.triggerHandler( 'start' );
+				
+				$( window ).resize(function(){
+					slider.triggerHandler( 'set' );
+					
+				});
+				
+			})
+			( $( '#home > .slider' ), 
+			$( '#home > .slider > .view' ), 
+			$( '#home > .slider > .view > .item' ), 
+			$( '#home > .slider > .notify' ), 
+			$( '#home > .slider > .grid > .numer' ), 
+			$( '#home > .slider > .grid > .paginacja' ), 
+			$( '#home > .slider > .grid > .nav' ) );
+			
+			/* slider język - kafelki */
+			(function( slider, view, slides, nav, number){
+				var config = {
+					duration: 0.5,
+					
+				};
+				var current = 0;
+				var lock = false;
+				
+				number.text( String( current + 1 ) + "/" + String( slides.length ) );
+				
+				slider
+				.on({
+					set: function( e ){
+						lock = true;
+						if( current < 0 ) current = slides.length - 1;
+						current %= slides.length;
+						
+						new TimelineLite({
+							onComplete: function( e ){
+								lock = false;
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.to(
+								view,
+								config.duration,
+								{
+									scrollLeft: function(){
+										return slides.first().outerWidth( true ) * current;
+										
+									},
+									ease: Power2.easeOut,
+									
+								}
+							), 'start'
+						)
+						.add(
+							TweenLite.to(
+								number,
+								config.duration,
+								{
+									text:{
+										value: String( current + 1 ) + "/" + String( slides.length ),
+										delimiter: "",
+										
+									},
+									ease: Power2.easeOut,
+									
+								}
+							), 'start'
+						);
+						
+					},
+					next: function( e ){
+						if( lock || window.innerWidth >= 768 ) return false;
+						current++;
+						slider.triggerHandler( 'set' );
+						
+					},
+					prev: function( e ){
+						if( lock || window.innerWidth >= 768 ) return false;
+						current--;
+						slider.triggerHandler( 'set' );
+						
+					},
+					
+				})
+				.swipe({
+					swipeLeft: function( e ){
+						slider.triggerHandler( 'next' );
+						
+					},
+					swipeRight: function( e ){
+						slider.triggerHandler( 'prev' );
+						
+					},
+					
+				});
+				
+				nav.click(function( e ){
+					if( $(this).hasClass( 'next' ) ){
+						slider.triggerHandler( 'next' );
+						
+					}
+					else if( $(this).hasClass( 'prev' ) ){
+						slider.triggerHandler( 'prev' );
+						
+					}
+					
+				});
+				
+				$(window).resize(function( e ){
+					if( window.innerWidth >= 768 ){
+						 current = 0;
+						 slider.triggerHandler( 'set' );
+					}
+					
+				});
+				
+			})
+			( $( '#home > .jezyk' ), 
+			$( '#home > .jezyk > .box > .inner' ), 
+			$( '#home > .jezyk > .box > .inner > .item.flag' ), 
+			$( '#home > .jezyk > .box > .nav > .icon' ), 
+			$( '#home > .jezyk > .box > .nav > .number' ) );
+			
+			/* facebook button */
+			(function( fb, slider ){
+				var tout;
+				var config = {
+					delay: 200,
+					
+				};
+				
+				fb
+				.on({
+					show: function( e ){
+						fb.addClass( 'open' );
+						
+					},
+					hide: function( e ){
+						fb.removeClass( 'open' );
+						
+					},
+					check: function( e ){
+						var pos = function(){
+							if( $( 'body' ).prop( 'scrollTop' ) == 0 ){
+								return $( 'html' ).prop( 'scrollTop' );
+								
+							}
+							else{
+								return $( 'body' ).prop( 'scrollTop' );
+								
+							}
+							
+						}
+						
+						if( pos() >= slider.offset().top + slider.outerHeight( true ) - parseInt( fb.css( 'top' ) ) ){
+							fb.triggerHandler( 'show' );
+							
+						}
+						else{
+							fb.triggerHandler( 'hide' );
+							
+						}
+						
+					},
+					
+				});
+				
+				$( window ).scroll(function(){
+					window.clearTimeout( tout );
+					tout = window.setTimeout(function(){
+						fb.triggerHandler( 'check' );
+						
+					}, config.delay);
+					
+				});
+				
+			})
+			( $( '#fb' ), $( '#home > .slider' ) );
 			
 		},
 		

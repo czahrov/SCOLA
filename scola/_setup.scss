@@ -1,6 +1,12 @@
 // Predefiniowane klasy
 
 $grid: 1200px;
+$bpw: (
+	smartfon: 0px,
+	tablet: 768px,
+	desktop: 1024px,
+	large: 1280px,
+);
 
 *{
 	margin: 0;
@@ -14,10 +20,25 @@ $grid: 1200px;
 .regular{
 	font-family: 'sen-regular';
 	
+	&.hand{
+		font-family: 'Caveat-Regular';
+		
+	}
+	
 }
 
 .bold{
 	font-family: 'sen-bold';
+	
+	&.hand{
+		font-family: 'Caveat-Bold';
+		
+	}
+	
+}
+
+.hand{
+	@extend .regular.hand;
 	
 }
 
@@ -47,15 +68,72 @@ a, img{
 .arrow_slide{
 	
 	.arrow{
-		margin-right: 20px;
 		transition: transform .5s ease-out;
+		
+		&.right{
+			margin-right: 10px;
+			
+		}
+		
+		&.left{
+			margin-left: 10px;
+			
+		}
+		
+		&.up{
+			margin-top: 10px;
+			
+		}
+		
+		&.down{
+			margin-bottom: 10px;
+			
+		}
 		
 	}
 	
 	&:hover .arrow{
-		transform: translateX(10px);
+		
+		&.right{
+			transform: translateX(10px);
+			
+		}
+		
+		&.left{
+			transform: translateX(-10px);
+			
+		}
+		
+		&.up{
+			transform: translateY(-10px);
+			
+		}
+		
+		&.down{
+			transform: translateY(10px);
+			
+		}
 		
 	}
+	
+}
+
+.tab{
+	width: 74px;
+	height: 36px;
+	height: 74px;
+	border-radius: 36px 36px 0 0;
+	border-radius: 50%;
+	
+}
+
+.hitbox{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;
 	
 }
 
@@ -64,3 +142,4 @@ a, img{
 	line-height: 1.5em;
 	
 }
+

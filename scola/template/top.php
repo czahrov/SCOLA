@@ -1,8 +1,17 @@
-<div id='top' class='flex flex-items-center flex-justify-between grid'>
-	<a class='logo pointer' href='<?php home_url(); ?>'>
-		<img src="<?php echo get_template_directory_uri(); ?>/img/logo_scola_black.png" />
+<div id='top' class='grid flex flex-column flex-row flex-items-center flex-justify-between'>
+	<a class='logo pointer flex flex-self-stretch' href='<?php home_url(); ?>'>
+		<div class='img bgimg contain grow'></div>
 	</a>
-	<ul class='menu bold'>
+	<div class='toggle flex hide-ml'>
+		<div class='box pointer flex flex-column flex-justify-between'>
+			<div class='line bg-light'></div>
+			<div class='line bg-light'></div>
+			<div class='line bg-light'></div>
+			
+		</div>
+		
+	</div>
+	<ul class='menu bold bg-light base0 grow flex flex-column flex-row-ml flex-items-center-ml flex-justify-end'>
 		<li>
 			<a> Nasze Centrum </a>
 			<span class='icon fa fa-angle-down'></span>
