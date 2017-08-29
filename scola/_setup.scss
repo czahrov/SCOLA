@@ -71,22 +71,22 @@ a, img{
 		transition: transform .5s ease-out;
 		
 		&.right{
-			margin-right: 10px;
+			margin-right: 20px;
 			
 		}
 		
 		&.left{
-			margin-left: 10px;
+			margin-left: 20px;
 			
 		}
 		
 		&.up{
-			margin-top: 10px;
+			margin-top: 20px;
 			
 		}
 		
 		&.down{
-			margin-bottom: 10px;
+			margin-bottom: 20px;
 			
 		}
 		
@@ -143,3 +143,41 @@ a, img{
 	
 }
 
+.customButton{
+	position: relative;
+	padding: 0 20px;
+	min-width: 266px;
+	height: 52px;
+	border: {
+		style: solid;
+		//color: $color-green;
+		width: 2px;
+		radius: 26px;
+	};
+	font-size: 16px;
+	
+	&, &.green{
+		border-color: $color-green;
+		color: $color-green;
+		
+	}
+	
+	&.light{
+		border-color: $color-light;
+		color: $color-light;
+		
+	}
+	
+	&, &.right{
+		& > .icon{
+			margin-right: 30px;
+			
+		}
+		
+	}
+	
+	& > .content{
+		
+	}
+	
+}

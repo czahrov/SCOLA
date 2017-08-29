@@ -1,7 +1,8 @@
 // Paleta kolorów
 
-$color-green: #5e9104;		// do menu i wyróżnienia
-$color-facebook: #2198f6;		// do przycisku fejsca po lewej stronie
+$color-green: #5e9104;
+$color-green-light: #7cc401;
+$color-facebook: #2198f6;
 $color-light: #fff;
 $color-dark: #3d3d3d;
 $color-filtr: transparentize( #000, 0.5 );
@@ -9,38 +10,35 @@ $color-pagin-shadow: #b6aeac;
 $color-pagin-mark: #fff;
 $color-gray: #eee;
 $color-gray-light: #f8f8f8;
+$color-gray-lighter: #adadad;
+$color-ok: hsl(100,60%,50%);
+$color-info: hsl(220,60%,50%);
+$color-fail: hsl(0,70%,50%);
 
-.font-green{
-	color: $color-green;
+$generator: (
+	dark: $color-dark,
+	light: $color-light,
+	gray: $color-gray,
+	gray-light: $color-gray-light,
+	green: $color-green
 	
-}
+);
 
-.bg-green{
-	background-color: $color-green;
+@each $name, $color in $generator{
+	.font-#{$name}{
+		color: #{$color};
+		
+	}
 	
-}
-
-.font-dark{
-	color: $color-dark;
+	.bg-#{$name}{
+		background-color: #{$color};
+		
+	}
 	
-}
-
-.font-light{
-	color: $color-light;
+	.border-#{$name}{
+		border-color: #{$color};
+		
+	}
 	
-}
-
-.bg-light{
-	background-color: $color-light;
-	
-}
-
-.bg-fb{
-	background-color: $color-facebook;
-	
-}
-
-.bg-gray-light{
-	background-color: $color-gray-light;
 	
 }

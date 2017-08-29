@@ -1,11 +1,71 @@
 @charset "UTF-8";
 /*
 	Theme Name: Scola
-	Author: Scepter.pl
+	Author: Scepter Agencja Interaktywna
 	Author URI: http://www.scepter.pl
 	Description: Cetrum językowe
 	
 */
+.font-dark {
+  color: #3d3d3d;
+}
+
+.bg-dark {
+  background-color: #3d3d3d;
+}
+
+.border-dark {
+  border-color: #3d3d3d;
+}
+
+.font-light {
+  color: #fff;
+}
+
+.bg-light {
+  background-color: #fff;
+}
+
+.border-light {
+  border-color: #fff;
+}
+
+.font-gray {
+  color: #eee;
+}
+
+.bg-gray {
+  background-color: #eee;
+}
+
+.border-gray {
+  border-color: #eee;
+}
+
+.font-gray-light {
+  color: #f8f8f8;
+}
+
+.bg-gray-light {
+  background-color: #f8f8f8;
+}
+
+.border-gray-light {
+  border-color: #f8f8f8;
+}
+
+.font-green {
+  color: #5e9104;
+}
+
+.bg-green {
+  background-color: #5e9104;
+}
+
+.border-green {
+  border-color: #5e9104;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -52,16 +112,16 @@ a, img {
   transition: transform .5s ease-out, -webkit-transform .5s ease-out;
 }
 .arrow_slide .arrow.right {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 .arrow_slide .arrow.left {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .arrow_slide .arrow.up {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .arrow_slide .arrow.down {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .arrow_slide:hover .arrow.right {
   -webkit-transform: translateX(10px);
@@ -102,32 +162,26 @@ a, img {
   line-height: 1.5em;
 }
 
-.font-green {
+.customButton {
+  position: relative;
+  padding: 0 20px;
+  min-width: 266px;
+  height: 52px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 26px;
+  font-size: 16px;
+}
+.customButton, .customButton.green {
+  border-color: #5e9104;
   color: #5e9104;
 }
-
-.bg-green {
-  background-color: #5e9104;
-}
-
-.font-dark {
-  color: #3d3d3d;
-}
-
-.font-light {
+.customButton.light {
+  border-color: #fff;
   color: #fff;
 }
-
-.bg-light {
-  background-color: #fff;
-}
-
-.bg-fb {
-  background-color: #2198f6;
-}
-
-.bg-gray-light {
-  background-color: #f8f8f8;
+.customButton > .icon, .customButton.right > .icon {
+  margin-right: 30px;
 }
 
 #fb {
@@ -148,6 +202,7 @@ a, img {
   -webkit-transform: rotateY(90deg);
           transform: rotateY(90deg);
   border-radius: 0 36px 36px 0;
+  background-color: #2198f6;
 }
 #fb:hover {
   width: 100px;
@@ -158,6 +213,63 @@ a, img {
 }
 #fb > .icon {
   padding-right: 26px;
+}
+
+#popup {
+  position: fixed;
+  padding: 50px;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#popup > .box {
+  position: relative;
+  padding: 40px 20px;
+  background-color: #fff;
+}
+#popup > .box > .close {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  right: 0;
+  background-color: #3d3d3d;
+}
+#popup > .box > .close > .icon {
+  font-size: 30px;
+  color: #fff;
+}
+#popup > .box > .view > .page > .status {
+  padding-right: 20px;
+  font-size: 70px;
+}
+#popup > .box > .view > .page > .status > .icon.ok {
+  color: #66cc33;
+}
+#popup > .box > .view > .page > .status > .icon.info {
+  color: #3366cc;
+}
+#popup > .box > .view > .page > .status > .icon.fail {
+  color: #d92626;
+}
+#popup > .box > .view > .page > .text > .title {
+  padding-bottom: 20px;
+  font-size: 30px;
+}
+#popup:not(.ok) .status > .icon.ok {
+  display: none;
+}
+#popup:not(.info) .status > .icon.info {
+  display: none;
+}
+#popup:not(.fail) .status > .icon.fail {
+  display: none;
+}
+#popup:not(.open) {
+  display: none;
 }
 
 #top {
@@ -630,6 +742,7 @@ a, img {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 10;
 }
 #home > .jezyk > .box > .nav > .icon {
   position: absolute;
@@ -660,6 +773,7 @@ a, img {
   }
 }
 #home > .tlumaczenia {
+  padding: 0 20px;
   height: 300px;
 }
 #home > .tlumaczenia > .top {
@@ -669,22 +783,9 @@ a, img {
   margin: 12px 0 46px;
   font-size: 30px;
 }
-#home > .tlumaczenia > .button {
-  position: relative;
-  width: 266px;
-  height: 50px;
-  font-size: 16px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #fff;
-  border-radius: 25px;
-}
-#home > .tlumaczenia > .button > .icon {
-  margin-right: 30px;
-}
 #home > .umysly {
   position: relative;
-  padding: 114px 0 96px;
+  padding: 114px 20px 96px;
 }
 #home > .umysly > .line1 {
   font-size: 28px;
@@ -704,25 +805,241 @@ a, img {
           transform: translate(-50%, 50%);
 }
 #home > .metody {
-  padding: 100px 0 40px;
+  padding: 100px 20px 40px;
 }
 #home > .metody > .content {
+  margin-bottom: 70px;
   font-size: 16px;
   max-width: 740px;
   text-align: center;
   line-height: 30px;
 }
-#home > .metody > .button {
+#home > .centrum {
   position: relative;
-  margin-top: 70px;
-  width: 266px;
-  height: 52px;
-  border-style: solid;
-  border-color: #5e9104;
-  border-width: 2px;
-  border-radius: 26px;
-  font-size: 18px;
+  margin-top: 130px;
 }
-#home > .metody > .button > .icon {
-  margin-right: 30px;
+#home > .centrum > .box > .tekst {
+  margin-bottom: 50px;
+}
+#home > .centrum > .box > .tekst > .title > .line1 {
+  font-size: 21px;
+}
+#home > .centrum > .box > .tekst > .title > .line2 {
+  font-size: 28px;
+}
+#home > .centrum > .box > .tekst > .content {
+  margin: 50px 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+#home > .centrum > .menu > .item {
+  padding: 0 20px;
+  height: 80px;
+  -webkit-transition-property: font, background, -webkit-transform;
+  transition-property: font, background, -webkit-transform;
+  transition-property: font, background, transform;
+  transition-property: font, background, transform, -webkit-transform;
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
+}
+#home > .centrum > .menu > .item:not(:last-child) {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #7cc401;
+}
+#home > .centrum > .menu > .item > .icon {
+  margin: 0 20px;
+  width: 24px;
+  height: 24px;
+  -webkit-transition: -webkit-transform .3s linear;
+  transition: -webkit-transform .3s linear;
+  transition: transform .3s linear;
+  transition: transform .3s linear, -webkit-transform .3s linear;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  background-image: url(img/arrow_small_white.png);
+}
+#home > .centrum > .menu > .item:hover {
+  background-color: #fff;
+  color: #5e9104;
+}
+#home > .centrum > .menu > .item:hover > .icon {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  background-image: url(img/arrow_small_green.png);
+}
+@media (min-width: 768px) {
+  #home > .centrum > .menu > .item {
+    padding: 0 50px;
+  }
+}
+@media (min-width: 1024px) {
+  #home > .centrum > .menu {
+    position: absolute;
+    margin-left: 100px;
+    top: 0;
+    left: 50%;
+    right: 0;
+  }
+}
+#home > .opinie {
+  min-height: 650px;
+  padding-top: 140px;
+  padding-bottom: 50px;
+}
+#home > .opinie > .grid > .top {
+  font-size: 21px;
+  margin-bottom: 35px;
+}
+#home > .opinie > .grid > .top > .title > .icon {
+  margin-top: 50px;
+}
+#home > .opinie > .grid > .slider {
+  position: relative;
+}
+#home > .opinie > .grid > .slider > .view {
+  padding-bottom: 100px;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  #home > .opinie > .grid > .slider > .view > .slide > .img {
+    padding: 0 65px 0 0;
+  }
+}
+#home > .opinie > .grid > .slider > .view > .slide > .content > .tekst {
+  padding: 50px 0;
+}
+@media (min-width: 768px) {
+  #home > .opinie > .grid > .slider > .view > .slide > .content > .tekst {
+    padding: 0;
+    line-height: 30px;
+  }
+}
+@media (min-width: 768px) {
+  #home > .opinie > .grid > .slider > .view {
+    padding: 0;
+  }
+}
+#home > .opinie > .grid > .slider > .nav {
+  position: absolute;
+  margin: 0 -20px 0 0;
+  right: 50%;
+  bottom: 100px;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+}
+#home > .opinie > .grid > .slider > .nav > .prev {
+  margin-right: 20px;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+#home > .opinie > .grid > .slider > .nav > .next {
+  margin-right: 20px;
+}
+@media (min-width: 768px) {
+  #home > .opinie > .grid > .slider > .nav {
+    margin: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+#home > .opinie > .grid > .slider > .customButton {
+  margin-top: 50px;
+}
+#home > .egzaminy {
+  height: 276px;
+}
+#home > .egzaminy > .title {
+  margin-bottom: 45px;
+}
+#home > .egzaminy > .title > .line1 {
+  font-size: 21px;
+}
+#home > .egzaminy > .title > .line2 {
+  font-size: 28px;
+}
+#home > .certyfikaty {
+  height: 190px;
+}
+#home > .certyfikaty > img {
+  margin: 0 20px;
+  max-height: 75px;
+  max-width: 25%;
+}
+#home > .newsletter {
+  padding-bottom: 100px;
+  height: 480px;
+  background-image: url(img/newsletter_bg.jpg);
+}
+#home > .newsletter > .subtitle {
+  margin: 40px 0 50px;
+}
+#home > .newsletter > form {
+  padding: 0 30px;
+  height: 60px;
+  width: 100%;
+  max-width: 570px;
+  border-radius: 30px;
+}
+#home > .newsletter > form > .mail {
+  font-size: 16px;
+  border: none;
+}
+#home > .newsletter > form > .mail:placeholder {
+  font: inherit;
+}
+#home > .newsletter > .info {
+  margin-top: 50px;
+}
+
+#footer > .about {
+  padding: 0 20px;
+  height: 340px;
+  color: #adadad;
+}
+#footer > .about > .adres > .line1, #footer > .about > .adres > .line2 {
+  line-height: 30px;
+}
+#footer > .about > .quick > .link {
+  position: relative;
+  -webkit-transition: font .3s linear;
+  transition: font .3s linear;
+  line-height: 40px;
+}
+#footer > .about > .quick > .link > .bar {
+  position: absolute;
+  height: 2px;
+  width: 50%;
+  bottom: 100%;
+  left: 0;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: -webkit-transform .3s linear;
+  transition: -webkit-transform .3s linear;
+  transition: transform .3s linear;
+  transition: transform .3s linear, -webkit-transform .3s linear;
+}
+#footer > .about > .quick > .link:not(:last-child)::after {
+  content: " | ";
+  margin: 0 10px;
+}
+#footer > .about > .quick > .link:hover {
+  color: #5e9104;
+}
+#footer > .about > .quick > .link:hover > .bar {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+#footer > .copyright {
+  height: 100px;
+}
+#footer > .copyright > .design > a {
+  margin-left: 30px;
+}
+#footer > .copyright > .design > a > .icon {
+  padding-right: 10px;
 }

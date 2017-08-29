@@ -561,6 +561,296 @@
 			})
 			( $( '#fb' ), $( '#home > .slider' ) );
 			
+			/* slider opinie */
+			(function( slider, view, slides, nav ){
+				var itrv;
+				var tout;
+				var current = 0;
+				var lock = false;
+				var config = {
+					delay: 4000,
+					duration: 1000,
+				};
+				
+				slider
+				.on({
+					set: function( e ){
+						if( lock ) return false;
+						lock = true;
+						
+						if( current < 0 ) current = slides.length - 1;
+						current %= slides.length;
+						
+						new TimelineLite({
+							onComplete: function(){
+								lock = false;
+								
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.to(
+								view,
+								config.duration / 1000,
+								{
+									scrollLeft: function(){
+										return slides.first().outerWidth( true ) * current;
+										
+									},
+									ease: Power2.easeOut,
+									
+								}
+							), 'start'
+						);
+						
+					},
+					next: function( e ){
+						if( !lock ){
+							current++;
+							slider.triggerHandler( 'set' );
+						}
+						
+					},
+					prev: function( e ){
+						if( !lock ){
+							current--;
+							slider.triggerHandler( 'set' );
+						}
+						
+					},
+					stop: function( e ){
+						window.clearInterval( itrv );
+						
+					},
+					start: function( e ){
+						slider.triggerHandler( 'stop' );
+						itrv = window.setInterval(function(){
+							slider.triggerHandler( 'next' );
+							
+						}, config.delay);
+						
+					},
+					mouseenter: function( e ){
+						slider.triggerHandler( 'stop' );
+						
+					},
+					mouseleave: function( e ){
+						slider.triggerHandler( 'start' );
+						
+					},
+					
+				})
+				.swipe({
+					swipeLeft: function( e ){
+						slider.triggerHandler( 'next' );
+						
+					},
+					swipeRight: function( e ){
+						slider.triggerHandler( 'prev' );
+						
+					},
+					
+				});
+				
+				nav.click(function( e ){
+					if( $(this).hasClass( 'next' ) ){
+						slider.triggerHandler( 'next' );
+						
+					}
+					else if( $(this).hasClass( 'prev' ) ){
+						slider.triggerHandler( 'prev' );
+						
+					}
+					
+				});
+				
+				$( window ).resize(function(){
+					window.clearTimeout( tout );
+					tout = window.setTimeout(function(){
+						slider.triggerHandler( 'set' );
+						
+					}, 300);
+					
+				});
+				
+				slider.triggerHandler( 'start' );
+				
+			})
+			( $( '#home > .opinie .slider' ), 
+			$( '#home > .opinie .slider > .view' ), 
+			$( '#home > .opinie .slider > .view > .slide' ), 
+			$( '#home > .opinie .slider > .nav > .icon' ) );
+			
+			/* popup */
+			(function( popup, box, close, content ){
+				var lock = false;
+				
+				popup
+				.on({
+					open: function( e, status, text ){
+						if( lock ) return false;
+						lock = true;
+						new TimelineLite({
+							onStart: function(){
+								popup
+								.removeClass( 'ok info fail' )
+								.addClass( 'open ' + status );
+								
+								content.html( text );
+								
+							},
+							onComplete: function(){
+								lock = false;
+								
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.fromTo(
+								popup,
+								.3,
+								{
+									opacity: 0,
+								},
+								{
+									opacity: 1,
+									
+								}
+							), 'start'
+						)
+						.add(
+							TweenLite.fromTo(
+								box,
+								.2,
+								{
+									opacity: 0,
+									y: -100,
+								},
+								{
+									opacity: 1,
+									y: 0,
+								}
+							), 'start+=0.3'
+						)
+						
+					},
+					close: function( e ){
+						if( lock ) return false;
+						lock = true;
+						new TimelineLite({
+							onComplete: function(){
+								popup.removeClass( 'open ok fail info' );
+								lock = false;
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.to(
+								box,
+								0.2,
+								{
+									y: 100,
+									opacity: 0,
+								}
+								
+							), 'start'
+						)
+						.add(
+							TweenLite.to(
+								popup,
+								0.3,
+								{
+									opacity: 0,
+								}
+								
+							), 'start+=0.2'
+						)
+						
+					},
+					
+				});
+				
+				popup
+				.add( close )
+				.click(function(){
+					popup.triggerHandler( 'close' );
+					
+				});
+				
+				box.click(function( e ){
+					e.stopPropagation();
+					
+				});
+				
+			})
+			( $( '#popup' ), $( '#popup > .box' ), $( '#popup > .box > .close' ), $( '#popup > .box > .view .text > .content' ) );
+			
+			/* newsletter */
+			(function( newsletter, btn, input, popup ){
+				var action;
+				
+				newsletter
+				.on({
+					submit: function( e ){
+						e.preventDefault();
+						
+					},
+					send: function( e ){
+						$.post(
+							'newsletter',
+							newsletter.serializeArray(),
+							function( data, status ){
+								
+								// console.log( data );
+								var res = JSON.parse( data );
+								if( typeof res.action !== "undefined" ){
+									action = res.action;
+									
+								}
+								popup.triggerHandler( 'open', [ res.status, res.msg ] );
+								// console.log( res );
+								
+							}
+						);
+						
+					},
+					
+				});
+				
+				btn.click(function(){
+					// console.log( action );
+					
+					if( typeof action === "undefined" ){
+						newsletter.triggerHandler( 'send' );
+						
+					}
+					else{
+						$.get(
+							action,
+							function( data ){
+								action = undefined;
+								var res = JSON.parse( data );
+								popup.triggerHandler( 'open', [ res.status, res.msg ] );
+								// console.log( res );
+								
+							}
+						);
+						
+					}
+					
+				});
+				
+				input.on( 'change', function( e ){
+					var action = undefined;
+					
+				} );
+				
+			})
+			( $( '#home > .newsletter > form' ), $( '#home > .newsletter > form > .button' ), $( '#home > .newsletter > form > .mail' ), $( '#popup' ) );
+			
 		},
 		
 	}

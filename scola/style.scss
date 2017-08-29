@@ -1,13 +1,13 @@
 /*
 	Theme Name: Scola
-	Author: Scepter.pl
+	Author: Scepter Agencja Interaktywna
 	Author URI: http://www.scepter.pl
 	Description: Cetrum językowe
 	
 */
 
-@import 'setup';
 @import 'paleta';
+@import 'setup';
 
 #fb{
 	position: fixed;
@@ -21,6 +21,7 @@
 	transform-origin: left;
 	transform: rotateY(90deg);
 	border-radius: 0 36px 36px 0;
+	background-color: $color-facebook;
 	
 	&:hover{
 		width: 100px;
@@ -34,6 +35,120 @@
 	
 	& > .icon{
 		padding-right: 26px;
+		
+	}
+	
+}
+
+#popup{
+	position: fixed;
+	padding: 50px;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 100;
+	background-color: $color-filtr;
+	
+	& > .box{
+		position: relative;
+		padding: 40px 20px;
+		background-color: $color-light;
+		
+		& > .close{
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			top: 0;
+			right: 0;
+			background-color: $color-dark;
+			
+			& > .icon{
+				font-size: 30px;
+				color: $color-light;
+				
+			}
+			
+		}
+		
+		& > .view{
+			
+			& > .page{
+				
+				& > .status{
+					padding-right: 20px;
+					font-size: 70px;
+					
+					& > .icon{
+						
+						&.ok{
+							color: $color-ok;
+							
+						}
+						
+						&.info{
+							color: $color-info;
+							
+						}
+						
+						&.fail{
+							color: $color-fail;
+							
+						}
+						
+					}
+					
+				}
+				
+				& > .text{
+					
+					& > .title{
+						padding-bottom: 20px;
+						font-size: 30px;
+						
+					}
+					
+					& > .content{
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	&:not(.ok){
+		
+		.status > .icon.ok{
+			display: none;
+			
+		}
+		
+	}
+	
+	&:not(.info){
+		
+		.status > .icon.info{
+			display: none;
+			
+		}
+		
+	}
+	
+	&:not(.fail){
+		
+		.status > .icon.fail{
+			display: none;
+			
+		}
+		
+	}
+	
+	&:not(.open){
+		display: none;
 		
 	}
 	
@@ -659,6 +774,7 @@
 				bottom: 0;
 				left: 0;
 				right: 0;
+				z-index: 10;
 				
 				& > .icon{
 					position: absolute;
@@ -701,6 +817,7 @@
 	}
 	
 	& > .tlumaczenia{
+		padding: 0 20px;
 		height: 300px;
 		
 		& > .top{
@@ -714,20 +831,9 @@
 			
 		}
 		
-		& > .button{
-			position: relative;
-			width: 266px;
-			height: 50px;
-			font-size: 16px;
-			border:{
-				style: solid;
-				width: 2px;
-				color: $color-light;
-				radius: 25px;
-			};
+		& > .customButton{
 			
 			& > .icon{
-				margin-right: 30px;
 				
 			}
 			
@@ -745,7 +851,7 @@
 	
 	& > .umysly{
 		position: relative;
-		padding: 114px 0 96px;
+		padding: 114px 20px 96px;
 		
 		& > .line1{
 			font-size: 28px;
@@ -774,9 +880,10 @@
 	}
 	
 	& > .metody{
-		padding: 100px 0 40px;
+		padding: 100px 20px 40px;
 		
 		& > .content{
+			margin-bottom: 70px;
 			font-size: 16px;
 			max-width: 740px;
 			text-align: center;
@@ -784,25 +891,401 @@
 			
 		}
 		
-		& > .button{
-			position: relative;
-			margin-top: 70px;
-			width: 266px;
-			height: 52px;
-			border: {
-				style: solid;
-				color: $color-green;
-				width: 2px;
-				radius: 26px;
-			};
-			font-size: 18px;
+		& > .customButton{
 			
 			& > .icon{
-				margin-right: 30px;
 				
 			}
 			
 			& > .content{
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .centrum{
+		position: relative;
+		margin-top: 130px;
+		
+		& > .box{
+			
+			& > .tekst{
+				margin-bottom: 50px;
+				
+				& > .title{
+					
+					& > .line1{
+						font-size: 21px;
+						
+					}
+					
+					& > .line2{
+						font-size: 28px;
+						
+					}
+					
+				}
+				
+				& > .content{
+					margin: 50px 0;
+					font-size: 16px;
+					line-height: 24px;
+					
+				}
+				
+			}
+			
+		}
+			
+		& > .menu{
+			
+			& > .item{
+				padding: 0 20px;
+				height: 80px;
+				transition-property: font, background, transform;
+				transition: .3s linear;
+				
+				&:not(:last-child){
+					border-bottom:{
+						style: solid;
+						width: 1px;
+						color: $color-green-light;
+						
+					};
+					
+				}
+				
+				& > .title{
+					
+				}
+				
+				& > .icon{
+					margin: 0 20px;
+					width: 24px;
+					height: 24px;
+					transition: transform .3s linear;
+					transform: rotate(-90deg);
+					background-image: url(img/arrow_small_white.png);
+					
+				}
+				
+				& > .tekst{
+					
+				}
+				
+				&:hover{
+					background-color: $color-light;
+					color: $color-green;
+					
+					& > .icon{
+						transform: rotate(90deg);
+						background-image: url(img/arrow_small_green.png);
+						
+					}
+					
+				}
+				
+				@media( min-width: map-get( $bpw, tablet ) ){
+					padding: 0 50px;
+					
+				}
+				
+			}
+			
+			@media( min-width: map-get( $bpw, desktop ) ){
+				position: absolute;
+				margin-left: 100px;
+				top: 0;
+				left: 50%;
+				right: 0;
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .opinie{
+		min-height: 650px;
+		padding:{
+			top: 140px;
+			bottom: 50px;
+			
+		};
+		
+		& > .grid{
+			
+			& > .top{
+				font-size: 21px;
+				margin-bottom: 35px;
+				
+				& > .title{
+					
+					& > .line1{
+						
+					}
+					
+					& > .line2{
+						
+					}
+					
+					& > .icon{
+						margin-top: 50px;
+						
+					}
+				
+				}
+				
+			}
+			
+			& > .slider{
+				position: relative;
+				
+				& > .view{
+					padding-bottom: 100px;
+					overflow: hidden;
+					
+					& > .slide{
+						
+						& > .img{
+							
+							@media( min-width: map-get( $bpw, tablet ) ){
+								padding: 0 65px 0 0;
+								
+							}
+							
+						}
+						
+						& > .content{
+							
+							& > .tekst{
+								padding: 50px 0;
+								
+								@media( min-width: map-get( $bpw, tablet ) ){
+									padding: 0;
+									line-height: 30px;
+								
+								}
+								
+							}
+							
+						}
+						
+					}
+					
+					@media( min-width: map-get( $bpw, tablet ) ){
+						padding: 0;
+						
+					}
+					
+				}
+				
+				& > .nav{
+					position: absolute;
+					margin: 0 -20px 0 0;
+					right: 50%;
+					bottom: 100px;
+					transform: translateX(50%);
+					
+					& > .prev{
+						margin-right: 20px;
+						transform: rotateY(180deg);
+						
+					}
+					
+					& > .next{
+						margin-right: 20px;
+						
+					}
+					
+					@media( min-width: map-get( $bpw, tablet ) ){
+						margin: 0;
+						right: 0;
+						bottom: 0;
+						transform: none;
+						
+					}
+					
+				}
+				
+				& > .customButton{
+					margin-top: 50px;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .egzaminy{
+		height: 276px;
+		
+		& > .title{
+			margin-bottom: 45px;
+			
+			& > .line1{
+				font-size: 21px;
+				
+			}
+			
+			& > .line2{
+				font-size: 28px;
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .certyfikaty{
+		height: 190px;
+		
+		& > img{
+			margin: 0 20px;
+			max-height: 75px;
+			max-width: 25%;
+			
+		}
+		
+	}
+	
+	& > .newsletter{
+		padding-bottom: 100px;
+		height: 480px;
+		background-image: url(img/newsletter_bg.jpg);
+		
+		& > .title{
+			
+		}
+		
+		& > .subtitle{
+			margin: 40px 0 50px;
+			
+		}
+		
+		& > form{
+			padding: 0 30px;
+			height: 60px;
+			width: 100%;
+			max-width: 570px;
+			border-radius: 30px;
+			
+			& > .mail{
+				font-size: 16px;
+				border: none;
+				
+				&:placeholder{
+					font: inherit;
+					
+				}
+				
+			}
+			
+			& > .button{
+				
+				& > .icon{
+					
+				}
+				
+				& > .text{
+					
+				}
+				
+			}
+			
+		}
+		
+		& > .info{
+			margin-top: 50px;
+			
+		}
+		
+	}
+	
+}
+
+#footer{
+	
+	& > .about{
+		padding: 0 20px;
+		height: 340px;
+		color: $color-gray-lighter;
+		
+		& > .img{
+			
+		}
+		
+		& > .adres{
+			
+			& > .line1, & > .line2{
+				line-height: 30px;
+				
+			}
+			
+		}
+		
+		& > .quick{
+			
+			& > .link{
+				position: relative;
+				transition: font .3s linear;
+				line-height: 40px;
+				
+				& > .bar{
+					position: absolute;
+					height: 2px;
+					width: 50%;
+					bottom: 100%;
+					left: 0;
+					transform-origin: left;
+					transform: scaleX(0);
+					transition: transform .3s linear;
+					
+					
+				}
+				
+				&:not(:last-child)::after{
+					content: " | ";
+					margin: 0 10px;
+					
+				}
+				
+				&:hover{
+					color: $color-green;
+					
+					& > .bar{
+						transform: scaleX(1);
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .copyright{
+		height: 100px;
+		
+		& > .copy{
+			
+		}
+		
+		& > .design{
+			
+			& > a{
+				margin-left: 30px;
+				
+				& > .icon{
+					padding-right: 10px;
+					
+				}
 				
 			}
 			
