@@ -37,6 +37,11 @@ $bpw: (
 	
 }
 
+.bolder{
+	font-family: 'sen-extra-bold';
+	
+}
+
 .hand{
 	@extend .regular.hand;
 	
@@ -169,6 +174,7 @@ a, img{
 	}
 	
 	&, &.right{
+		
 		& > .icon{
 			margin-right: 30px;
 			
@@ -177,6 +183,38 @@ a, img{
 	}
 	
 	& > .content{
+		
+	}
+	
+}
+
+.customButtonFill{
+	position: relative;
+	padding-right: 40px;
+	min-width: 266px;
+	height: 52px;
+	border: {
+		style: solid;
+		color: $color-green;
+		width: 2px;
+		radius: 26px;
+	};
+	font-size: 16px;
+	transition: padding .3s ease-out;
+	
+	& > .box{
+		padding: 0 20px;
+		border-radius: inherit;
+		
+		& > .icon{
+			margin-right: 20px;
+			
+		}
+		
+	}
+	
+	&:hover{
+		padding-right: 0;
 		
 	}
 	

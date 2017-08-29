@@ -215,6 +215,62 @@
 			})
 			( $('[slide-to]') );
 			
+			/* facebook button */
+			(function( fb, top ){
+				var tout;
+				var config = {
+					delay: 200,
+					
+				};
+				
+				fb
+				.on({
+					show: function( e ){
+						fb.addClass( 'open' );
+						
+					},
+					hide: function( e ){
+						fb.removeClass( 'open' );
+						
+					},
+					check: function( e ){
+						var pos = function(){
+							if( $( 'body' ).prop( 'scrollTop' ) == 0 ){
+								return $( 'html' ).prop( 'scrollTop' );
+								
+							}
+							else{
+								return $( 'body' ).prop( 'scrollTop' );
+								
+							}
+							
+						}
+						
+						if( pos() >= top.offset().top + top.outerHeight() ){
+							fb.triggerHandler( 'show' );
+							
+						}
+						else{
+							fb.triggerHandler( 'hide' );
+							
+						}
+						
+					},
+					
+				});
+				
+				$( window ).scroll(function(){
+					window.clearTimeout( tout );
+					tout = window.setTimeout(function(){
+						fb.triggerHandler( 'check' );
+						
+					}, config.delay);
+					
+				});
+				
+			})
+			( $( '#fb' ), $( '#top' ) );
+			
 		},
 		alternate: function(){
 			var addon = root.addon;
@@ -504,62 +560,6 @@
 			$( '#home > .jezyk > .box > .inner > .item.flag' ), 
 			$( '#home > .jezyk > .box > .nav > .icon' ), 
 			$( '#home > .jezyk > .box > .nav > .number' ) );
-			
-			/* facebook button */
-			(function( fb, slider ){
-				var tout;
-				var config = {
-					delay: 200,
-					
-				};
-				
-				fb
-				.on({
-					show: function( e ){
-						fb.addClass( 'open' );
-						
-					},
-					hide: function( e ){
-						fb.removeClass( 'open' );
-						
-					},
-					check: function( e ){
-						var pos = function(){
-							if( $( 'body' ).prop( 'scrollTop' ) == 0 ){
-								return $( 'html' ).prop( 'scrollTop' );
-								
-							}
-							else{
-								return $( 'body' ).prop( 'scrollTop' );
-								
-							}
-							
-						}
-						
-						if( pos() >= slider.offset().top + slider.outerHeight( true ) - parseInt( fb.css( 'top' ) ) ){
-							fb.triggerHandler( 'show' );
-							
-						}
-						else{
-							fb.triggerHandler( 'hide' );
-							
-						}
-						
-					},
-					
-				});
-				
-				$( window ).scroll(function(){
-					window.clearTimeout( tout );
-					tout = window.setTimeout(function(){
-						fb.triggerHandler( 'check' );
-						
-					}, config.delay);
-					
-				});
-				
-			})
-			( $( '#fb' ), $( '#home > .slider' ) );
 			
 			/* slider opinie */
 			(function( slider, view, slides, nav ){

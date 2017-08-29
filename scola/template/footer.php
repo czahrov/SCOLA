@@ -19,27 +19,27 @@
 			
 		</div>
 		<div class='quick flex flex-wrap flex-justify-center'>
-			<a class='link uppercase' href='<?php echo home_url(); ?>'>
+			<a class='link uppercase' href='<?php echo home_url( 'nasze-centrum' ); ?>'>
 				<div class='bar bg-green'></div>
 				nasze centrum
 			</a>
-			<a class='link uppercase' href='<?php echo home_url(); ?>'>
+			<a class='link uppercase' href='<?php echo home_url( 'jezyki' ); ?>'>
 				<div class='bar bg-green'></div>
 				języki
 			</a>
-			<a class='link uppercase' href='<?php echo home_url(); ?>'>
+			<a class='link uppercase' href='<?php echo home_url( 'aktualnosci' ); ?>'>
 				<div class='bar bg-green'></div>
 				aktualności
 			</a>
-			<a class='link uppercase' href='<?php echo home_url(); ?>'>
+			<a class='link uppercase' href='<?php echo home_url( 'e-learning' ); ?>'>
 				<div class='bar bg-green'></div>
 				e-learning
 			</a>
-			<a class='link uppercase' href='<?php echo home_url(); ?>'>
+			<a class='link uppercase' href='<?php echo home_url( 'kadra' ); ?>'>
 				<div class='bar bg-green'></div>
 				kadra
 			</a>
-			<a class='link uppercase' href='<?php echo home_url(); ?>'>
+			<a class='link uppercase' href='<?php echo home_url( 'kontakt' ); ?>'>
 				<div class='bar bg-green'></div>
 				kontakt
 			</a>

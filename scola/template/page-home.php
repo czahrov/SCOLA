@@ -1,7 +1,3 @@
-<a id='fb' class='font-light pointer flex flex-items-center flex-justify-end' href='https://www.facebook.com/scola.nowysacz/' target='_blank'>
-	<span class='icon fa fa-facebook fa-3x'></span>
-	
-</a>
 <div id='popup' class='flex flex-items-center flex-justify-center'>
 	<div class='box'>
 		<div class='close pointer flex flex-justify-center'>
@@ -36,7 +32,7 @@
 <div id='home'>
 	<div class='top grid'>
 		<h1 class='tekst naglowek bold'>
-			Centrum językowe SCOLA do przełom na rynku
+			Centrum językowe SCOLA to przełom na rynku
 			<span class='font-green'>
 				edukacji obcojęzycznej
 			</span>

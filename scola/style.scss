@@ -1208,6 +1208,333 @@
 	
 }
 
+#nasze_centrum{
+	
+	& > .centrum{
+		position: relative;
+		margin-bottom: 140px;
+		
+		.img{
+			background-image: url(img/scola_budynek.jpg);
+		}
+		
+		& > .img{
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 50%;
+			bottom: 0;
+			
+		}
+		
+		& > .box{
+			
+			& > .img{
+				padding-bottom: 62%;
+				
+			}
+			
+			& > .text{
+				
+				& > .title{
+					margin: 55px 0 28px;
+					font-size: 34px;
+					line-height: 54px;
+				}
+				
+				& > .subtitle{
+					margin-bottom: 50px;
+					font-size: 15px;
+					
+				}
+				
+				& > .mid{
+					margin-bottom: 42px;
+					font-size: 21px;
+					line-height: 33px;
+					
+				}
+				
+				& > ol.zakres{
+					list-style-position: inside;
+					
+					& > li{
+						
+						& > .button{
+							margin: 20px;
+							
+							& > img{
+								
+							}
+							
+							& > .title{
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .oferujemy{
+		padding: 50px 0;
+		
+		& > .box{
+			
+			& > .title{
+				margin-bottom: 50px;
+				font-size: 36px;
+			}
+			
+			& > ul{
+				margin-bottom: 40px;
+				list-style-position: inside;
+				list-style-image: url(img/ikony/bullet_white.png);
+				
+				& > li{
+					margin-bottom: 10px;
+					padding-right: 10px;
+					max-width: 800px;
+					font-size: 21px;
+					line-height: 30px;
+					
+				}
+				
+			}
+			
+			& > .line{
+				font-size: 16px;
+				line-height: 30px;
+				margin-bottom: 20px;
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .opis{
+		padding: 54px 0;
+		
+		& > .line{
+			margin-bottom: 45px;
+			font-size: 16px;
+			line-height: 30px;
+			
+		}
+		
+	}
+	
+}
+
+#jezyk{
+	
+	& > .top{
+		position: relative;
+		margin-bottom: 140px;
+		
+		.img{
+			background-image: url('https://placeimg.com/300/100/tech');
+			
+		}
+		
+		& > .img{
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 50%;
+			bottom: 0;
+		}
+		
+		& > .box{
+			
+			& > .img{
+				padding-bottom: 62%;
+			}
+			
+			& > .text{
+				
+				& > .title{
+					margin: 60px 0 34px;
+					font-size: 36px;
+					line-height: 54px;
+					
+				}
+				
+				& > .buttons{
+					margin-bottom: 50px;
+					
+					& > .noborder{
+						border: none;
+						
+					}
+					
+				}
+				
+				& > .poziomy{
+					margin-bottom: 50px;
+					
+					& > .title{
+						margin-bottom: 10px;
+						font-size: 13px;
+						
+					}
+					
+					& > .value{
+						font-size: 26px;
+						
+					}
+					
+				}
+				
+				& > .zdolnosci{
+					margin-bottom: 50px;
+					
+					& > .title{
+						margin-bottom: 10px;
+						font-size: 13px;
+						
+					}
+					
+					& > .value{
+						font-size: 22px;
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	&  > .info{
+		padding: 40px 0 50px;
+		
+		& > .box{
+			
+			& > .title{
+				margin-bottom: 50px;
+				font-size: 36px;
+			}
+			
+			& > .line{
+				margin-bottom: 50px;
+				
+				& > .icon{
+					padding-right: 20px;
+					
+				}
+				
+				& > .text{
+					
+					& > div{
+						margin: 10px 0;
+						
+						&.top{
+							font-size: 15px;
+							
+						}
+						
+						&.bot{
+							font-size: 21px;
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+			& > ul{
+				margin-bottom: 50px;
+				list-style-position: inside;
+				list-style-image: url(img/ikony/bullet_white.png);
+				
+				& > li{
+					margin-bottom: 10px;
+					font-size: 21px;
+					line-height: 33px;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .opis{
+		padding: 50px 20px;
+		max-width: 1050px;
+		
+		& > div{
+			line-height: 30px;
+			
+		}
+		
+	}
+	
+	&.angielski > .top .img{
+		background-image: url(img/poster_ang.jpg);
+	}
+	
+	&.niemiecki > .top .img{
+		background-image: url(img/poster_niem.jpg);
+	}
+	
+	&.hiszpanski > .top .img{
+		background-image: url(img/poster_hisz.jpg);
+	}
+	
+	&.wloski > .top .img{
+		background-image: url(img/poster_wlo.jpg);
+	}
+	
+	&.francuski > .top .img{
+		background-image: url(img/poster_fran.jpg);
+	}
+	
+	&.rosyjski > .top .img{
+		background-image: url(img/poster_ros.jpg);
+	}
+	
+	&.slowacki > .top .img{
+		background-image: url(img/poster_slo.jpg);
+	}
+	
+}
+
+#breadcrumb{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
+	& > .title{
+		
+	}
+	
+	& > .item{
+		margin: 0 5px;
+		transition: font .3s linear;
+		
+		&:hover{
+			color: $color-green;
+			
+		}
+		
+	}
+	
+}
+
 #footer{
 	
 	& > .about{

@@ -1,5 +1,5 @@
 <div id='top' class='grid flex flex-column flex-row flex-items-center flex-justify-between'>
-	<a class='logo pointer flex flex-self-stretch' href='<?php home_url(); ?>'>
+	<a class='logo pointer flex flex-self-stretch' href='<?php echo home_url(); ?>'>
 		<div class='img bgimg contain grow'></div>
 	</a>
 	<div class='toggle flex hide-ml'>
@@ -17,34 +17,34 @@
 			<span class='icon fa fa-angle-down'></span>
 			<ul>
 				<li>
-					<a href="<?php home_url(); ?>">Nasze Centrum</a>
+					<a href="<?php echo home_url( 'nasze-centrum', relative ); ?>">Nasze Centrum</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Metody nauczania</a>
+					<a href="<?php echo home_url( 'metody-nauczania' ); ?>">Metody nauczania</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Centrum egzaminacyjne</a>
+					<a href="<?php echo home_url( 'centrum-egzaminacyjne' ); ?>">Centrum egzaminacyjne</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Certyfikaty językowe</a>
+					<a href="<?php echo home_url( 'certyfikaty-jezykowe' ); ?>">Certyfikaty językowe</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Kursy</a>
+					<a href="<?php echo home_url( 'kursy' ); ?>">Kursy</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Tłumaczenia</a>
+					<a href="<?php echo home_url( 'tlumaczenia' ); ?>">Tłumaczenia</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Program</a>
+					<a href="<?php echo home_url( 'program' ); ?>">Program</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Kadra</a>
+					<a href="<?php echo home_url( 'kadra' ); ?>">Kadra</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Regulamin</a>
+					<a href="<?php echo home_url( 'regulamin' ); ?>">Regulamin</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Referencje</a>
+					<a href="<?php echo home_url( 'referencje' ); ?>">Referencje</a>
 				</li>
 				
 			</ul>
@@ -54,42 +54,46 @@
 			<span class='icon fa fa-angle-down'></span>
 			<ul>
 				<li>
-					<a href="<?php home_url(); ?>">Angielski</a>
+					<a href="<?php echo home_url( 'angielski' ); ?>">Angielski</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Niemiecki</a>
+					<a href="<?php echo home_url( 'niemiecki' ); ?>">Niemiecki</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Hiszpański</a>
+					<a href="<?php echo home_url( 'hiszpanski' ); ?>">Hiszpański</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Włoski</a>
+					<a href="<?php echo home_url( 'wloski' ); ?>">Włoski</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Francuski</a>
+					<a href="<?php echo home_url( 'francuski' ); ?>">Francuski</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Rosyjski</a>
+					<a href="<?php echo home_url( 'rosyjski' ); ?>">Rosyjski</a>
 				</li>
 				<li>
-					<a href="<?php home_url(); ?>">Słowacki</a>
+					<a href="<?php echo home_url( 'slowacki' ); ?>">Słowacki</a>
 				</li>
 				
 			</ul>
 		</li>
 		<li>
-			<a href="<?php home_url(); ?>">Aktualności</a>
+			<a href="<?php echo home_url( 'aktualnosci' ); ?>">Aktualności</a>
 		</li>
 		<li>
-			<a href="<?php home_url(); ?>">E-learning</a>
+			<a href="<?php echo home_url( 'e-learning' ); ?>">E-learning</a>
 		</li>
 		<li>
-			<a href="<?php home_url(); ?>">Cennik</a>
+			<a href="<?php echo home_url( 'cennik' ); ?>">Cennik</a>
 		</li>
 		<li class='kontakt'>
-			<a href="<?php home_url(); ?>">Kontakt</a>
+			<a href="<?php echo home_url( 'kontakt' ); ?>">Kontakt</a>
 		</li>
 		
 	</ul>
 	
 </div>
+<a id='fb' class='font-light pointer flex flex-items-center flex-justify-end' href='https://www.facebook.com/scola.nowysacz/' target='_blank'>
+	<span class='icon fa fa-facebook fa-3x'></span>
+	
+</a>

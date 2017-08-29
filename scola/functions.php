@@ -6,13 +6,14 @@ $develop = true;
 if( !is_admin() ){
 	wp_enqueue_style( "fonts", get_template_directory_uri() . "/css/fonts.css", array() );
 	wp_enqueue_style( "font-awesome", get_template_directory_uri() . "/css/font-awesome.min.css", array() );
-	
 	if( $develop ){
 		wp_enqueue_style( "facepalm", get_template_directory_uri() . "/css/facepalm.css", array() );
+		// wp_enqueue_style( "piotr", get_template_directory_uri() . "/css/piotr.css", array() );
 		wp_enqueue_style( "style", get_template_directory_uri() . "/style.css", array() );
 	}
 	else{
 		wp_enqueue_style( "facepalm", get_template_directory_uri() . "/css/facepalm.min.css", array() );
+		// wp_enqueue_style( "piotr", get_template_directory_uri() . "/css/piotr.min.css", array() );
 		wp_enqueue_style( "style", get_template_directory_uri() . "/style.min.css", array() );
 	}
 	
@@ -27,7 +28,6 @@ if( !is_admin() ){
 	wp_enqueue_script( "RoundProps", get_template_directory_uri() . "/js/RoundPropsPlugin.min.js" );
 	wp_enqueue_script( "TextPlugin", get_template_directory_uri() . "/js/TextPlugin.min.js" );
 	wp_enqueue_script( "gmap3", get_template_directory_uri() . "/js/gmap3.min.js" );
-		
 	if( $develop ){
 		wp_enqueue_script( "FP", get_template_directory_uri() . "/js/facepalm.js" );
 	}
@@ -313,14 +313,15 @@ add_action( 'page_title', function( $arg ){
 	
 } );
 
-add_action( 'customButton', function( $arg ){
+add_action( 'customButton', function( Array $arg ){
 	$arg = array_merge(
 		array(
 			'arrow' => 'green',
 			'direction' => 'right',
 			'class' => '',
 			'title' => '',
-			'url' => ''
+			'url' => '',
+			'newWindow' => false,
 		),
 		$arg
 	);
@@ -356,10 +357,62 @@ add_action( 'customButton', function( $arg ){
 	$ret .= sprintf( "<div class='content'>%s</div>", $arg[ 'title' ] );
 	
 	if( !empty( $arg[ 'url' ] ) ){
-		$ret .= sprintf( "<a class='hitbox' href='%s'></a>", $arg[ 'url' ] );
+		$target = $arg[ 'newWindow' ]?( " target='_blank'" ):( "" );
+		$ret .= sprintf( "<a class='hitbox' href='%s'%s></a>", $arg[ 'url' ], $target );
 		
 	}
 	
+	$ret .= "</div>";
+	
+	echo $ret;
+	
+} );
+
+add_action( 'customButtonFill', function( Array $arg ){
+	$arg = array_merge(
+		array(
+			'arrow' => 'green',
+			'direction' => 'right',
+			'class' => '',
+			'title' => '',
+			'url' => ''
+		),
+		$arg
+	);
+	/*
+	<div class='button bold pointer arrow_slide font-green flex flex-items-center flex-justify-center'>
+		<img class='icon arrow right' src='<?php echo get_template_directory_uri(); ?>/img/arrow_green.png' />
+		<div class='content'>
+			metody nauczania
+		</div>
+		<a class='hitbox' href='<?php home_url(); ?>'></a>
+		
+	</div>
+	*/
+	
+} );
+
+add_action( 'breadcrumb', function( $arg ){
+	$items = array();
+	
+	$current = get_post();
+	$parent = $current->post_parent;
+	array_unshift( $items, sprintf( "<div class='item'><a href='%s'>%s</a></div>", get_permalink( $current->ID ), $current->post_title ) );
+	
+	if( $current->ID !== 0 ){
+		while( $parent !== 0 ){
+			$current = get_post( $parent );
+			$parent = $current->post_parent;
+			array_unshift( $items, sprintf( "<div class='item'><a href='%s'>%s</a></div>", get_permalink( $current->ID ), $current->post_title ) );
+			
+		}
+		
+	}
+	
+	array_unshift( $items, sprintf( "<div class='item'><a href='%s'>%s</a></div>", home_url(), 'Strona główna' ) );
+	
+	$ret = "<div id='breadcrumb' class='grid bold flex flex-wrap flex-items-center'><div class='title'>Obecnie przeglądasz:</div>";
+	$ret .= implode( " • ", $items );
 	$ret .= "</div>";
 	
 	echo $ret;
