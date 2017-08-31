@@ -371,7 +371,7 @@ add_action( 'customButton', function( Array $arg ){
 add_action( 'customButtonFill', function( Array $arg ){
 	$arg = array_merge(
 		array(
-			'arrow' => 'green',
+			'arrow' => 'white',
 			'direction' => 'right',
 			'class' => '',
 			'title' => '',
@@ -380,15 +380,34 @@ add_action( 'customButtonFill', function( Array $arg ){
 		$arg
 	);
 	/*
-	<div class='button bold pointer arrow_slide font-green flex flex-items-center flex-justify-center'>
-		<img class='icon arrow right' src='<?php echo get_template_directory_uri(); ?>/img/arrow_green.png' />
-		<div class='content'>
-			metody nauczania
+	<div class='customButtonFill pointer flex'>
+		<div class='box bg-green font-light arrow_slide flex grow flex-items-center'>
+			<img class='icon arrow right' src='<?php echo get_template_directory_uri(); ?>/img/arrow_white.png'/>
+			<div class='title'>
+				wypełnij test
+			</div>
+			
 		</div>
-		<a class='hitbox' href='<?php home_url(); ?>'></a>
+		<a class='hitbox' href='<?php echo home_url( "testy/$slug" ); ?>'></a>
 		
 	</div>
 	*/
+	
+	$img = sprintf( "%s/img/arrow_%s.png", get_template_directory_uri(), $arg[ 'arrow' ] );
+	$url = empty( $arg[ 'url' ] )?( '' ):( "<a class='hitbox' href='{$arg[ 'url' ]}'></a>" );
+	
+	$ret = "<div class='customButtonFill pointer flex {$arg[ 'class' ]}'>
+		<div class='box bg-green font-light arrow_slide flex grow flex-items-center'>
+			<img class='icon arrow {$arg[ 'direction' ]}' src='{$img}'/>
+			<div class='title'>
+				{$arg[ 'title' ]}
+			</div>
+			
+		</div>
+		{$url}
+	</div>";
+	
+	echo $ret;
 	
 } );
 

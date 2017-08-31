@@ -9,7 +9,8 @@
 			
 		}
 		else{		//podstrona
-			var subpage = path.match(/([\w\-]+)\/$/)[1];
+			// var subpage = path.match(/([\w\-]+)\/$/)[1];
+			var subpage = path.match(/^\/([\w\-]+)\//)[1];
 			var t = subpage.replace(/\-/g,'_');
 			if(typeof subpage === 'string' && subpage.length){
 				if(typeof root.page[t] === 'function'){
@@ -270,6 +271,119 @@
 				
 			})
 			( $( '#fb' ), $( '#top' ) );
+			
+			/* popup */
+			(function( popup, box, close, header, content ){
+				var lock = false;
+				
+				popup
+				.on({
+					open: function( e, status, title, text ){
+						if( lock ) return false;
+						lock = true;
+						new TimelineLite({
+							onStart: function(){
+								popup
+								.removeClass( 'ok info fail' )
+								.addClass( 'open ' + status );
+								
+								header.html( title );
+								content.html( text );
+								
+							},
+							onComplete: function(){
+								lock = false;
+								
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.fromTo(
+								popup,
+								.3,
+								{
+									opacity: 0,
+								},
+								{
+									opacity: 1,
+									
+								}
+							), 'start'
+						)
+						.add(
+							TweenLite.fromTo(
+								box,
+								.2,
+								{
+									opacity: 0,
+									y: -100,
+								},
+								{
+									opacity: 1,
+									y: 0,
+								}
+							), 'start+=0.3'
+						)
+						
+					},
+					close: function( e ){
+						if( lock ) return false;
+						lock = true;
+						new TimelineLite({
+							onComplete: function(){
+								popup.removeClass( 'open ok fail info' );
+								lock = false;
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.to(
+								box,
+								0.2,
+								{
+									y: 100,
+									opacity: 0,
+								}
+								
+							), 'start'
+						)
+						.add(
+							TweenLite.to(
+								popup,
+								0.3,
+								{
+									opacity: 0,
+								}
+								
+							), 'start+=0.2'
+						)
+						
+					},
+					
+				});
+				
+				popup
+				.add( close )
+				.click(function(){
+					popup.triggerHandler( 'close' );
+					
+				});
+				
+				box.click(function( e ){
+					e.stopPropagation();
+					
+				});
+				
+			})
+			( $( '#popup' ), 
+			$( '#popup > .box' ), 
+			$( '#popup > .box > .close' ), 
+			$( '#popup > .box > .view .text > .title' ), 
+			$( '#popup > .box > .view .text > .content' ) );
+			
+			
 			
 		},
 		alternate: function(){
@@ -682,112 +796,6 @@
 			$( '#home > .opinie .slider > .view > .slide' ), 
 			$( '#home > .opinie .slider > .nav > .icon' ) );
 			
-			/* popup */
-			(function( popup, box, close, content ){
-				var lock = false;
-				
-				popup
-				.on({
-					open: function( e, status, text ){
-						if( lock ) return false;
-						lock = true;
-						new TimelineLite({
-							onStart: function(){
-								popup
-								.removeClass( 'ok info fail' )
-								.addClass( 'open ' + status );
-								
-								content.html( text );
-								
-							},
-							onComplete: function(){
-								lock = false;
-								
-							},
-							
-						})
-						.add( 'start', 0 )
-						.add(
-							TweenLite.fromTo(
-								popup,
-								.3,
-								{
-									opacity: 0,
-								},
-								{
-									opacity: 1,
-									
-								}
-							), 'start'
-						)
-						.add(
-							TweenLite.fromTo(
-								box,
-								.2,
-								{
-									opacity: 0,
-									y: -100,
-								},
-								{
-									opacity: 1,
-									y: 0,
-								}
-							), 'start+=0.3'
-						)
-						
-					},
-					close: function( e ){
-						if( lock ) return false;
-						lock = true;
-						new TimelineLite({
-							onComplete: function(){
-								popup.removeClass( 'open ok fail info' );
-								lock = false;
-							},
-							
-						})
-						.add( 'start', 0 )
-						.add(
-							TweenLite.to(
-								box,
-								0.2,
-								{
-									y: 100,
-									opacity: 0,
-								}
-								
-							), 'start'
-						)
-						.add(
-							TweenLite.to(
-								popup,
-								0.3,
-								{
-									opacity: 0,
-								}
-								
-							), 'start+=0.2'
-						)
-						
-					},
-					
-				});
-				
-				popup
-				.add( close )
-				.click(function(){
-					popup.triggerHandler( 'close' );
-					
-				});
-				
-				box.click(function( e ){
-					e.stopPropagation();
-					
-				});
-				
-			})
-			( $( '#popup' ), $( '#popup > .box' ), $( '#popup > .box > .close' ), $( '#popup > .box > .view .text > .content' ) );
-			
 			/* newsletter */
 			(function( newsletter, btn, input, popup ){
 				var action;
@@ -804,14 +812,14 @@
 							newsletter.serializeArray(),
 							function( data, status ){
 								
-								// console.log( data );
+								console.log( data );
 								var res = JSON.parse( data );
 								if( typeof res.action !== "undefined" ){
 									action = res.action;
 									
 								}
-								popup.triggerHandler( 'open', [ res.status, res.msg ] );
-								// console.log( res );
+								popup.triggerHandler( 'open', [ res.status, 'Newsletter', res.msg ] );
+								console.log( res );
 								
 							}
 						);
@@ -821,7 +829,7 @@
 				});
 				
 				btn.click(function(){
-					// console.log( action );
+					console.log( action );
 					
 					if( typeof action === "undefined" ){
 						newsletter.triggerHandler( 'send' );
@@ -833,8 +841,8 @@
 							function( data ){
 								action = undefined;
 								var res = JSON.parse( data );
-								popup.triggerHandler( 'open', [ res.status, res.msg ] );
-								// console.log( res );
+								popup.triggerHandler( 'open', [ res.status, 'Newsletter', res.msg ] );
+								console.log( res );
 								
 							}
 						);
@@ -850,6 +858,293 @@
 				
 			})
 			( $( '#home > .newsletter > form' ), $( '#home > .newsletter > form > .button' ), $( '#home > .newsletter > form > .mail' ), $( '#popup' ) );
+			
+		},
+		testy: function(){
+			var addon = root.addon;
+			var logger = addon.isLogger();
+			
+			if(logger) console.log('page.testy()');
+			
+			/* slider - pytania i formularz końcowy */
+			(function( popup, slider, view, slides, input, label, nav, number, summary, correct, percent, note, buttons ){
+				var current = 0;
+				var max = 0;
+				var lock = false;
+				
+				slider
+				.on({
+					set: function(){
+						if( lock ) return false;
+						lock = true;
+						if( current < 0 ) current = 0;
+						if( current > max ) current = max;
+						if( current >= slides.length - 1 ){
+							current = slides.length - 1;
+							
+							if( max === slides.length ){
+								TweenLite.to(
+									nav.filter( '.next' ).children( '.text' ),
+									0.5,
+									{
+										text:{
+											value: "zakończ test",
+											delimiter: "",
+										},
+										
+									}
+								);
+								
+								if( !slider.hasClass( 'show' ) ) slider.triggerHandler( 'end' );
+								
+							}
+							
+						}
+						else{
+							TweenLite.to(
+								nav.filter( '.next' ).children( '.text' ),
+								0.5,
+								{
+									text:{
+										value: "następne",
+										delimiter: "",
+									},
+									
+								}
+							);
+							
+						}
+						// console.log( [ current, max, slides.length ] );
+						
+						new TimelineLite({
+							onStart: function(){
+								number
+								.text( String( current + 1 ) );
+								
+							},
+							onComplete: function(){
+								lock = false;
+							},
+							
+						})
+						.add( 'start', 0 )
+						.add(
+							TweenLite.to(
+								view,
+								.5,
+								{
+									scrollLeft: function(){
+										return slides.first().outerWidth( true ) * current;
+									},
+									ease: Power2.easeOut,
+								}
+							), 'start'
+						);
+						
+					},
+					next: function(){
+						current++;
+						slider.triggerHandler( 'set' );
+						
+					},
+					prev: function(){
+						current--;
+						slider.triggerHandler( 'set' );
+						
+					},
+					end: function(){
+						var all = slides.length;
+						var good = input.filter( ".correct:checked" ).length;
+						var procent = Math.round( ( good / all ) * 1000 ) / 10;
+						var i;
+						
+						correct.text( good );
+						percent.text( String( procent ) + "%" );
+						
+						slider.slideUp();
+						summary.slideDown();
+						
+						for( i = progi.length - 1; i >= 0; i-- ){
+							if( procent >= progi[ i ].value ) break;
+							
+						}
+						
+						note.text( progi[ i ].name );
+						
+					},
+					
+				})
+				.swipe({
+					swipeLeft: function(){
+						slider.triggerHandler( 'next' );
+						
+					},
+					swipeRight: function(){
+						slider.triggerHandler( 'prev' );
+						
+					},
+					
+				});
+				
+				nav.click(function( e ){
+					if( $(this).hasClass( 'next' ) ){
+						slider.triggerHandler( 'next' );
+					}
+					else if( $(this).hasClass( 'prev' ) ){
+						slider.triggerHandler( 'prev' );
+					}
+					
+				});
+				
+				label.click(function( e ){
+					if( slider.hasClass( 'show' ) ){
+						e.preventDefault();
+						
+					}
+					else{
+						var self = $(this);
+						
+						TweenLite.to(
+							self.parents( '.item:first' ).find( '.title > .hole' ),
+							.3,
+							{
+								text:{
+									value: self.children( '.text' ).text(),
+									delimiter: "",
+									
+								},
+								
+							}
+						);
+						
+					}
+					
+				});
+				
+				input.change(function( e ){
+					max = input.filter( ':checked' ).length;
+					
+					if( max === slides.length && current === max - 1 ){
+						TweenLite.to(
+							nav.filter( '.next' ).children( '.text' ),
+							0.5,
+							{
+								text:{
+									value: "zakończ test",
+									delimiter: "",
+								},
+								
+							}
+						);
+						
+					}
+					
+				});
+				
+				buttons.click(function( e ){
+					var self = $(this);
+					
+					if( $(this).hasClass( 'show' ) ){
+						slider
+						.addClass( 'show' )
+						.slideDown();
+						
+						self.fadeOut();
+						
+					}
+					else if( $(this).hasClass( 'send' ) ){
+						var all = slides.length;
+						var good = input.filter( ".correct:checked" ).length;
+						var procent = Math.round( ( good / all ) * 1000 ) / 10;
+						
+						for( i = progi.length - 1; i >= 0; i-- ){
+							if( procent >= progi[ i ].value ) break;
+							
+						}
+						
+						var level = progi[ i ].name;
+						
+						$.post(
+							root.bazar.basePath + '/test-koniec',
+							{
+								good: input.filter( '.correct:checked' ).length,
+								all: slides.length,
+								level: level,
+								
+							},
+							function( data ){
+								console.log( data );
+								var res = JSON.parse( data );
+								console.log( res );
+								
+								popup.triggerHandler( 'open', [ res.status, res.title, res.msg ] );
+								
+								if( res.status === 'ok' ){
+									self.fadeOut();
+									
+								}
+								
+							}
+						);
+						
+					}
+					
+				});
+				
+			})
+			( $( '#popup' ), 
+			 $( '#test > .pytania' ), 
+			$( '#test > .pytania > .box > .view' ), 
+			$( '#test > .pytania > .box > .view > .item' ),
+			$( '#test > .pytania > .box > .view > .item > .anwser > input' ),
+			$( '#test > .pytania > .box > .view > .item > .anwser > label' ),
+			$( '#test > .pytania > .box > .pagin > .nav' ),
+			$( '#test > .pytania > .box > .pagin > .current > .number' ),
+			$( '#test > .summary' ),
+			$( '#test > .summary .stat .correct' ),
+			$( '#test > .summary .stat .percent' ),
+			$( '#test > .summary .note > .value' ),
+			$( '#test > .summary .buttons > .customButton' ) );
+			
+			/* formularz wstępny */
+			(function( popup, form, send ){
+				form
+				.on({
+					test: function(){
+						$.post(
+							root.bazar.basePath + '/test-start',
+							form.serializeArray(),
+							function( data ){
+								console.log( data );
+								var res = JSON.parse( data );
+								console.log( res );
+								
+								popup.triggerHandler( 'open', [ res.status, res.title, res.msg ] );
+								
+								if( res.status === 'ok' ){
+									window.setTimeout(function(){
+										form.trigger( 'submit' );
+										
+									}, 3000);
+									
+								}
+								
+							}
+						);
+						
+					},
+					
+				});
+				
+				send.click(function( e ){
+					form.triggerHandler( 'test' );
+					
+				});
+				
+			})
+			( $( '#popup' ), 
+			$( '#test > .mid > .box > form' ), 
+			$( '#test > .mid > .box > form > .submit' ) );
 			
 		},
 		

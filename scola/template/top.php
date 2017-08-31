@@ -17,7 +17,7 @@
 			<span class='icon fa fa-angle-down'></span>
 			<ul>
 				<li>
-					<a href="<?php echo home_url( 'nasze-centrum', relative ); ?>">Nasze Centrum</a>
+					<a href="<?php echo home_url( 'nasze-centrum' ); ?>">Nasze Centrum</a>
 				</li>
 				<li>
 					<a href="<?php echo home_url( 'metody-nauczania' ); ?>">Metody nauczania</a>
@@ -54,25 +54,25 @@
 			<span class='icon fa fa-angle-down'></span>
 			<ul>
 				<li>
-					<a href="<?php echo home_url( 'angielski' ); ?>">Angielski</a>
+					<a href="<?php echo home_url( 'jezyki/angielski' ); ?>">Angielski</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'niemiecki' ); ?>">Niemiecki</a>
+					<a href="<?php echo home_url( 'jezyki/niemiecki' ); ?>">Niemiecki</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'hiszpanski' ); ?>">Hiszpański</a>
+					<a href="<?php echo home_url( 'jezyki/hiszpanski' ); ?>">Hiszpański</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'wloski' ); ?>">Włoski</a>
+					<a href="<?php echo home_url( 'jezyki/wloski' ); ?>">Włoski</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'francuski' ); ?>">Francuski</a>
+					<a href="<?php echo home_url( 'jezyki/francuski' ); ?>">Francuski</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'rosyjski' ); ?>">Rosyjski</a>
+					<a href="<?php echo home_url( 'jezyki/rosyjski' ); ?>">Rosyjski</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'slowacki' ); ?>">Słowacki</a>
+					<a href="<?php echo home_url( 'jezyki/slowacki' ); ?>">Słowacki</a>
 				</li>
 				
 			</ul>
@@ -93,7 +93,5 @@
 	</ul>
 	
 </div>
-<a id='fb' class='font-light pointer flex flex-items-center flex-justify-end' href='https://www.facebook.com/scola.nowysacz/' target='_blank'>
-	<span class='icon fa fa-facebook fa-3x'></span>
-	
-</a>
+<?php get_template_part( "template/fb" ); ?>
+<?php get_template_part( "template/popup" ); ?>

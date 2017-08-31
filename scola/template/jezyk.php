@@ -40,16 +40,11 @@
 						Centrum języka <?php echo $title; ?>ego <span class='font-green'>Scola</span>
 					</div>
 					<div class='buttons flex flex-wrap flex-items-center'>
-						<div class='customButtonFill pointer flex'>
-							<div class='box bg-green font-light arrow_slide flex grow flex-items-center'>
-								<img class='icon arrow right' src='<?php echo get_template_directory_uri(); ?>/img/arrow_white.png'/>
-								<div class='title'>
-									wypełnij test
-								</div>
-								
-							</div>
+						<?php do_action( 'customButtonFill', array(
+							'title' => 'wypełnij test',
+							'url' => home_url( "testy/$slug" ),
 							
-						</div>
+						) ); ?>
 						<?php do_action( 'customButton', array(
 							'title' => 'pobierz test w pdf',
 							'class' => 'noborder',

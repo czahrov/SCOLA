@@ -2,6 +2,7 @@
 
 $color-green: #5e9104;
 $color-green-light: #7cc401;
+$color-red: #fe0000;
 $color-facebook: #2198f6;
 $color-light: #fff;
 $color-dark: #3d3d3d;
@@ -20,7 +21,8 @@ $generator: (
 	light: $color-light,
 	gray: $color-gray,
 	gray-light: $color-gray-light,
-	green: $color-green
+	green: $color-green,
+	red: $color-red
 	
 );
 

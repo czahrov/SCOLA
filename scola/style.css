@@ -66,6 +66,18 @@
   border-color: #5e9104;
 }
 
+.font-red {
+  color: #fe0000;
+}
+
+.bg-red {
+  background-color: #fe0000;
+}
+
+.border-red {
+  border-color: #fe0000;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -82,10 +94,10 @@
   font-family: 'Caveat-Regular';
 }
 
-.bold {
+.bold, #test.intro > .mid > .box > form > .input, #test.intro > .mid > .box > form > .submit {
   font-family: 'sen-bold';
 }
-.bold.hand {
+.bold.hand, #test.intro > .mid > .box > form > .hand.input, #test.intro > .mid > .box > form > .hand.submit {
   font-family: 'Caveat-Bold';
 }
 
@@ -286,6 +298,9 @@ a, img {
 #popup > .box > .view > .page > .text > .title {
   padding-bottom: 20px;
   font-size: 30px;
+}
+#popup > .box > .view > .page > .text > .content {
+  line-height: 30px;
 }
 #popup:not(.ok) .status > .icon.ok {
   display: none;
@@ -1199,6 +1214,177 @@ a, img {
 }
 #jezyk.slowacki > .top .img {
   background-image: url(img/poster_slo.jpg);
+}
+
+#test.intro > .top > .box {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+#test.intro > .top > .box > .title {
+  margin-bottom: 30px;
+  font-size: 36px;
+  line-height: 54px;
+}
+#test.intro > .top > .box > ul {
+  margin-bottom: 40px;
+  list-style-position: inside;
+  list-style-image: url(img/ikony/bullet_green.png);
+}
+#test.intro > .top > .box > ul > li {
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 22px;
+}
+#test.intro > .top > .box > .bot {
+  font-size: 36px;
+  line-height: 54px;
+}
+#test.intro > .mid > .box {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin-bottom: 100px;
+}
+#test.intro > .mid > .box > .title {
+  margin-bottom: 70px;
+  font-size: 36px;
+  line-height: 54px;
+}
+#test.intro > .mid > .box > form {
+  width: 100%;
+  max-width: 600px;
+}
+#test.intro > .mid > .box > form > .input, #test.intro > .mid > .box > form > .submit {
+  margin-right: 20px;
+}
+#test.intro > .mid > .box > form > .input {
+  margin-bottom: 40px;
+  padding: 0 20px;
+  height: 50px;
+  font-size: 18px;
+  border: solid 2px #3d3d3d;
+  border-radius: 50px;
+}
+#test.intro > .mid > .box > form > .submit {
+  padding: 0 20px;
+  height: 50px;
+  font-size: 18px;
+  background-color: #fff;
+  color: #5e9104;
+  border: solid 2px #5e9104;
+  border-radius: 50px;
+  -webkit-transition-property: font, background;
+  transition-property: font, background;
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
+}
+#test.intro > .mid > .box > form > .submit:hover {
+  background-color: #5e9104;
+  color: #fff;
+}
+#test > .pytania {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin-bottom: 100px;
+}
+#test > .pytania > .box > .view {
+  overflow: hidden;
+}
+#test > .pytania > .box > .view > .item > .title {
+  margin-bottom: 60px;
+  font-size: 36px;
+  line-height: 54px;
+}
+#test > .pytania > .box > .view > .item > .title > .hole {
+  color: #5e9104;
+}
+#test > .pytania > .box > .view > .item > .anwser > input {
+  display: none;
+}
+#test > .pytania > .box > .view > .item > .anwser > label {
+  margin: 10px 0;
+}
+#test > .pytania > .box > .view > .item > .anwser > label > .icon {
+  margin-right: 30px;
+  padding: 14px;
+  width: 30px;
+  height: 30px;
+  border: solid 1px #5e9104;
+  border-radius: 50%;
+  background-color: #5e9104;
+  background-clip: content-box;
+  -webkit-transition: padding .3s linear;
+  transition: padding .3s linear;
+}
+#test > .pytania > .box > .view > .item > .anwser > label > .text {
+  font-size: 15px;
+}
+#test > .pytania > .box > .view > .item > .anwser > label > .note {
+  display: none;
+  margin-left: 20px;
+  font-size: 30px;
+}
+#test > .pytania > .box > .view > .item > .anwser > input:checked + label > .icon {
+  padding: 7px;
+}
+#test > .pytania > .box > .pagin {
+  margin-top: 40px;
+}
+#test > .pytania > .box > .pagin > .nav {
+  padding: 10px;
+}
+#test > .pytania > .box > .pagin > .nav .text {
+  margin: 0 30px;
+}
+#test > .pytania > .box > .pagin > .prev .inner {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+#test > .pytania > .box > .pagin > .current {
+  margin: 0 50px;
+  width: 116px;
+  height: 116px;
+  font-size: 26px;
+  border-radius: 50%;
+}
+#test > .pytania.show > .box > .view > .item > .anwser > input.correct + label > .note, #test > .pytania.show > .box > .view > .item > .anwser > input:checked + label > .note {
+  display: block;
+}
+#test > .summary {
+  display: none;
+  padding: 60px 0 40px;
+}
+#test > .summary > .box > .title {
+  margin-bottom: 30px;
+  font-size: 36px;
+  line-height: 54px;
+}
+#test > .summary > .box > ul.stat {
+  margin-bottom: 40px;
+  list-style-position: inside;
+  list-style-image: url(img/ikony/bullet_black.png);
+}
+#test > .summary > .box > ul.stat > li {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+#test > .summary > .box > ul.stat .all {
+  font-size: 21px;
+}
+#test > .summary > .box > ul.stat .correct {
+  font-size: 21px;
+}
+#test > .summary > .box > ul.stat .percent {
+  font-size: 21px;
+}
+#test > .summary > .box > .note {
+  margin-bottom: 40px;
+  font-size: 15px;
+}
+#test > .summary > .box > .note > .value {
+  font-size: 21px;
+}
+#test > .summary > .box > .buttons > .noborder {
+  border: none;
 }
 
 #breadcrumb {
