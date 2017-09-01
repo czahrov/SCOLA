@@ -54,8 +54,8 @@
 				<div class='input base1 flex'>
 					<textarea class='grow' name='msg' placeholder='Treść wiadomości'></textarea>
 				</div>
-				<input class='button' type='button' value='wyślij e-mail'/>
-				<input class='button send' type='reset' value='wyczyść formularz'/>
+				<input class='button send' type='button' value='wyślij e-mail'/>
+				<input class='button' type='reset' value='wyczyść formularz'/>
 				
 			</form>
 			

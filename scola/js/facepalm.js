@@ -1177,11 +1177,13 @@
 			
 		},
 		kontakt: function(){
+			
 			/* mapa */
 			(function( mapa ){
 				var point = {
-					lat: 49.6184729,
-					lng: 20.694878000000017,
+					lat: 49.618514,
+					lng: 20.694836,
+					
 				};
 				var tout;
 				
@@ -1198,14 +1200,12 @@
 					},
 					marker:{
 						latLng: point,
-					},
-					infowindow:{
-						position: point,
-						options:{
-							content: "Centrum Językowe SCOLA",
+						options: {
+							icon: root.bazar.basePath + '/wp-content/themes/scola/img/pin_scola.png',
 							
-						}
-					}
+						},
+						
+					},
 					
 				});
 				
@@ -1224,18 +1224,41 @@
 			( $( '#kontakt > .mapa > .kontener' ) );
 			
 			/* formularz kontaktowy */
-			(function( form, send ){
-				
+			(function( popup, form, send ){
 				form
 				.on({
 					test: function(){
+						$.post(
+							root.bazar.basePath + '/form-kontakt',
+							form.serializeArray(),
+							function( data ){
+								console.log( data );
+								var resp = JSON.parse( data );
+								console.log( resp );
+								
+								if( resp.status === 'ok' ){
+									form.trigger( 'reset' );
+									
+								}
+								
+								popup.triggerHandler( 'open', [ resp.status, resp.title, resp.msg ] );
+								
+							}
+						);
 						
 					},
 					
 				});
 				
+				send.click(function( e ){
+					form.trigger( 'test' );
+					
+				});
+				
 			})
-			( $( '#kontakt form' ), $( '#kontakt form > .button.send' ) );
+			( $( '#popup' ), 
+			$( '#kontakt form' ), 
+			$( '#kontakt form > .button.send' ) );
 			
 		},
 		

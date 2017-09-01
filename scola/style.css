@@ -300,6 +300,13 @@ a, img {
   padding-bottom: 20px;
   font-size: 30px;
 }
+#popup > .box > .view > .page > .text > .content ul {
+  margin: 10px 0;
+  list-style-position: inside;
+}
+#popup > .box > .view > .page > .text > .content li {
+  line-height: 30px;
+}
 #popup:not(.ok) .status > .icon.ok {
   display: none;
 }
