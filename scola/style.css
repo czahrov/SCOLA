@@ -85,6 +85,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   cursor: default;
+  line-height: 1.5em;
 }
 
 .regular, #top > ul.menu > li > ul {
@@ -298,9 +299,6 @@ a, img {
 #popup > .box > .view > .page > .text > .title {
   padding-bottom: 20px;
   font-size: 30px;
-}
-#popup > .box > .view > .page > .text > .content {
-  line-height: 30px;
 }
 #popup:not(.ok) .status > .icon.ok {
   display: none;
@@ -855,7 +853,6 @@ a, img {
   font-size: 16px;
   max-width: 740px;
   text-align: center;
-  line-height: 30px;
 }
 #home > .centrum {
   position: relative;
@@ -873,7 +870,6 @@ a, img {
 #home > .centrum > .box > .tekst > .content {
   margin: 50px 0;
   font-size: 16px;
-  line-height: 24px;
 }
 #home > .centrum > .menu > .item {
   padding: 0 20px;
@@ -955,7 +951,6 @@ a, img {
 @media (min-width: 768px) {
   #home > .opinie > .grid > .slider > .view > .slide > .content > .tekst {
     padding: 0;
-    line-height: 30px;
   }
 }
 @media (min-width: 768px) {
@@ -1057,7 +1052,6 @@ a, img {
 #nasze_centrum > .centrum > .box > .text > .title {
   margin: 55px 0 28px;
   font-size: 34px;
-  line-height: 54px;
 }
 #nasze_centrum > .centrum > .box > .text > .subtitle {
   margin-bottom: 50px;
@@ -1066,7 +1060,6 @@ a, img {
 #nasze_centrum > .centrum > .box > .text > .mid {
   margin-bottom: 42px;
   font-size: 21px;
-  line-height: 33px;
 }
 #nasze_centrum > .centrum > .box > .text > ol.zakres {
   list-style-position: inside;
@@ -1091,11 +1084,9 @@ a, img {
   padding-right: 10px;
   max-width: 800px;
   font-size: 21px;
-  line-height: 30px;
 }
 #nasze_centrum > .oferujemy > .box > .line {
   font-size: 16px;
-  line-height: 30px;
   margin-bottom: 20px;
 }
 #nasze_centrum > .opis {
@@ -1104,7 +1095,6 @@ a, img {
 #nasze_centrum > .opis > .line {
   margin-bottom: 45px;
   font-size: 16px;
-  line-height: 30px;
 }
 
 #jezyk > .top {
@@ -1113,6 +1103,7 @@ a, img {
 }
 #jezyk > .top .img {
   background-image: url("https://placeimg.com/300/100/tech");
+  background-color: #eee;
 }
 #jezyk > .top > .img {
   position: absolute;
@@ -1127,7 +1118,6 @@ a, img {
 #jezyk > .top > .box > .text > .title {
   margin: 60px 0 34px;
   font-size: 36px;
-  line-height: 54px;
 }
 #jezyk > .top > .box > .text > .buttons {
   margin-bottom: 50px;
@@ -1185,14 +1175,10 @@ a, img {
 #jezyk > .info > .box > ul > li {
   margin-bottom: 10px;
   font-size: 21px;
-  line-height: 33px;
 }
 #jezyk > .opis {
   padding: 50px 20px;
   max-width: 1050px;
-}
-#jezyk > .opis > div {
-  line-height: 30px;
 }
 #jezyk.angielski > .top .img {
   background-image: url(img/poster_ang.jpg);
@@ -1223,7 +1209,6 @@ a, img {
 #test.intro > .top > .box > .title {
   margin-bottom: 30px;
   font-size: 36px;
-  line-height: 54px;
 }
 #test.intro > .top > .box > ul {
   margin-bottom: 40px;
@@ -1233,11 +1218,9 @@ a, img {
 #test.intro > .top > .box > ul > li {
   margin-bottom: 10px;
   font-size: 15px;
-  line-height: 22px;
 }
 #test.intro > .top > .box > .bot {
   font-size: 36px;
-  line-height: 54px;
 }
 #test.intro > .mid > .box {
   padding-top: 100px;
@@ -1247,7 +1230,6 @@ a, img {
 #test.intro > .mid > .box > .title {
   margin-bottom: 70px;
   font-size: 36px;
-  line-height: 54px;
 }
 #test.intro > .mid > .box > form {
   width: 100%;
@@ -1292,7 +1274,6 @@ a, img {
 #test > .pytania > .box > .view > .item > .title {
   margin-bottom: 60px;
   font-size: 36px;
-  line-height: 54px;
 }
 #test > .pytania > .box > .view > .item > .title > .hole {
   color: #5e9104;
@@ -1356,7 +1337,6 @@ a, img {
 #test > .summary > .box > .title {
   margin-bottom: 30px;
   font-size: 36px;
-  line-height: 54px;
 }
 #test > .summary > .box > ul.stat {
   margin-bottom: 40px;
@@ -1387,6 +1367,110 @@ a, img {
   border: none;
 }
 
+#kontakt {
+  position: relative;
+}
+#kontakt > .box > .info {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+#kontakt > .box > .info > .title {
+  margin-bottom: 30px;
+  font-size: 36px;
+}
+#kontakt > .box > .info > .line {
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+#kontakt > .box > .info > .customButton {
+  margin-top: 40px;
+}
+#kontakt > .mapa {
+  position: relative;
+  margin: 50px 0;
+  padding-bottom: 300px;
+  overflow: hidden;
+}
+#kontakt > .mapa > .kontener {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+@media (min-width: 768px) {
+  #kontakt > .mapa {
+    padding-bottom: 40%;
+    margin: 0;
+  }
+}
+@media (min-width: 1024px) {
+  #kontakt > .mapa {
+    position: absolute;
+    padding-bottom: 30%;
+    left: 0;
+    right: 40%;
+    bottom: 0;
+  }
+}
+#kontakt > .form {
+  padding: 40px 0;
+  z-index: 10;
+}
+#kontakt > .form > .box {
+  max-width: 600px;
+}
+#kontakt > .form > .box > form {
+  margin: 0 -10px;
+}
+#kontakt > .form > .box > form > .input {
+  padding: 10px;
+}
+#kontakt > .form > .box > form > .input > input {
+  padding: 0 20px;
+  height: 50px;
+}
+#kontakt > .form > .box > form > .input > textarea {
+  padding: 20px;
+  height: 200px;
+  resize: none;
+}
+#kontakt > .form > .box > form > .input > input, #kontakt > .form > .box > form > .input > textarea {
+  font-family: inherit;
+}
+#kontakt > .form > .box > form > .input > input:placeholder, #kontakt > .form > .box > form > .input > textarea:placeholder {
+  font: inherit;
+}
+#kontakt > .form > .box > form > .button {
+  height: 50px;
+  padding: 0 20px;
+  margin: 10px;
+  background-color: transparent;
+  border: solid 2px #fff;
+  border-radius: 25px;
+  color: #fff;
+  font-family: inherit;
+  cursor: pointer;
+}
+@media (min-width: 1280px) {
+  #kontakt > .form > .box {
+    margin: 0 auto 0 20px;
+  }
+}
+@media (min-width: 1024px) {
+  #kontakt > .form {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 0;
+  }
+}
+@media (min-width: 1024px) {
+  #kontakt {
+    padding-bottom: 30%;
+  }
+}
+
 #breadcrumb {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -1405,14 +1489,10 @@ a, img {
   height: 340px;
   color: #adadad;
 }
-#footer > .about > .adres > .line1, #footer > .about > .adres > .line2 {
-  line-height: 30px;
-}
 #footer > .about > .quick > .link {
   position: relative;
   -webkit-transition: font .3s linear;
   transition: font .3s linear;
-  line-height: 40px;
 }
 #footer > .about > .quick > .link > .bar {
   position: absolute;

@@ -875,29 +875,10 @@
 				slider
 				.on({
 					set: function(){
-						if( lock ) return false;
-						lock = true;
 						if( current < 0 ) current = 0;
 						if( current > max ) current = max;
-						if( current >= slides.length - 1 ){
+						if( current > slides.length - 1 ){
 							current = slides.length - 1;
-							
-							if( max === slides.length ){
-								TweenLite.to(
-									nav.filter( '.next' ).children( '.text' ),
-									0.5,
-									{
-										text:{
-											value: "zakończ test",
-											delimiter: "",
-										},
-										
-									}
-								);
-								
-								if( !slider.hasClass( 'show' ) ) slider.triggerHandler( 'end' );
-								
-							}
 							
 						}
 						else{
@@ -914,7 +895,27 @@
 							);
 							
 						}
+						
 						// console.log( [ current, max, slides.length ] );
+						
+						if( slides.length === max && current + 1 === slides.length ){
+							TweenLite.to(
+								nav.filter( '.next' ).children( '.text' ),
+								0.5,
+								{
+									text:{
+										value: "zakończ test",
+										delimiter: "",
+									},
+									
+								}
+							);
+							
+							// if( !slider.hasClass( 'show' ) ) slider.triggerHandler( 'end' );
+							nav.filter( '.next' ).addClass( 'end');
+							
+						}
+						
 						
 						new TimelineLite({
 							onStart: function(){
@@ -943,11 +944,15 @@
 						
 					},
 					next: function(){
+						if( lock ) return false;
+						lock = true;
 						current++;
 						slider.triggerHandler( 'set' );
 						
 					},
 					prev: function(){
+						if( lock ) return false;
+						lock = true;
 						current--;
 						slider.triggerHandler( 'set' );
 						
@@ -963,6 +968,18 @@
 						
 						slider.slideUp();
 						summary.slideDown();
+						
+						if( typeof progi === 'undefined' ){
+							progi = [
+								{
+									value: 0,
+									name: 'nieznany',
+									
+								},
+								
+							];
+							
+						}
 						
 						for( i = progi.length - 1; i >= 0; i-- ){
 							if( procent >= progi[ i ].value ) break;
@@ -988,10 +1005,20 @@
 				
 				nav.click(function( e ){
 					if( $(this).hasClass( 'next' ) ){
-						slider.triggerHandler( 'next' );
+						if( $(this).hasClass( 'end' ) ){
+							slider.triggerHandler( 'end' );
+							
+						}
+						else{
+							slider.triggerHandler( 'next' );
+							
+						}
+						
 					}
 					else if( $(this).hasClass( 'prev' ) ){
+						$(this).siblings( '.next' ).removeClass( 'end' );
 						slider.triggerHandler( 'prev' );
+						
 					}
 					
 				});
@@ -1023,8 +1050,10 @@
 				
 				input.change(function( e ){
 					max = input.filter( ':checked' ).length;
+					// console.log( [ current, max, slides.length ] );
 					
 					if( max === slides.length && current === max - 1 ){
+						nav.filter( '.next' ).addClass( 'end' );
 						TweenLite.to(
 							nav.filter( '.next' ).children( '.text' ),
 							0.5,
@@ -1049,7 +1078,7 @@
 						.addClass( 'show' )
 						.slideDown();
 						
-						self.fadeOut();
+						// self.fadeOut();
 						
 					}
 					else if( $(this).hasClass( 'send' ) ){
@@ -1145,6 +1174,68 @@
 			( $( '#popup' ), 
 			$( '#test > .mid > .box > form' ), 
 			$( '#test > .mid > .box > form > .submit' ) );
+			
+		},
+		kontakt: function(){
+			/* mapa */
+			(function( mapa ){
+				var point = {
+					lat: 49.6184729,
+					lng: 20.694878000000017,
+				};
+				var tout;
+				
+				mapa.gmap3({
+					map:{
+						options:{
+							center: point,
+							zoom: 18,
+							mapTypeId: google.maps.MapTypeId.MAP,
+							gestureHandling: 'cooperative',
+							mapTypeControl: false,
+							
+						}
+					},
+					marker:{
+						latLng: point,
+					},
+					infowindow:{
+						position: point,
+						options:{
+							content: "Centrum Językowe SCOLA",
+							
+						}
+					}
+					
+				});
+				
+				var mymap = mapa.gmap3( 'get' );
+				
+				$( window ).resize(function( e ){
+					window.clearTimeout( tout );
+					tout = window.setTimeout(function(){
+						mymap.panTo( point );
+						
+					}, 500);
+					
+				});
+				
+			})
+			( $( '#kontakt > .mapa > .kontener' ) );
+			
+			/* formularz kontaktowy */
+			(function( form, send ){
+				
+				form
+				.on({
+					test: function(){
+						
+					},
+					
+				});
+				
+			})
+			( $( '#kontakt form' ), $( '#kontakt form > .button.send' ) );
 			
 		},
 		
