@@ -1,0 +1,141 @@
+#kontakt{
+	position: relative;
+	
+	& > .box{
+		
+		& > .info{
+			padding:{
+				top: 50px;
+				bottom: 50px;
+			};
+			
+			& > .title{
+				margin-bottom: 30px;
+				font-size: 36px;
+				
+			}
+			
+			& > .line{
+				margin-bottom: 16px;
+				font-size: 15px;
+				
+			}
+			
+			& > .customButton{
+				margin-top: 40px;
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .mapa{
+		position: relative;
+		margin: 50px 0;
+		padding-bottom: 300px;
+		overflow: hidden;
+		
+		& > .kontener{
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			
+		}
+		
+		@media(min-width: map-get( $bpw, tablet ) ){
+			padding-bottom: 40%;
+			margin: 0;
+			
+		}
+		
+		@media(min-width: map-get( $bpw, desktop ) ){
+			position: absolute;
+			padding-bottom: 30%;
+			left: 0;
+			right: 40%;
+			bottom: 0;
+			
+		}
+		
+	}
+	
+	& > .form{
+		padding: 40px 0;
+		z-index: 10;
+		
+		& > .box{
+			max-width: 600px;
+			
+			& > form{
+				margin: 0 -10px;
+				
+				& > .input{
+					padding: 10px;
+					
+					& > input{
+						padding: 0 20px;
+						height: 50px;
+						
+					}
+					
+					& > textarea{
+						padding: 20px;
+						height: 200px;
+						resize: none;
+						
+					}
+					
+					& > input,
+					& > textarea{
+						font-family: inherit;
+						
+						&:placeholder{
+							font: inherit;
+							
+						}
+						
+					}
+					
+				}
+				
+				& > .button{
+					height: 50px;
+					padding: 0 20px;
+					margin: 10px;
+					background-color: transparent;
+					border: solid 2px $color-light;
+					border-radius: 25px;
+					color: $color-light;
+					font-family: inherit;
+					cursor: pointer;
+					
+				}
+				
+			}
+			
+			@media(min-width: map-get( $bpw, large ) ){
+				margin: 0 auto 0 20px;
+				
+			}
+			
+		}
+		
+		@media(min-width: map-get( $bpw, desktop ) ){
+			position: absolute;
+			top: 0;
+			left: 50%;
+			right: 0;
+			
+		}
+		
+	}
+	
+	@media(min-width: map-get( $bpw, desktop ) ){
+		padding-bottom: 30%;
+		
+	}
+	
+}

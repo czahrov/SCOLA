@@ -46,7 +46,7 @@
 					<input class='grow' type='text' name='nazwisko' placeholder='Nazwisko *'/>
 				</div>
 				<div class='input base1 base2-mm flex'>
-					<input class='grow' type='mail' name='mail' placeholder='Adres e-mail *'/>
+					<input class='grow' type='email' name='mail' placeholder='Adres e-mail *'/>
 				</div>
 				<div class='input base1 base2-mm flex'>
 					<input class='grow' type='tel' name='tel' placeholder='Numer telefonu *'/>

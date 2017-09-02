@@ -1,0 +1,786 @@
+#home{
+	
+	& > .top{
+		margin-bottom: 100px;
+		
+		& > .tekst{
+			width: 100%;
+			max-width: 670px;
+			margin-right: auto;
+			
+		}
+		
+		& > .linki{
+			margin-top: 40px;
+			margin-bottom: 100px;
+			height: 30px;
+			
+			& > .item{
+				
+				& > .icon{
+					
+				}
+				
+				&:hover > .icon{
+					
+				}
+				
+				& > a{
+					margin-right: 70px;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .slider{
+		position: relative;
+		height: 450px;
+		margin-bottom: 50px;
+		
+		& > .notify{
+			position: absolute;
+			padding-right: 10px;
+			margin-top: -60px;
+			min-width: 300px;
+			width: 42%;
+			top: 0;
+			right: 0;
+			background-origin: content-box;
+			
+			& > .box{
+				padding: 50px;
+				
+				& > .title{
+					padding-bottom: 20px;
+					opacity: 0.5;
+					
+				}
+				
+			}
+			
+		}
+		
+		& > .view{
+			position: absolute;
+			margin: 0 10px;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			overflow: hidden;
+			
+			& > .slide{
+				position: relative;
+				background-image: url('https://placeimg.com/300/100/tech');
+				
+				& > .box{
+					padding-bottom: 150px;
+					z-index: 10;
+					
+					& > .head{
+						margin: 0 -20px 60px;
+						
+						& > .data, & > .kategoria{
+							margin: 0 20px;
+							
+						}
+						
+					}
+					
+					& > .title{
+						margin-bottom: 60px;
+						margin-right: auto;
+						width: 100%;
+						max-width: 670px;
+						
+						@media( max-width: map-get( $bpw, desktop ) - 1 ){
+							font-size: 21px;
+							
+						}
+						
+					}
+					
+					& > .link{
+						width: 200px;
+						
+						& > .icon{
+							margin-right: 20px;
+						}
+						
+						& > .tekst{
+							
+						}
+						
+					}
+					
+				}
+				
+				& > .filtr{
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					background-color: $color-filtr;
+					
+				}				
+				
+			}
+			
+		}
+		
+		& > .grid{
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 10;
+			
+			& > .numer{
+				position: absolute;
+				margin-right: 20px;
+				right: 0;
+				bottom: 70px;
+				opacity: 0.5;
+				font-size: 26px;
+				color: $color-light;
+				
+				@media( min-width: map-get( $bpw, desktop ) ){
+					bottom: 170px;
+					
+				}
+				
+			}
+			
+			& > .nav{
+				position: absolute;
+				margin: 0 -5px;
+				bottom: 40px;
+				right: 50%;
+				transform: translateX(50%);
+				
+				& > .prev{
+					margin-right: 10px;
+					transform: rotateY(180deg);
+					
+				}
+				
+				& > .tekst{
+					position: absolute;
+					bottom: 100%;
+					left: 50%;
+					transform: translate(-50%,-100%);
+					
+				}
+				
+				& > .next{
+					margin-right: 10px;
+					
+				}
+				
+				@media( min-width: map-get( $bpw, desktop ) ){
+					margin: 0 20px 0 0;
+					right: 0;
+					transform: none;
+					
+				}
+				
+			}
+			
+			& > .paginacja{
+				position: absolute;
+				padding: 0 20px;
+				bottom: 100px;
+				left: 0;
+				right: 0;
+				background-clip: content-box;
+				
+				& > .mark{
+					height: 4px;
+					width: 100%;
+					background-color: $color-pagin-mark;
+					transform: translateX(0%);
+					transition: transform .5s ease-out;
+					
+				}
+				
+				& > .shadow{
+					border-bottom:{
+						style: solid;
+						width: 1px;
+						color: $color-pagin-shadow;
+					};
+					
+				}
+				
+			}
+			
+			& > .tab{
+				position: absolute;
+				left: 50%;
+				bottom: 0;
+				transform: translate(-50%,50%);
+				background-color: $color-light;
+				
+				& > .icon{
+					
+					
+				}
+				
+			}
+			
+		}
+		
+		@media( min-width: map-get( $bpw, desktop ) ){
+			height: 550px;
+			
+		}
+		
+	}
+	
+	& > .jezyk{
+		margin-bottom: 50px;
+		
+		.title{
+			margin: 10px 0;
+			font-size: 20px;
+			
+		}
+		
+		.subtitle{
+			margin: 10px 0;
+			font-size: 14px;
+			
+		}
+		
+		& > .box{
+			position: relative;
+			overflow: hidden;
+			border:{
+				style: solid;
+				width: 1px;
+				color: $color-gray;
+			};
+			
+			& > .inner{
+				overflow: hidden;
+				
+				& > .item{
+					position: relative;
+					height: 300px;
+					
+					&::before{
+						content: '';
+						position: absolute;
+						bottom: 100%;
+						left: 20px;
+						right: 20px;
+						border-bottom:{
+							style: solid;
+							width: 1px;
+							color: $color-gray;
+							
+						};
+						
+					}
+					
+					&::after{
+						content: '';
+						position: absolute;
+						top: 20px;
+						bottom: 20px;
+						left: 100%;
+						border-left:{
+							style: solid;
+							width: 1px;
+							color: $color-gray;
+							
+						};
+						
+					}
+					
+					&.flag{
+						position: relative;
+						
+						& > .title{
+							margin-top: 60px;
+							
+						}
+						
+						& > .bar{
+							width: 30px;
+							height: 2px;
+							background-color: $color-green;
+							transition: transform .3s linear;
+							
+						}
+						
+						& > .hitbox{
+							position: absolute;
+							top: 0;
+							left: 0;
+							right: 0;
+							bottom: 0;
+							
+						}
+						
+						&:hover{
+							
+							& > .bar{
+								transform: scaleX(2);
+								
+							}
+							
+						}
+						
+					}
+					
+					& > img{
+						box-shadow: 0px 0px 10px 3px rgba(238,238,238,1);
+						border-radius: 50%;
+						
+					}
+					
+				}
+				
+			}
+			
+			& > .nav{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 10;
+				
+				& > .icon{
+					position: absolute;
+					padding: 10px;
+					bottom: 4px;
+					left: 50%;
+					
+					&.prev{
+						margin-left: -10px;
+						transform-origin: left;
+						transform: rotateY(180deg);
+						
+					}
+					
+					&.next{
+						margin-left: 10px;
+						
+					}
+				
+				}
+				
+				& > .number{
+					position: absolute;
+					bottom: 10px;
+					right: 10px;
+					opacity: 0.5;
+					font-size: 26px;
+					
+				}
+				
+			}
+			
+			@media( min-width: map-get( $bpw, tablet ) ){
+				border: none;
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .tlumaczenia{
+		padding: 0 20px;
+		height: 300px;
+		
+		& > .top{
+			font-size: 20px;
+			
+		}
+		
+		& > .mid{
+			margin: 12px 0 46px;
+			font-size: 30px;
+			
+		}
+		
+		& > .customButton{
+			
+			& > .icon{
+				
+			}
+			
+			& > .content{
+				
+			}
+			
+			& > .hitbox{
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .umysly{
+		position: relative;
+		padding: 114px 20px 96px;
+		
+		& > .line1{
+			font-size: 28px;
+			
+		}
+		
+		& > .line2{
+			margin: 40px 0;
+			font-size: 18px;
+			
+		}
+		
+		& > .line3{
+			font-size: 28px;
+			
+		}
+		
+		& > .tab{
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translate(-50%,50%);
+			
+		}
+		
+	}
+	
+	& > .metody{
+		padding: 100px 20px 40px;
+		
+		& > .content{
+			margin-bottom: 70px;
+			font-size: 16px;
+			max-width: 740px;
+			text-align: center;
+			
+		}
+		
+		& > .customButton{
+			
+			& > .icon{
+				
+			}
+			
+			& > .content{
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .centrum{
+		position: relative;
+		margin-top: 130px;
+		
+		& > .box{
+			
+			& > .tekst{
+				margin-bottom: 50px;
+				
+				& > .title{
+					
+					& > .line1{
+						font-size: 21px;
+						
+					}
+					
+					& > .line2{
+						font-size: 28px;
+						
+					}
+					
+				}
+				
+				& > .content{
+					margin: 50px 0;
+					font-size: 16px;
+					
+				}
+				
+			}
+			
+		}
+			
+		& > .menu{
+			
+			& > .item{
+				padding: 0 20px;
+				height: 80px;
+				transition-property: font, background, transform;
+				transition: .3s linear;
+				
+				&:not(:last-child){
+					border-bottom:{
+						style: solid;
+						width: 1px;
+						color: $color-green-light;
+						
+					};
+					
+				}
+				
+				& > .title{
+					
+				}
+				
+				& > .icon{
+					margin: 0 20px;
+					width: 24px;
+					height: 24px;
+					transition: transform .3s linear;
+					transform: rotate(-90deg);
+					background-image: url(img/arrow_small_white.png);
+					
+				}
+				
+				& > .tekst{
+					
+				}
+				
+				&:hover{
+					background-color: $color-light;
+					color: $color-green;
+					
+					& > .icon{
+						transform: rotate(90deg);
+						background-image: url(img/arrow_small_green.png);
+						
+					}
+					
+				}
+				
+				@media( min-width: map-get( $bpw, tablet ) ){
+					padding: 0 50px;
+					
+				}
+				
+			}
+			
+			@media( min-width: map-get( $bpw, desktop ) ){
+				position: absolute;
+				margin-left: 100px;
+				top: 0;
+				left: 50%;
+				right: 0;
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .opinie{
+		min-height: 650px;
+		padding:{
+			top: 140px;
+			bottom: 50px;
+			
+		};
+		
+		& > .grid{
+			
+			& > .top{
+				font-size: 21px;
+				margin-bottom: 35px;
+				
+				& > .title{
+					
+					& > .line1{
+						
+					}
+					
+					& > .line2{
+						
+					}
+					
+					& > .icon{
+						margin-top: 50px;
+						
+					}
+				
+				}
+				
+			}
+			
+			& > .slider{
+				position: relative;
+				
+				& > .view{
+					padding-bottom: 100px;
+					overflow: hidden;
+					
+					& > .slide{
+						
+						& > .img{
+							
+							@media( min-width: map-get( $bpw, tablet ) ){
+								padding: 0 65px 0 0;
+								
+							}
+							
+						}
+						
+						& > .content{
+							
+							& > .tekst{
+								padding: 50px 0;
+								
+								@media( min-width: map-get( $bpw, tablet ) ){
+									padding: 0;
+								
+								}
+								
+							}
+							
+						}
+						
+					}
+					
+					@media( min-width: map-get( $bpw, tablet ) ){
+						padding: 0;
+						
+					}
+					
+				}
+				
+				& > .nav{
+					position: absolute;
+					margin: 0 -20px 0 0;
+					right: 50%;
+					bottom: 100px;
+					transform: translateX(50%);
+					
+					& > .prev{
+						margin-right: 20px;
+						transform: rotateY(180deg);
+						
+					}
+					
+					& > .next{
+						margin-right: 20px;
+						
+					}
+					
+					@media( min-width: map-get( $bpw, tablet ) ){
+						margin: 0;
+						right: 0;
+						bottom: 0;
+						transform: none;
+						
+					}
+					
+				}
+				
+				& > .customButton{
+					margin-top: 50px;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .egzaminy{
+		height: 276px;
+		
+		& > .title{
+			margin-bottom: 45px;
+			
+			& > .line1{
+				font-size: 21px;
+				
+			}
+			
+			& > .line2{
+				font-size: 28px;
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .certyfikaty{
+		height: 190px;
+		
+		& > img{
+			margin: 0 20px;
+			max-height: 75px;
+			max-width: 25%;
+			
+		}
+		
+	}
+	
+	& > .newsletter{
+		padding-bottom: 100px;
+		height: 480px;
+		background-image: url(img/newsletter_bg.jpg);
+		
+		& > .title{
+			
+		}
+		
+		& > .subtitle{
+			margin: 40px 0 50px;
+			
+		}
+		
+		& > form{
+			padding: 0 30px;
+			height: 60px;
+			width: 100%;
+			max-width: 570px;
+			border-radius: 30px;
+			
+			& > .mail{
+				font-size: 16px;
+				border: none;
+				
+				&:placeholder{
+					font: inherit;
+					
+				}
+				
+			}
+			
+			& > .button{
+				
+				& > .icon{
+					
+				}
+				
+				& > .text{
+					
+				}
+				
+			}
+			
+		}
+		
+		& > .info{
+			margin-top: 50px;
+			
+		}
+		
+	}
+	
+}

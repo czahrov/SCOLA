@@ -1,0 +1,20 @@
+#breadcrumb{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
+	& > .title{
+		
+	}
+	
+	& > .item{
+		margin: 0 5px;
+		transition: font .3s linear;
+		
+		&:hover{
+			color: $color-green;
+			
+		}
+		
+	}
+	
+}

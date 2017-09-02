@@ -1,0 +1,125 @@
+#popup{
+	position: fixed;
+	padding: 50px;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 100;
+	background-color: $color-filtr;
+	
+	& > .box{
+		position: relative;
+		padding: 40px 20px;
+		background-color: $color-light;
+		
+		& > .close{
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			top: 0;
+			right: 0;
+			background-color: $color-dark;
+			
+			& > .icon{
+				font-size: 30px;
+				color: $color-light;
+				
+			}
+			
+		}
+		
+		& > .view{
+			
+			& > .page{
+				
+				& > .status{
+					padding-right: 20px;
+					font-size: 70px;
+					
+					& > .icon{
+						
+						&.ok{
+							color: $color-ok;
+							
+						}
+						
+						&.info{
+							color: $color-info;
+							
+						}
+						
+						&.fail{
+							color: $color-fail;
+							
+						}
+						
+					}
+					
+				}
+				
+				& > .text{
+					
+					& > .title{
+						padding-bottom: 20px;
+						font-size: 30px;
+						
+					}
+					
+					& > .content{
+						
+						ul{
+							margin: 10px 0;
+							list-style-position: inside;
+							list-style-image: url(img/ikony/bullet_black.png);
+							
+						}
+						
+						li{
+							line-height: 30px;
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	&:not(.ok){
+		
+		.status > .icon.ok{
+			display: none;
+			
+		}
+		
+	}
+	
+	&:not(.info){
+		
+		.status > .icon.info{
+			display: none;
+			
+		}
+		
+	}
+	
+	&:not(.fail){
+		
+		.status > .icon.fail{
+			display: none;
+			
+		}
+		
+	}
+	
+	&:not(.open){
+		display: none;
+		
+	}
+	
+}

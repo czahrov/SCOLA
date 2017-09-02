@@ -95,10 +95,10 @@
 				</div>
 				
 			</div>
-			<div class='tab arrow_slide pointer flex flex-items-center flex-justify-center' slide-to='#home > .jezyk'>
-				<img class='icon arrow down' src='<?php echo get_template_directory_uri(); ?>/img/arrow_small.png'/>
+			<?php do_action( 'tab', array(
+				'to' =>'#home > .jezyk',
 				
-			</div>
+			) ); ?>
 			
 		</div>
 		
@@ -123,37 +123,37 @@
 						array(
 							'title' => 'angielski',
 							'img' => 'angielski_v2.png',
-							'url' => home_url(),
+							'url' => home_url( 'jezyki/angielski' ),
 						),
 						array(
 							'title' => 'niemiecki',
 							'img' => 'niemiecki.png',
-							'url' => home_url(),
+							'url' => home_url( 'jezyki/niemiecki' ),
 						),
 						array(
 							'title' => 'hiszpański',
 							'img' => 'hiszpanski.png',
-							'url' => home_url(),
+							'url' => home_url( 'jezyki/hiszpanski' ),
 						),
 						array(
 							'title' => 'włoski',
 							'img' => 'wloski.png',
-							'url' => home_url(),
+							'url' => home_url( 'jezyki/wloski' ),
 						),
 						array(
 							'title' => 'francuski',
 							'img' => 'francuski.png',
-							'url' => home_url(),
+							'url' => home_url( 'jezyki/francuski' ),
 						),
 						array(
 							'title' => 'rosyjski',
 							'img' => 'rosyjski.png',
-							'url' => home_url(),
+							'url' => home_url( 'jezyki/rosyjski' ),
 						),
 						array(
 							'title' => 'słowacki',
 							'img' => 'slowacki.png',
-							'url' => home_url(),
+							'url' => home_url( 'jezyki/slowacki' ),
 						),
 						
 					);
@@ -194,6 +194,7 @@
 				'class' => 'light',
 				'arrow' => 'white',
 				'title' => 'bezpłatna wycena',
+				'url' => home_url( 'tlumaczenia' ),
 				
 			) ); ?>
 		
@@ -208,10 +209,10 @@
 		<div class='line3 hand'>
 			My je obudzimy
 		</div>
-		<div class='tab bg-light arrow_slide pointer flex flex-items-center flex-justify-center' slide-to='#home > .metody'>
-			<img class='icon arrow down' src='<?php echo get_template_directory_uri(); ?>/img/arrow_small.png'/>
+		<?php do_action( 'tab', array(
+			'to' => '#home > .metody',
 			
-		</div>
+		) ); ?>
 		
 	</div>
 	<div class='metody bg-gray-light flex flex-column flex-items-center'>
@@ -221,6 +222,7 @@
 		<?php do_action( 'customButton', array(
 				'title' => 'metody nauczania',
 				'arrow' => 'green',
+				'url' => home_url( 'metody-nauczania' ),
 				
 			) ); ?>
 		
@@ -242,6 +244,7 @@
 				</div>
 				<?php do_action( 'customButton', array(
 					'title' => 'bezpłatna wycena',
+					'url' => home_url( 'tlumaczenia' ),
 					
 				) ); ?>
 				
@@ -254,30 +257,30 @@
 				$arr = array(
 					array(
 						'title' => 'TOEIC&reg;',
-						'url' => home_url(),
+						'url' => home_url( 'toeic' ),
 					),
 					array(
 						'title' => 'TOEIC&reg; Bridge',
-						'url' => home_url(),
+						'url' => home_url( 'toeic-bridge' ),
 					),
 					array(
 						'title' => 'TOEFL&reg;',
-						'url' => home_url(),
+						'url' => home_url( 'toefl' ),
 					),
 					array(
 						'title' => 'TFI&trade;',
-						'url' => home_url(),
+						'url' => home_url( 'tfi' ),
 					),
 					array(
 						'title' => 'WiDaF',
-						'url' => home_url(),
+						'url' => home_url( 'widaf' ),
 					),
 					
 				);
 				
 				foreach( $arr as $item ):
 			?>
-			<a class='item bg-green font-light flex flex-items-center' href='<?php echo $item[ 'url' ]; ?>'>
+			<a class='item pointer bg-green font-light flex flex-items-center' href='<?php echo $item[ 'url' ]; ?>'>
 				<div class='title'>
 					<?php echo $item[ 'title' ]; ?>
 				</div>
@@ -333,6 +336,7 @@
 				</div>
 				<?php do_action( 'customButton', array(
 					'title' => 'nasze referencje',
+					'url' => home_url( 'referencje' ),
 					
 				) ); ?>
 				<div class='nav flex'>
@@ -365,6 +369,7 @@
 			'title' => 'dowiedz się więcej',
 			'class' => 'light',
 			'arrow' => 'white',
+			'url' => home_url( 'certyfikaty-jezykowe' ),
 			
 		) ); ?>
 		
@@ -382,7 +387,7 @@
 			Zapisując się do newslettera będziesz otrzymywać najświeższe informacje
 		</div>
 		<form class='bg-light font-dark flex flex-wrap flex-column flex-row-ms'>
-			<input class='mail grow bold' type='text' name='mail' placeholder='Wpisz swój adres e-mail...' />
+			<input class='mail grow bold' type='email' name='mail' placeholder='Wpisz swój adres e-mail...' />
 			<div class='button bold pointer arrow_slide grow no-grow-ms flex flex-items-center flex-justify-between flex-self-center flex-self-stretch-ms'>
 				<img class='icon arrow right' src='<?php echo get_template_directory_uri(); ?>/img/arrow_black.png' />
 				<div class='text'>

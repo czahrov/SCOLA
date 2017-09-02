@@ -1,0 +1,84 @@
+#footer{
+	
+	& > .about{
+		padding: 0 20px;
+		height: 340px;
+		color: $color-gray-lighter;
+		
+		& > .img{
+			
+		}
+		
+		& > .adres{
+			
+			& > .line1, & > .line2{
+				
+			}
+			
+		}
+		
+		& > .quick{
+			
+			& > .link{
+				position: relative;
+				transition: font .3s linear;
+				
+				& > .bar{
+					position: absolute;
+					height: 2px;
+					width: 50%;
+					bottom: 100%;
+					left: 0;
+					transform-origin: left;
+					transform: scaleX(0);
+					transition: transform .3s linear;
+					
+					
+				}
+				
+				&:not(:last-child)::after{
+					content: " | ";
+					margin: 0 10px;
+					
+				}
+				
+				&:hover{
+					color: $color-green;
+					
+					& > .bar{
+						transform: scaleX(1);
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .copyright{
+		height: 100px;
+		
+		& > .copy{
+			
+		}
+		
+		& > .design{
+			
+			& > a{
+				margin-left: 30px;
+				
+				& > .icon{
+					padding-right: 10px;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

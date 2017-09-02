@@ -1,0 +1,309 @@
+#test{
+	
+	&.intro{
+		
+		& > .top{
+			
+			& > .box{
+				padding:{
+					top: 50px;
+					bottom: 50px;
+				};
+				
+				& > .title{
+					margin-bottom: 30px;
+					font-size: 36px;
+					
+				}
+				
+				& > ul{
+					margin-bottom: 40px;
+					list-style-position: inside;
+					list-style-image: url(img/ikony/bullet_green.png);
+					
+					& > li{
+						margin-bottom: 10px;
+						font-size: 15px;
+						
+					}
+					
+				}
+				
+				& > .bot{
+					font-size: 36px;
+					
+				}
+				
+			}
+			
+		}
+		
+		& > .mid{
+			
+			& > .box{
+				padding:{
+					top: 100px;
+					bottom: 100px;
+				};
+				margin-bottom: 100px;
+				
+				& > .title{
+					margin-bottom: 70px;
+					font-size: 36px;
+					
+				}
+				
+				& > form{
+					width: 100%;
+					max-width: 600px;
+					
+					& > .input,
+					& > .submit{
+						margin-right: 20px;
+						@extend .bold;
+						
+					}
+					
+					& > .input{
+						margin-bottom: 40px;
+						padding: 0 20px;
+						height: 50px;
+						font-size: 18px;
+						border: solid 2px $color-dark;
+						border-radius: 50px;
+						
+					}
+					
+					& > .submit{
+						padding: 0 20px;
+						height: 50px;
+						font-size: 18px;
+						background-color: $color-light;
+						color: $color-green;
+						border: solid 2px $color-green;
+						border-radius: 50px;
+						transition-property: font, background;
+						transition: .3s linear;
+						
+						&:hover{
+							background-color: $color-green;
+							color: $color-light;
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .pytania{
+		padding:{
+			top: 100px;
+			bottom: 100px;
+		};
+		margin-bottom: 100px;
+		
+		& > .box{
+			
+			& > .view{
+				overflow: hidden;
+				
+				& > .item{
+					
+					& > .title{
+						margin-bottom: 60px;
+						font-size: 36px;
+						
+						& > .hole{
+							color: $color-green;
+							
+						}
+						
+					}
+					
+					& > .anwser{
+						
+						& > input{
+							display: none;
+							
+						}
+						
+						& > label{
+							margin: 10px 0;
+							
+							& > .icon{
+								margin-right: 30px;
+								padding: 14px;
+								width: 30px;
+								height: 30px;
+								border: solid 1px $color-green;
+								border-radius: 50%;
+								background-color: $color-green;
+								background-clip: content-box;
+								transition: padding .3s linear;
+								
+								
+							}
+							
+							& > .text{
+								font-size: 15px;
+								
+							}
+							
+							& > .note{
+								display: none;
+								margin-left: 20px;
+								font-size: 30px;
+								
+							}
+							
+						}
+						
+						& > input:checked + label{
+							
+							& > .icon{
+								padding: 7px;
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+			& > .pagin{
+				margin-top: 40px;
+				
+				& > .nav{
+					padding: 10px;
+					
+					.text{
+						margin: 0 30px;
+						
+					}
+					
+					.icon{
+						
+					}
+					
+				}
+				
+				& > .prev{
+					
+					.inner{
+						transform: rotateY(180deg);
+						
+					}
+					
+				}
+				
+				& > .current{
+					margin: 0 50px;
+					width: 116px;
+					height: 116px;
+					font-size: 26px;
+					border-radius: 50%;
+					
+					& > *{
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		&.show > .box > .view > .item > .anwser{
+			
+			& > input.correct + label > .note,
+			& > input:checked + label > .note{
+				display: block;
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .summary{
+		display: none;
+		padding: 60px 0 40px;
+		
+		& > .box{
+			
+			& > .title{
+				margin-bottom: 30px;
+				font-size: 36px;
+				
+			}
+			
+			& > ul.stat{
+				margin-bottom: 40px;
+				list-style-position: inside;
+				list-style-image: url(img/ikony/bullet_black.png);
+				
+				& > li{
+					margin-bottom: 20px;
+					font-size: 15px;
+					
+				}
+				
+				.all{
+					font-size: 21px;
+					
+				}
+				
+				.correct{
+					font-size: 21px;
+					
+				}
+				
+				.percent{
+					font-size: 21px;
+					
+				}
+				
+			}
+			
+			& > .note{
+				margin-bottom: 40px;
+				font-size: 15px;
+				
+				& > .value{
+					font-size: 21px;
+					
+				}
+				
+			}
+			
+			& > .buttons{
+				
+				& > .send{
+					
+				}
+				
+				& > .show{
+					
+				}
+				
+				& > .noborder{
+					border: none;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

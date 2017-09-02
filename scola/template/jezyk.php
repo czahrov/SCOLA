@@ -27,9 +27,8 @@
 	
 	get_header();
 	get_template_part( "template/top" );
+	do_action( 'breadcrumb' );
 ?>
-<body class='regular font-dark'>
-	<?php do_action( 'breadcrumb' ); ?>
 	<div id='jezyk' class='<?php echo $slug; ?>'>
 		<div class='top'>
 			<div class='img bgimg full hide block-ml'></div>

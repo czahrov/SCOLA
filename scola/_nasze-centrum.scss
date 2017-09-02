@@ -1,0 +1,120 @@
+#nasze_centrum{
+	
+	& > .centrum{
+		position: relative;
+		margin-bottom: 140px;
+		
+		.img{
+			background-image: url(img/scola_budynek.jpg);
+		}
+		
+		& > .img{
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 50%;
+			bottom: 0;
+			
+		}
+		
+		& > .box{
+			
+			& > .img{
+				padding-bottom: 62%;
+				
+			}
+			
+			& > .text{
+				
+				& > .title{
+					margin: 55px 0 28px;
+					font-size: 34px;
+				}
+				
+				& > .subtitle{
+					margin-bottom: 50px;
+					font-size: 15px;
+					
+				}
+				
+				& > .mid{
+					margin-bottom: 42px;
+					font-size: 21px;
+					
+				}
+				
+				& > ol.zakres{
+					list-style-position: inside;
+					
+					& > li{
+						
+						& > .button{
+							margin: 20px;
+							
+							& > img{
+								
+							}
+							
+							& > .title{
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .oferujemy{
+		padding: 50px 0;
+		
+		& > .box{
+			
+			& > .title{
+				margin-bottom: 50px;
+				font-size: 36px;
+			}
+			
+			& > ul{
+				margin-bottom: 40px;
+				list-style-position: inside;
+				list-style-image: url(img/ikony/bullet_white.png);
+				
+				& > li{
+					margin-bottom: 10px;
+					padding-right: 10px;
+					max-width: 800px;
+					font-size: 21px;
+					
+				}
+				
+			}
+			
+			& > .line{
+				font-size: 16px;
+				margin-bottom: 20px;
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .opis{
+		padding: 54px 0;
+		
+		& > .line{
+			margin-bottom: 45px;
+			font-size: 16px;
+			
+		}
+		
+	}
+	
+}

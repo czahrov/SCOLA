@@ -313,6 +313,51 @@ add_action( 'page_title', function( $arg ){
 	
 } );
 
+add_action( 'bodyMarkup', function( $arg ){
+	$class = array(
+		'regular',
+		'font-dark',
+		
+	);
+	
+	if( is_home() ){
+		$class[] = 'home';
+		
+	}
+	
+	printf( "<body class='%s'>", implode( " ", $class ) );
+	
+} );
+
+add_action( 'tab', function( $arg ){
+	$arg = array_merge(
+		array(
+			'class' => '',
+			'to' => '',
+			'direction' => 'down',
+			'img' => 'arrow_small.png',
+			'url' => '',
+			
+		),
+		$arg
+	);
+	
+	printf(
+		"<div class='tab arrow_slide pointer flex flex-items-center flex-justify-center %s' slide-to='%s'>
+			<img class='icon arrow %s' src='%s/img/%s'/>
+			%s
+		</div>",
+		$arg[ 'class' ],
+		$arg[ 'to' ],
+		$arg[ 'direction' ],
+		get_template_directory_uri(),
+		$arg[ 'img' ],
+		empty( $arg[ 'url' ] )?( '' ):( "<a class='hitbox' href='{$arg[ 'url' ]}'></a>" )
+		
+	);
+	
+} );
+
 add_action( 'customButton', function( Array $arg ){
 	$arg = array_merge(
 		array(
@@ -408,6 +453,123 @@ add_action( 'customButtonFill', function( Array $arg ){
 	</div>";
 	
 	echo $ret;
+	
+} );
+
+add_action( 'customSelect', function( $arg ){
+	$arg = array_merge(
+		array(
+			'class' => '',
+			'atts' => array(),
+			'head' => '',
+			'title' => '',
+			'icon' => 'fa fa-chevron-down',
+			'options' => '',
+			'option' => '',
+			'items' => array(),
+			
+		),
+		$arg
+	);
+	
+	$atts = "";
+	if( count( $arg[ 'atts' ] ) > 0 ){
+		foreach( $arg[ 'atts' ] as $name => $value ){
+			$atts .= sprintf( "%s='%s' ", $name, $value );
+			
+		}
+		
+	}
+	
+	$ret = sprintf( "<div class='customSelect flex %s' %s>
+		<div class='head base1 flex flex-items-center flex-justify-between %s'>
+			<div class='title'>%s</div>
+			<div class='icon %s'></div>
+			
+		</div>
+		<div class='options base1 %s'>",
+		$arg[ 'class' ],
+		$atts,
+		$arg[ 'head' ],
+		$arg[ 'title' ],
+		$arg[ 'icon' ],
+		$arg[ 'options' ] );
+	
+	if( count( $arg[ 'items' ] ) > 0 ) foreach( $arg[ 'items' ] as $item ){
+		$ret .= sprintf( "<div class='option flex flex-items-center %s'>%s</div>", 
+			$arg[ 'option' ],
+			$item );
+			
+	}
+	
+	$ret .= "</div></div>";
+	
+	echo $ret;
+	
+	/* <div class='customSelect flex'>
+			<div class='head base1 flex flex-items-center flex-justify-between'>
+				<div class='title'></div>
+				<div class='icon fa fa-chevron-down'></div>
+				
+			</div>
+			<div class='options base1'>
+				<div class='option flex flex-items-center'></div>
+				
+			</div>
+			
+		</div> */
+	
+} );
+
+add_action( 'customFile', function( $arg ){
+	$arg = array_merge(
+		array(
+			'class' => '',
+			'head' => '',
+			'title' => 'Dodaj załącznik',
+			'icon' => 'fa fa-plus',
+			'name' => sprintf( "file%s", time() ),
+			'accept' => '.*',
+			'multi' => false,
+			
+		),
+		$arg
+	);
+	
+	/*
+	<div class='customFile item pointer base1 base2-mm base3-ml flex'>
+		<div class='head bg-light font-dark base1 flex flex-items-center flex-justify-between'>
+			<div class='title'>
+				Wgraj plik
+			</div>
+			<div class='icon fa fa-plus'></div>
+			
+		</div>
+		<input class='hide' type='file' name='plik'>
+		
+	</div>
+	*/
+	
+	printf( "<div class='customFile flex %s'>
+			<div class='head base1 flex flex-items-center flex-justify-between %s'>
+				<div class='title'>
+					%s
+				</div>
+				<div class='icon %s'></div>
+				
+			</div>
+			<input class='hide' type='file' name='%s' accept='%s' %s>
+			
+		</div>",
+		$arg[ 'class' ],
+		$arg[ 'head' ],
+		$arg[ 'title' ],
+		$arg[ 'icon' ],
+		$arg[ 'name' ],
+		$arg[ 'accept' ],
+		$arg[ 'multi' ] === true?( 'multiple' ):( '' )
+		
+	);
 	
 } );
 

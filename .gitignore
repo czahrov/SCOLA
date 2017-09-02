@@ -1,4 +1,5 @@
 /scola/*test*
+!*.scss
 fonts/
 img/
 files/

@@ -383,7 +383,87 @@
 			$( '#popup > .box > .view .text > .title' ), 
 			$( '#popup > .box > .view .text > .content' ) );
 			
+			/* customSelect */
+			(function( custom, option ){
+				custom
+				.on({
+					set: function( e, value ){
+						$(this)
+						.find( '.head > .title' )
+						.text( $(this).attr( 'item-title' ) + ": " + value );
+						
+						$(this).attr( 'item-value', value );
+						
+					},
+					reset: function( e ){
+						$(this)
+						.find( '.head > .title' )
+						.text( $(this).attr( 'item-title' ) + " *" );
+						
+						$(this).attr( 'item-value', '' );
+						
+					},
+					get: function( e ){
+						return {
+							name: $(this).attr( 'item-name' ),
+							value: $(this).attr( 'item-value' ),
+						};
+						
+					},
+					
+				});
+				
+				option.click(function( e ){
+					$(this).parents( '.customSelect:first' ).triggerHandler( 'set', [ $(this).text() ] );
+					
+				});
+				
+			})
+			( $( '.customSelect' ), 
+			$( '.customSelect > .options > .option' ) );
 			
+			/* customFile */
+			(function( custom ){
+				
+				custom.on({
+					get: function( e ){
+						var input = $(this).find( 'input:file' );
+						if( input.prop( 'files' ).length > 1 ){
+							var ret = [];
+							$.each( input.prop( 'files' ), function( k, item ){
+								ret.push( {
+									name: input.attr( 'name' ) + "[]",
+									value: item,
+									
+								} );
+								
+							} );
+							
+							return ret;
+							
+						}
+						else{
+							return {
+								name: input.attr( 'name' ),
+								value: input.prop( 'files' )[0],
+								
+							}
+							
+						}
+						
+					},
+					
+				});
+				
+				custom
+				.find( '.head' )
+				.click(function( e ){
+					$(this).siblings( 'input:file' ).click();
+					
+				});
+				
+			})
+			( $( '.customFile' ) );
 			
 		},
 		alternate: function(){
@@ -1177,6 +1257,10 @@
 			
 		},
 		kontakt: function(){
+			var addon = root.addon;
+			var logger = addon.isLogger();
+			
+			if(logger) console.log('page.kontakt()');
 			
 			/* mapa */
 			(function( mapa ){
@@ -1259,6 +1343,163 @@
 			( $( '#popup' ), 
 			$( '#kontakt form' ), 
 			$( '#kontakt form > .button.send' ) );
+			
+		},
+		tlumaczenia: function(){
+			var addon = root.addon;
+			var logger = addon.isLogger();
+			
+			if(logger) console.log('page.tlumaczenia()');
+			
+			/* formularz */
+			(function( popup, form, buttons, loader ){
+				loader.hide();
+				
+				loader
+				.on({
+					set: function( e, procent ){
+						var config = {
+							duration: .3,
+							
+						};
+						$(this).find( '.title' ).text( Math.round( procent * 1000 ) / 10 );
+						
+						new TimelineLite()
+						.add( 'start' )
+						.add( TweenLite.to(
+							$(this).find( '.progress > .bar' ),
+							config.duration,
+							{
+								scaleX: parseFloat( procent ),
+							}
+						), 'start' );
+						
+					},
+					reset: function( e ){
+						$(this).find( '.title' ).text( '' );
+						
+						TweenLite.set(
+							$(this).find( '.progress > .bar' ),
+							{
+								scaleX: 0,
+							}
+						);
+						
+					},
+					
+				});
+				
+				form
+				.on({
+					send: function( e ){
+						var myData = $(this).triggerHandler( 'getData' );
+						var token = new Date().getTime();
+						
+						$.ajax({
+							method: 'post',
+							url: root.bazar.basePath + '/form-tlumaczenia',
+							data: myData,
+							contentType: false,
+							processData: false,
+							xhr: function(){
+								var xhr = new window.XMLHttpRequest();
+								
+								xhr.addEventListener( 'loadstart', function( e ){
+									loader.triggerHandler( 'reset' );
+									
+									loader.slideDown();
+									buttons.slideUp();
+									
+								});
+								
+								xhr.upload.addEventListener( 'progress', function( e ){
+									// console.log( e );
+									// var progress = Math.round( e.loaded / e.total * 1000 ) / 1000;
+									var progress = e.loaded / e.total;
+									
+									loader.triggerHandler( 'set', progress );
+									
+								});
+								
+								xhr.upload.addEventListener( 'loadend', function( e ){
+									// form.triggerHandler( 'clear' );
+									
+									window.setTimeout(function(){
+										loader.slideUp();
+										loader.triggerHandler( 'reset' );
+										buttons.slideDown();
+										
+									}, 1000);
+									
+								});
+								
+								return xhr;
+							},
+							success: function( data, status ){
+								console.log( data );
+								var resp = JSON.parse( data );
+								console.log( resp );
+								
+								popup.triggerHandler( 'open', [ resp.status, resp.title, resp.msg ] );
+								
+								if( resp.status === 'ok' ){
+									form.triggerHandler( 'clear' );
+									
+								}
+								
+							},
+							error: function(){
+								popup.triggerHandler( 'open', [ 'fail', 'Błąd sieci', 'Nie udało się nawiązać połączenia z serwerem.<br>Proszę spróbować ponownie za chwilę.' ] );
+								
+							},
+							
+						});
+						
+					},
+					getData: function( e ){
+						var ret = new FormData( form[0] );
+						var item;
+						
+						$( '.customSelect, .customFile' ).each(function(){
+							item = $(this).triggerHandler( 'get' );
+							ret.append( item.name, item.value );
+							
+						});
+						
+						return ret;
+						
+					},
+					clear: function( e ){
+						$( '.customSelect' ).each(function(){
+							$(this).triggerHandler( 'reset' );
+							
+						});
+						
+						form.trigger( 'reset' );
+						
+					},
+					
+				});
+				
+				buttons.click(function( e ){
+					if( $(this).hasClass( 'send' ) ){
+						form.triggerHandler( 'send' );
+						
+					}
+					else if( $(this).hasClass( 'reset' ) ){
+						form.triggerHandler( 'clear' );
+						
+					}
+					
+				});
+				
+				loader.triggerHandler( 'reset' );
+				
+			})
+			( $( '#popup' ), 
+			$( '#tlumaczenia > .bot form' ), 
+			$( '#tlumaczenia > .bot form > .buttons > .button' ), 
+			$( '#tlumaczenia > .bot form > .loader' ) );
 			
 		},
 		

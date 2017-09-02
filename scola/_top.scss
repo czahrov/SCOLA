@@ -1,0 +1,263 @@
+#top{
+	position: relative;
+	margin-bottom: 50px;
+	min-height: 66px;
+	background-color: $color-green;
+	
+	@media(min-width: map-get( $bpw, desktop ) ){
+		margin-top: 85px;
+		margin-bottom: 120px;
+		background-color: transparent;
+		
+	}
+	
+	& > .logo{
+		min-height: 48px;
+		margin: 0;
+		
+		& > .img{
+			min-width: 200px;
+			background-position: left;
+			background-image: url(img/logo_scola_white.png);
+			
+		}
+		
+		@media( min-width: map-get( $bpw, desktop ) ){
+			
+			& > .img{
+				background-image: url(img/logo_scola_black.png);
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .toggle{
+		overflow: hidden;
+		
+		& > .box{
+			width: 24px;
+			height: 16px;
+			transition: transform .3s linear;
+			
+			& > .line{
+				height: 2px;
+				background-color: $color-light;
+				transform-origin: left;
+				transition-property: transform, opacity;
+				transition: .3s linear;
+				
+			}
+			
+		}
+		
+		&.open{
+			
+			& > .box{
+				transform: rotateY(180deg);
+				
+				& > .line:nth-child(1){
+					transform: rotate(36deg);
+					
+				}
+				
+				& > .line:nth-child(2){
+					transform: translateX(-100%);
+					opacity: 0;
+					
+				}
+				
+				& > .line:nth-child(3){
+					transform: rotate(-36deg);
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > ul.menu{
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		z-index: 20;
+		
+		@media( max-width: map-get( $bpw, desktop ) - 1 ){
+			box-shadow: 0px 2px 10px -4px $color-green;
+			
+			&:not(.open){
+				display: none;
+				
+			}
+			
+		}
+		
+		li{
+			position: relative;
+			font-size: 14px;
+			text-align: center;
+			
+			&:not(.open) > ul{
+				display: none;
+				
+			}
+			
+			@media( min-width: map-get( $bpw, desktop ) ){
+				&:not(.open) > ul{
+					display: block;
+					
+				}
+				
+				&:not(:hover) > ul{
+					display: none;
+					
+				}
+				
+			}
+			
+			@media( min-width: map-get( $bpw, desktop ) ){
+				text-align: initial;
+				
+			}
+			
+		}
+		
+		ul{
+			list-style-type: none;
+			
+			@media( min-width: map-get( $bpw, desktop ) ){
+				position: absolute;
+				top: 100%;
+				left: 0;
+				
+			}
+			
+		}
+		
+		& > li{
+			display: inline-block;
+			transition: color .3s linear;
+			letter-spacing: 2px;
+			
+			& > a{
+				padding: 14px 0;
+				
+			}
+			
+			&:not(.kontakt):hover{
+				color: $color-green;
+				
+				@media( min-width: map-get( $bpw, desktop ) ){
+					&::before{
+						transform: scaleX(1);
+						
+					}
+				
+				}
+				
+			}
+			
+			@media( min-width: map-get( $bpw, desktop ) ){
+				padding-right: 20px;
+				
+				&.kontakt{
+					
+					& > a{
+						padding: 20px 40px;
+						border: solid 1px $color-green;
+						border-radius: 40px;
+						transition-property: font, background;
+						transition: .3s linear;
+						
+						&:hover{
+							color: $color-light;
+							background-color: $color-green;
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+			li{
+				
+				& > a{
+					width: 100%;
+					height: 100%;
+					padding: 20px 40px;
+					line-height: 0;
+					background-color: $color-green;
+					color: $color-light;
+					white-space: nowrap;
+					transition-property: font, background;
+					transition: .3s linear;
+					
+					&:hover{
+						color: $color-green;
+						background-color: $color-light;
+						
+					}
+					
+				}
+				
+			}
+			
+			& > ul{
+				z-index: 20;
+				@extend .regular;
+				
+				@media( min-width: map-get( $bpw, desktop ) ){
+					padding-top: 20px;
+				
+					&::before{
+						content: '';
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 10px;
+						height: 10px;
+						background-color: $color-green;
+						transform: translate(10px,15px) rotate(45deg);
+						
+					}
+					
+				}
+					
+			}
+			
+			@media( min-width: map-get( $bpw, desktop ) ){
+				&:not(.kontakt)::before{
+					content: '';
+					position: absolute;
+					height: 2px;
+					width: 30px;
+					left: 0;
+					bottom: 100%;
+					background-color: $color-green;
+					transform-origin: left;
+					transform: scaleX(0);
+					transition: transform .3s linear;
+					
+				}
+				
+			}
+			
+		}
+		
+		@media( min-width: map-get( $bpw, desktop ) ){
+			position: static;
+			top: initial;
+			left: initial;
+			right: initial;
+			
+		}
+		
+	}
+	
+}

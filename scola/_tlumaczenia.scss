@@ -1,0 +1,231 @@
+#tlumaczenia{
+	
+	& > .top{
+		position: relative;
+		margin-bottom: 140px;
+		
+		& > .img{
+			height: 300px;
+			background-color: $color-gray;
+			background-image: url(img/poster_tlumaczenia.png);
+			
+			@media(min-width: map-get( $bpw, desktop ) ){
+				position: absolute;
+				height: auto;
+				top: 0;
+				left: 50%;
+				right: 0;
+				bottom: 0;
+				
+			}
+			
+		}
+		
+		& > .box{
+			
+			& > .info{
+				padding: 60px 0 40px;
+				
+				& > .title{
+					margin-bottom: 30px;
+					font-size: 36px;
+					
+				}
+				
+				& > ul{
+					list-style-position: inside;
+					list-style-image: url(img/ikony/bullet_green.png);
+					
+					& > li{
+						
+					}
+					
+				}
+				
+				& > .bot{
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .bot{
+		padding: 40px 0 100px;
+		
+		& > .box{
+			
+			& > .title{
+				margin-bottom: 30px;
+				font-size: 36px;
+				
+			}
+			
+			& > .subtitle{
+				margin-bottom: 45px;
+				font-size: 15px;
+				
+			}
+			
+			& > form{
+				margin: 0 -10px;
+				max-width: 900px;
+				font-size: 15px;
+				
+				& > .item{
+					position: relative;
+					padding: 0 10px;
+					min-height: 50px;
+					margin: 10px 0;
+					
+				}
+				
+				input, textarea{
+					padding: 0 20px;
+					width: 100%;
+					font-family: inherit;
+					font-size: inherit;
+					
+				}
+				
+				input{
+					height: 50px;
+					
+				}
+				
+				textarea{
+					padding: 20px;
+					min-height: 150px;
+					resize: none;
+					
+				}
+				
+				& > .customSelect{
+					font-size: inherit;
+					
+					& > .head{
+						padding: 0 20px;
+						
+						& > .title{
+							
+						}
+						
+						& > .icon{
+							
+						}
+						
+					}
+					
+					& > .options{
+						margin: 0 10px;
+						
+						& > .option{
+							height:50px;
+							padding: 0 20px;
+							
+							&:hover{
+								margin-left: 10px;
+								padding-left: 10px;
+								background-color: $color-gray;
+								
+							}
+							
+						}
+						
+					}
+					
+					&:not(:hover){
+						
+						& > .options{
+							display: none;
+							
+						}
+						
+					}
+					
+				}
+				
+				& > .customFile{
+					
+					& > .head{
+						padding: 0 20px;
+						
+						& > .title{
+							
+						}
+						
+						& > .icon{
+							
+						}
+						
+					}
+					
+				}
+				
+				& > .buttons{
+					
+					& > .button{
+						width: initial;
+						min-width: 160px;
+						height: 50px;
+						margin: 0 15px;
+						color: $color-light;
+						background-color: $color-green;
+						border: solid 2px $color-light;
+						border-radius: 25px;
+						transition-property: font, background;
+						transition: .3s linear;
+						
+						&:hover{
+							background-color: $color-light;
+							color: $color-dark;
+							
+						}
+						
+					}
+					
+				}
+				
+				.loader{
+					margin: 50px 0;
+					padding: 0 20px;
+					
+					& > .progress{
+						padding: 6px;
+						border: solid 2px $color-light;
+						border-radius: 25px;
+						
+						& > .bar{
+							width: 100%;
+							height: 4px;
+							background-color: $color-light;
+							border-radius: 2px;
+							transform-origin: left
+							
+						}
+						
+					}
+					
+					& > .title{
+						min-width: 100px;
+						font-size: 30px;
+						margin-left: 20px;
+						
+						&:after{
+							content: ' %';
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}
