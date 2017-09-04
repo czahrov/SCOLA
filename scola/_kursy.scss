@@ -1,0 +1,131 @@
+#kursy{
+	
+	& > .top{
+		position: relative;
+		margin-bottom: 100px;
+		
+		& > .slider{
+			position: relative;
+			min-height: 300px;
+			padding: 0 20px;
+			
+			& > .view{
+				overflow: hidden;
+				
+				& > .slide{
+					
+				}
+				
+			}
+			
+			& > .info{
+				position: absolute;
+				padding: 20px;
+				left: 0;
+				bottom: 0;
+				
+				& > .title{
+					margin: 20px 0 40px;
+					font-size: 36px;
+				}
+				
+				& > .link{
+					margin-bottom: 20px;
+					font-size: 15px;
+				}
+				
+				& > .nav{
+					position: absolute;
+					left: 0;
+					bottom: 100%;
+					
+					& > .button{
+						width: 62px;
+						height: 30px;
+						box-shadow: 0px 0px 0px 1px $color-light inset;
+						
+						&.prev{
+							transform: rotateY(180deg);
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+			@media(min-width: map-get( $bpw, desktop ) ){
+				position: absolute;
+				padding: 0;
+				margin-left: 20px;
+				top: 0;
+				left: 50%;
+				right: 0;
+				bottom: 0
+				
+			}
+			
+		}
+		
+		& > .box{
+			padding-top: 60px;
+			
+			& > .info{
+				
+				& > .title{
+					margin-bottom: 30px;
+					font-size: 36px;
+					
+				}
+				
+				& > .content{
+					margin-bottom: 50px;
+					font-size: 15px;
+					line-height: 3em;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .bot{
+		padding: 50px 0;
+		
+		& > .box{
+			
+			& > .title{
+				margin-bottom: 70px;
+				font-size: 36px;
+				
+			}
+			
+			& > ul{
+				padding-left: 20px;
+				list-style-image: url(img/ikony/bullet_white.png);
+				
+				& > li{
+					padding-left: 10px;
+					margin-bottom: 40px;
+					
+					& > .title{
+						margin-bottom: 25px;
+						font-size: 21px;
+					}
+					
+					& > .content{
+						font-size: 15px;
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

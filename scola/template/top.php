@@ -20,31 +20,31 @@
 					<a href="<?php echo home_url( 'nasze-centrum' ); ?>">Nasze Centrum</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'metody-nauczania' ); ?>">Metody nauczania</a>
+					<a href="<?php echo home_url( 'nasze-centrum/metody-nauczania' ); ?>">Metody nauczania</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'centrum-egzaminacyjne' ); ?>">Centrum egzaminacyjne</a>
+					<a href="<?php echo home_url( 'nasze-centrum/centrum-egzaminacyjne' ); ?>">Centrum egzaminacyjne</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'certyfikaty-jezykowe' ); ?>">Certyfikaty językowe</a>
+					<a href="<?php echo home_url( 'nasze-centrum/certyfikaty-jezykowe' ); ?>">Certyfikaty językowe</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'kursy' ); ?>">Kursy</a>
+					<a href="<?php echo home_url( 'nasze-centrum/kursy' ); ?>">Kursy</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'tlumaczenia' ); ?>">Tłumaczenia</a>
+					<a href="<?php echo home_url( 'nasze-centrum/tlumaczenia' ); ?>">Tłumaczenia</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'program' ); ?>">Program</a>
+					<a href="<?php echo home_url( 'nasze-centrum/program' ); ?>">Program</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'kadra' ); ?>">Kadra</a>
+					<a href="<?php echo home_url( 'nasze-centrum/kadra' ); ?>">Kadra</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'regulamin' ); ?>">Regulamin</a>
+					<a href="<?php echo home_url( 'nasze-centrum/regulamin' ); ?>">Regulamin</a>
 				</li>
 				<li>
-					<a href="<?php echo home_url( 'referencje' ); ?>">Referencje</a>
+					<a href="<?php echo home_url( 'nasze-centrum/referencje' ); ?>">Referencje</a>
 				</li>
 				
 			</ul>

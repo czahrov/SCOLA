@@ -195,6 +195,7 @@
 			/* obsługa strzałek przewijania */
 			(function( link ){
 				link.click(function( e ){
+					if( typeof $(this).attr( 'slide-to' ) !== 'string' ) return false;
 					var self = $(this);
 					
 					TweenLite.to(
@@ -449,6 +450,11 @@
 							}
 							
 						}
+						
+					},
+					reset: function( e ){
+						var title = $(this).attr( 'item-title' );
+						$(this).find( '.head > .title' ).text( title );
 						
 					},
 					
@@ -1344,283 +1350,309 @@
 			$( '#kontakt form > .button.send' ) );
 			
 		},
-		tlumaczenia: function(){
+		nasze_centrum: function(){
 			var addon = root.addon;
 			var logger = addon.isLogger();
 			
-			if(logger) console.log('page.tlumaczenia()');
+			if(logger) console.log('page.nasze_centrum()');
 			
-			/* formularz */
-			(function( popup, form, buttons, loader ){
-				var sendFile = false;
-				var url = root.bazar.basePath + '/form-tlumaczenia';
+			var subPage = window.location.pathname.match( /nasze-centrum\/([^\/]+)/ );
+			if( subPage === null ){
+				if(logger) console.log('page.nasze_centrum()');
 				
-				loader.hide();
-				
-				loader
-				.on({
-					set: function( e, procent ){
-						var config = {
-							duration: .3,
+			}
+			else{
+				var fn = {
+					tlumaczenia: function(){
+						var addon = root.addon;
+						var logger = addon.isLogger();
+						
+						if(logger) console.log('page.tlumaczenia()');
+						
+						/* formularz */
+						(function( popup, form, buttons, loader ){
+							var sendFile = false;
+							var url = root.bazar.basePath + '/form-tlumaczenia';
 							
-						};
-						$(this).find( '.title' ).text( Math.round( procent * 1000 ) / 10 );
-						
-						new TimelineLite()
-						.add( 'start' )
-						.add( TweenLite.to(
-							$(this).find( '.progress > .bar' ),
-							config.duration,
-							{
-								scaleX: parseFloat( procent ),
-							}
-						), 'start' );
-						
-					},
-					reset: function( e ){
-						$(this).find( '.title' ).text( '' );
-						
-						TweenLite.set(
-							$(this).find( '.progress > .bar' ),
-							{
-								scaleX: 0,
-							}
-						);
-						
-					},
-					
-				});
-				
-				form
-				.on({
-					send: function( e ){
-						var token = 'token' + new Date().getTime();
-						var myData = $(this).triggerHandler( 'getData' );
-						myData.append( 'token', token );
-						
-						/* for( var item of myData.entries() ){
-							console.log( item );
+							loader.hide();
 							
-						} */
-						
-						// przesyłanie tekstu
-						$.ajax({
-							method: 'post',
-							url: sendFile === true?( url + '?save' ):( url ),
-							data: myData,
-							contentType: false,
-							processData: false,
-							success: function( data, status ){
-								var resp;
-								try{
-									resp = JSON.parse( data );
-									console.log( resp );
+							loader
+							.on({
+								set: function( e, procent ){
+									var config = {
+										duration: .3,
+										
+									};
+									$(this).find( '.title' ).text( Math.round( procent * 1000 ) / 10 );
+									
+									new TimelineLite()
+									.add( 'start' )
+									.add( TweenLite.to(
+										$(this).find( '.progress > .bar' ),
+										config.duration,
+										{
+											scaleX: parseFloat( procent ),
+										}
+									), 'start' );
+									
+								},
+								reset: function( e ){
+									$(this).find( '.title' ).text( '' );
+									
+									TweenLite.set(
+										$(this).find( '.progress > .bar' ),
+										{
+											scaleX: 0,
+										}
+									);
+									
+								},
+								
+							});
+							
+							form
+							.on({
+								send: function( e ){
+									var token = 'token' + new Date().getTime();
+									var myData = $(this).triggerHandler( 'getData' );
+									myData.append( 'token', token );
+									
+									/* for( var item of myData.entries() ){
+										console.log( item );
+										
+									} */
+									
+									// przesyłanie tekstu
+									$.ajax({
+										method: 'post',
+										url: sendFile === true?( url + '?save' ):( url ),
+										data: myData,
+										contentType: false,
+										processData: false,
+										success: function( data, status ){
+											var resp;
+											try{
+												resp = JSON.parse( data );
+												console.log( resp );
+												
+											}
+											catch( err ){
+												console.error( err );
+												console.log( data );
+											}
+											
+											// przesyłanie załączników
+											if( sendFile === true ){
+												
+												// sprawdzanie wyniku walidacji
+												if( resp.status === 'ok' ){
+													form.triggerHandler( 'sendFile', [ token ] );
+													
+												}
+												else{
+													popup.triggerHandler( 'open', [ resp.status, resp.title, resp.msg ] );
+													
+												}
+												
+											}
+											else{
+												popup.triggerHandler( 'open', [ resp.status, resp.title, resp.msg ] );
+												
+												if( resp.status === 'ok' ){
+													form.triggerHandler( 'clear' );
+													
+												}
+												
+											}
+											
+										},
+										error: function(){
+											popup.triggerHandler( 'open', [ 'fail', 'Błąd sieci', 'Nie udało się nawiązać połączenia z serwerem.<br>Proszę spróbować ponownie za chwilę.' ] );
+											
+										},
+										
+									});
+									
+								},
+								sendFile: function( e, token ){
+									var filesData = new FormData();
+									
+									form.find( '.customFile' ).each(function(){
+										var files = $(this).triggerHandler( 'get' );
+										// pojedynczy plik
+										if( typeof files.length === 'undefined' ){
+											filesData.append( files.name, files.value );
+											
+										}
+										else{
+											$.each( files, function( name, value ){
+												filesData.append( name, value );
+												
+											} );
+											
+										}
+										
+									});
+									
+									filesData.append( 'token', token );
+									
+									/* for( var item of filesData.entries() ){
+										console.log( item );
+										
+									} */
+									
+									$.ajax({
+										method: 'post',
+										url: url + '?load',
+										data: filesData,
+										contentType: false,
+										processData: false,
+										xhr: function(){
+											var xhr = new window.XMLHttpRequest();
+											
+											xhr.addEventListener( 'loadstart', function( e ){
+												loader.triggerHandler( 'reset' );
+												
+												loader.slideDown();
+												buttons.slideUp();
+												
+											});
+											
+											xhr.upload.addEventListener( 'progress', function( e ){
+												var progress = e.loaded / e.total;
+												
+												loader.triggerHandler( 'set', progress );
+												
+											});
+											
+											xhr.upload.addEventListener( 'loadend', function( e ){
+												window.setTimeout(function(){
+													loader.slideUp();
+													loader.triggerHandler( 'reset' );
+													buttons.slideDown();
+													
+												}, 1000);
+												
+											});
+											
+											return xhr;
+										},
+										success: function( data, fstatus ){
+											try{
+												resp = JSON.parse( data );
+												console.log( resp );
+												
+												popup.triggerHandler( 'open', [ resp.status, resp.title, resp.msg ] );
+												
+												if( resp.status === 'ok' ){
+													form.triggerHandler( 'clear' );
+													
+												}
+												
+											}
+											catch( err ){
+												console.error( err );
+												console.log( data );
+											}
+											
+										},
+										error: function(){
+											popup.triggerHandler( 'open', [ 'fail', 'Błąd sieci', 'Nie udało się nawiązać połączenia z serwerem.<br>Proszę spróbować ponownie za chwilę.' ] );
+											
+										},
+										
+									});
+									
+								},
+								getData: function( e ){
+									var ret = new FormData();
+									$.each( form.serializeArray(), function( k, item ){
+										ret.append( item.name, item.value );
+										
+									} );
+									
+									var item;
+									
+									$( '.customSelect' ).each(function(){
+										item = $(this).triggerHandler( 'get' );
+										ret.append( item.name, item.value );
+										
+									});
+									
+									return ret;
+									
+								},
+								clear: function( e ){
+									$( '.customSelect, .customFile' ).each(function(){
+										$(this).triggerHandler( 'reset' );
+										
+									});
+									
+									form.trigger( 'reset' );
+									
+								},
+								
+							});
+							
+							buttons.click(function( e ){
+								if( $(this).hasClass( 'send' ) ){
+									form.triggerHandler( 'send' );
 									
 								}
-								catch( err ){
-									console.error( err );
-									console.log( data );
+								else if( $(this).hasClass( 'reset' ) ){
+									form.triggerHandler( 'clear' );
+									
 								}
 								
-								// przesyłanie załączników
-								if( sendFile === true ){
-									
-									// sprawdzanie wyniku walidacji
-									if( resp.status === 'ok' ){
-										form.triggerHandler( 'sendFile', [ token ] );
+							});
+							
+							form.find( 'input:file' ).change(function( e ){
+								var files = $(this).prop( 'files' );
+								var title = $(this).parents( '.customFile:first' ).attr( 'item-title' );
+								
+								if( files.length > 0 ){
+									sendFile = true;
+									var t  = [];
+									$.each( files, function( k, file ){
+										t.push( file.name );
 										
-									}
-									else{
-										popup.triggerHandler( 'open', [ resp.status, resp.title, resp.msg ] );
-										
-									}
+									} );
 									
+									title = t.join( ', ' );
 								}
 								else{
-									popup.triggerHandler( 'open', [ resp.status, resp.title, resp.msg ] );
-									
-									if( resp.status === 'ok' ){
-										form.triggerHandler( 'clear' );
-										
-									}
+									sendFile = false;
 									
 								}
 								
-							},
-							error: function(){
-								popup.triggerHandler( 'open', [ 'fail', 'Błąd sieci', 'Nie udało się nawiązać połączenia z serwerem.<br>Proszę spróbować ponownie za chwilę.' ] );
+								$(this).parents( '.customFile:first' ).find( '.head > .title' ).text( title );
 								
-							},
+							});
 							
-						});
+							loader.triggerHandler( 'reset' );
+							
+						})
+						( $( '#popup' ), 
+						$( '#tlumaczenia > .bot form' ), 
+						$( '#tlumaczenia > .bot form > .buttons > .button' ), 
+						$( '#tlumaczenia > .bot form > .loader' ) );
 						
 					},
-					sendFile: function( e, token ){
-						var filesData = new FormData();
-						
-						form.find( '.customFile' ).each(function(){
-							var files = $(this).triggerHandler( 'get' );
-							// pojedynczy plik
-							if( typeof files.length === 'undefined' ){
-								filesData.append( files.name, files.value );
-								
-							}
-							else{
-								$.each( files, function( name, value ){
-									filesData.append( name, value );
-									
-								} );
-								
-							}
-							
-						});
-						
-						filesData.append( 'token', token );
-						
-						/* for( var item of filesData.entries() ){
-							console.log( item );
-							
-						} */
-						
-						$.ajax({
-							method: 'post',
-							url: url + '?load',
-							data: filesData,
-							contentType: false,
-							processData: false,
-							xhr: function(){
-								var xhr = new window.XMLHttpRequest();
-								
-								xhr.addEventListener( 'loadstart', function( e ){
-									loader.triggerHandler( 'reset' );
-									
-									loader.slideDown();
-									buttons.slideUp();
-									
-								});
-								
-								xhr.upload.addEventListener( 'progress', function( e ){
-									var progress = e.loaded / e.total;
-									
-									loader.triggerHandler( 'set', progress );
-									
-								});
-								
-								xhr.upload.addEventListener( 'loadend', function( e ){
-									window.setTimeout(function(){
-										loader.slideUp();
-										loader.triggerHandler( 'reset' );
-										buttons.slideDown();
-										
-									}, 1000);
-									
-								});
-								
-								return xhr;
-							},
-							success: function( data, fstatus ){
-								try{
-									resp = JSON.parse( data );
-									console.log( resp );
-									
-									popup.triggerHandler( 'open', [ resp.status, resp.title, resp.msg ] );
-									
-									if( resp.status === 'ok' ){
-										form.triggerHandler( 'clear' );
-										
-									}
-									
-								}
-								catch( err ){
-									console.error( err );
-									console.log( data );
-								}
-								
-							},
-							error: function(){
-								popup.triggerHandler( 'open', [ 'fail', 'Błąd sieci', 'Nie udało się nawiązać połączenia z serwerem.<br>Proszę spróbować ponownie za chwilę.' ] );
-								
-							},
-							
-						});
-						
-					},
-					getData: function( e ){
-						var ret = new FormData();
-						$.each( form.serializeArray(), function( k, item ){
-							ret.append( item.name, item.value );
-							
-						} );
-						
-						var item;
-						
-						$( '.customSelect' ).each(function(){
-							item = $(this).triggerHandler( 'get' );
-							ret.append( item.name, item.value );
-							
-						});
-						
-						return ret;
-						
-					},
-					clear: function( e ){
-						$( '.customSelect' ).each(function(){
-							$(this).triggerHandler( 'reset' );
-							
-						});
-						
-						form.trigger( 'reset' );
+					kursy: function(){
+						if(logger) console.log('page.kursy()');
 						
 					},
 					
-				});
+				};
 				
-				buttons.click(function( e ){
-					if( $(this).hasClass( 'send' ) ){
-						form.triggerHandler( 'send' );
-						
-					}
-					else if( $(this).hasClass( 'reset' ) ){
-						form.triggerHandler( 'clear' );
-						
-					}
-					
-				});
+				var fn_name = subPage[1].replace( /\-/g, '_' );
+				if( typeof fn[ fn_name ] === 'function' ) fn[ fn_name ]();
 				
-				form.find( 'input:file' ).change(function( e ){
-					var files = $(this).prop( 'files' );
-					var title = $(this).parents( '.customFile:first' ).attr( 'item-title' );
-					
-					if( files.length > 0 ){
-						sendFile = true;
-						var t  = [];
-						$.each( files, function( k, file ){
-							t.push( file.name );
-							
-						} );
-						
-						title = t.join( ', ' );
-					}
-					else{
-						sendFile = false;
-						
-					}
-					
-					$(this).parents( '.customFile:first' ).find( '.head > .title' ).text( title );
-					
-				});
-				
-				loader.triggerHandler( 'reset' );
-				
-			})
-			( $( '#popup' ), 
-			$( '#tlumaczenia > .bot form' ), 
-			$( '#tlumaczenia > .bot form > .buttons > .button' ), 
-			$( '#tlumaczenia > .bot form > .loader' ) );
+			}
 			
 		},
 		
-	}
+	};
 	
 	$(function(){
 		root.launcher();

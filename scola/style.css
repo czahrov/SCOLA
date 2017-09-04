@@ -111,11 +111,8 @@
 }
 
 .grid {
-  width: 100%;
   max-width: 1200px;
   padding: 0 20px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 a, img {
@@ -1681,6 +1678,93 @@ a, img {
 }
 #tlumaczenia > .bot > .box > form .loader > .title:after {
   content: ' %';
+}
+
+#kursy > .top {
+  position: relative;
+  margin-bottom: 100px;
+}
+#kursy > .top > .slider {
+  position: relative;
+  min-height: 300px;
+  padding: 0 20px;
+}
+#kursy > .top > .slider > .view {
+  overflow: hidden;
+}
+#kursy > .top > .slider > .info {
+  position: absolute;
+  padding: 20px;
+  left: 0;
+  bottom: 0;
+}
+#kursy > .top > .slider > .info > .title {
+  margin: 20px 0 40px;
+  font-size: 36px;
+}
+#kursy > .top > .slider > .info > .link {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+#kursy > .top > .slider > .info > .nav {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+}
+#kursy > .top > .slider > .info > .nav > .button {
+  width: 62px;
+  height: 30px;
+  -webkit-box-shadow: 0px 0px 0px 1px #fff inset;
+          box-shadow: 0px 0px 0px 1px #fff inset;
+}
+#kursy > .top > .slider > .info > .nav > .button.prev {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+@media (min-width: 1024px) {
+  #kursy > .top > .slider {
+    position: absolute;
+    padding: 0;
+    margin-left: 20px;
+    top: 0;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+  }
+}
+#kursy > .top > .box {
+  padding-top: 60px;
+}
+#kursy > .top > .box > .info > .title {
+  margin-bottom: 30px;
+  font-size: 36px;
+}
+#kursy > .top > .box > .info > .content {
+  margin-bottom: 50px;
+  font-size: 15px;
+  line-height: 3em;
+}
+#kursy > .bot {
+  padding: 50px 0;
+}
+#kursy > .bot > .box > .title {
+  margin-bottom: 70px;
+  font-size: 36px;
+}
+#kursy > .bot > .box > ul {
+  padding-left: 20px;
+  list-style-image: url(img/ikony/bullet_white.png);
+}
+#kursy > .bot > .box > ul > li {
+  padding-left: 10px;
+  margin-bottom: 40px;
+}
+#kursy > .bot > .box > ul > li > .title {
+  margin-bottom: 25px;
+  font-size: 21px;
+}
+#kursy > .bot > .box > ul > li > .content {
+  font-size: 15px;
 }
 
 /*# sourceMappingURL=style.css.map */

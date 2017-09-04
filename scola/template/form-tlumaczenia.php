@@ -121,7 +121,7 @@ else{
 			echo json_encode( array(
 				'status' => 'ok',
 				'title' => 'Wycena tłumaczenia',
-				'msg' => 'Mail wysłany pomyślnie. Wkróce skontaktuje się z Tobą jeden z naszych konsultantów',
+				'msg' => 'Mail wysłany pomyślnie.<br>Wkróce skontaktuje się z Tobą jeden z naszych konsultantów',
 				
 			) );
 			
