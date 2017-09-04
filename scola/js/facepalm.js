@@ -1519,15 +1519,21 @@
 								return xhr;
 							},
 							success: function( data, fstatus ){
-								// console.log( data );
-								var resp = JSON.parse( data );
-								console.log( resp );
-								
-								popup.triggerHandler( 'open', [ resp.status, resp.title, resp.msg ] );
-								
-								if( resp.status === 'ok' ){
-									form.triggerHandler( 'clear' );
+								try{
+									resp = JSON.parse( data );
+									console.log( resp );
 									
+									popup.triggerHandler( 'open', [ resp.status, resp.title, resp.msg ] );
+									
+									if( resp.status === 'ok' ){
+										form.triggerHandler( 'clear' );
+										
+									}
+									
+								}
+								catch( err ){
+									console.error( err );
+									console.log( data );
 								}
 								
 							},
