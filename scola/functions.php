@@ -550,7 +550,7 @@ add_action( 'customFile', function( $arg ){
 	</div>
 	*/
 	
-	printf( "<div class='customFile flex %s'>
+	printf( "<div class='customFile flex %s' item-title='%s'>
 			<div class='head base1 flex flex-items-center flex-justify-between %s'>
 				<div class='title'>
 					%s
@@ -562,6 +562,7 @@ add_action( 'customFile', function( $arg ){
 			
 		</div>",
 		$arg[ 'class' ],
+		$arg[ 'title' ],
 		$arg[ 'head' ],
 		$arg[ 'title' ],
 		$arg[ 'icon' ],

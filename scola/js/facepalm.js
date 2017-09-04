@@ -424,7 +424,6 @@
 			
 			/* customFile */
 			(function( custom ){
-				
 				custom.on({
 					get: function( e ){
 						var input = $(this).find( 'input:file' );
@@ -1353,6 +1352,9 @@
 			
 			/* formularz */
 			(function( popup, form, buttons, loader ){
+				var sendFile = false;
+				var url = root.bazar.basePath + '/form-tlumaczenia';
+				
 				loader.hide();
 				
 				loader
@@ -1392,13 +1394,98 @@
 				form
 				.on({
 					send: function( e ){
+						var token = 'token' + new Date().getTime();
 						var myData = $(this).triggerHandler( 'getData' );
-						var token = new Date().getTime();
+						myData.append( 'token', token );
+						
+						/* for( var item of myData.entries() ){
+							console.log( item );
+							
+						} */
+						
+						// przesyłanie tekstu
+						$.ajax({
+							method: 'post',
+							url: sendFile === true?( url + '?save' ):( url ),
+							data: myData,
+							contentType: false,
+							processData: false,
+							success: function( data, status ){
+								var resp;
+								try{
+									resp = JSON.parse( data );
+									console.log( resp );
+									
+								}
+								catch( err ){
+									console.error( err );
+									console.log( data );
+								}
+								
+								// przesyłanie załączników
+								if( sendFile === true ){
+									
+									// sprawdzanie wyniku walidacji
+									if( resp.status === 'ok' ){
+										form.triggerHandler( 'sendFile', [ token ] );
+										
+									}
+									else{
+										popup.triggerHandler( 'open', [ resp.status, resp.title, resp.msg ] );
+										
+									}
+									
+								}
+								else{
+									popup.triggerHandler( 'open', [ resp.status, resp.title, resp.msg ] );
+									
+									if( resp.status === 'ok' ){
+										form.triggerHandler( 'clear' );
+										
+									}
+									
+								}
+								
+							},
+							error: function(){
+								popup.triggerHandler( 'open', [ 'fail', 'Błąd sieci', 'Nie udało się nawiązać połączenia z serwerem.<br>Proszę spróbować ponownie za chwilę.' ] );
+								
+							},
+							
+						});
+						
+					},
+					sendFile: function( e, token ){
+						var filesData = new FormData();
+						
+						form.find( '.customFile' ).each(function(){
+							var files = $(this).triggerHandler( 'get' );
+							// pojedynczy plik
+							if( typeof files.length === 'undefined' ){
+								filesData.append( files.name, files.value );
+								
+							}
+							else{
+								$.each( files, function( name, value ){
+									filesData.append( name, value );
+									
+								} );
+								
+							}
+							
+						});
+						
+						filesData.append( 'token', token );
+						
+						/* for( var item of filesData.entries() ){
+							console.log( item );
+							
+						} */
 						
 						$.ajax({
 							method: 'post',
-							url: root.bazar.basePath + '/form-tlumaczenia',
-							data: myData,
+							url: url + '?load',
+							data: filesData,
 							contentType: false,
 							processData: false,
 							xhr: function(){
@@ -1413,8 +1500,6 @@
 								});
 								
 								xhr.upload.addEventListener( 'progress', function( e ){
-									// console.log( e );
-									// var progress = Math.round( e.loaded / e.total * 1000 ) / 1000;
 									var progress = e.loaded / e.total;
 									
 									loader.triggerHandler( 'set', progress );
@@ -1422,8 +1507,6 @@
 								});
 								
 								xhr.upload.addEventListener( 'loadend', function( e ){
-									// form.triggerHandler( 'clear' );
-									
 									window.setTimeout(function(){
 										loader.slideUp();
 										loader.triggerHandler( 'reset' );
@@ -1435,8 +1518,8 @@
 								
 								return xhr;
 							},
-							success: function( data, status ){
-								console.log( data );
+							success: function( data, fstatus ){
+								// console.log( data );
 								var resp = JSON.parse( data );
 								console.log( resp );
 								
@@ -1457,10 +1540,15 @@
 						
 					},
 					getData: function( e ){
-						var ret = new FormData( form[0] );
+						var ret = new FormData();
+						$.each( form.serializeArray(), function( k, item ){
+							ret.append( item.name, item.value );
+							
+						} );
+						
 						var item;
 						
-						$( '.customSelect, .customFile' ).each(function(){
+						$( '.customSelect' ).each(function(){
 							item = $(this).triggerHandler( 'get' );
 							ret.append( item.name, item.value );
 							
@@ -1490,6 +1578,29 @@
 						form.triggerHandler( 'clear' );
 						
 					}
+					
+				});
+				
+				form.find( 'input:file' ).change(function( e ){
+					var files = $(this).prop( 'files' );
+					var title = $(this).parents( '.customFile:first' ).attr( 'item-title' );
+					
+					if( files.length > 0 ){
+						sendFile = true;
+						var t  = [];
+						$.each( files, function( k, file ){
+							t.push( file.name );
+							
+						} );
+						
+						title = t.join( ', ' );
+					}
+					else{
+						sendFile = false;
+						
+					}
+					
+					$(this).parents( '.customFile:first' ).find( '.head > .title' ).text( title );
 					
 				});
 				
