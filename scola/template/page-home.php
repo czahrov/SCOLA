@@ -29,15 +29,16 @@
 	<div class='slider bgimg full'>
 		<div class='view flex'>
 			<?php
-				setlocale( LC_TIME, 'polish' );
+				// setlocale( LC_TIME, 'polish' );
 				foreach( home_slider_top() as $item ):
 			?>
-			<div class='slide bgimg full font-light base1 no-shrink flex'>
+			<div class='slide bgimg full font-light base1 no-shrink flex' style='background-image: url(<?php echo $item[ 'img' ]; ?>)'>
 				<div class='filtr'></div>
 				<div class='box grid font-light flex flex-column flex-justify-end'>
 					<div class='head hide flex-ml'>
 						<div class='data uppercase'>
-							<?php echo strftime( "%d %B %Y roku", $item[ 'date' ] ); ?>
+							<?php // echo strftime( "%d %B %Y roku", $item[ 'date' ] ); ?>
+							<?php echo $item[ 'date' ]; ?>
 						</div>
 						*
 						<div class='kategoria uppercase bold'>

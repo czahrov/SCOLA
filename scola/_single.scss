@@ -1,0 +1,127 @@
+#single{
+	
+	& > .top{
+		margin-bottom: 50px;
+		
+		& > .title{
+			padding: 60px 0 30px;
+			font-size: 36px;
+			
+		}
+		
+	}
+	
+	& > .img{
+		position: relative;
+		padding-bottom: 30%;
+		min-height: 300px;
+		
+		& > .tab{
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			transform: translate(-50%,50%);
+			background-color: $color-light;
+			
+		}
+		
+	}
+	
+	& > .bot{
+		position: relative;
+		margin-top: 50px;
+		
+		& > .text{
+			min-height: 500px;
+			
+			& > .box{
+				
+				& > .date{
+					padding-bottom: 30px;
+					margin-bottom: 30px;
+					max-width: 300px;
+					font-size: 12px;
+					border-bottom: solid 1px $color-dark;
+					
+				}
+				
+				& > .content{
+					font-size: 15px;
+					line-height: 2em;
+					text-indent: 20px;
+					
+					& > p{
+						padding-bottom: 50px;
+						
+					}
+					
+				}
+				
+				& > .share{
+					margin: 30px 0;
+				}
+				
+			}
+			
+		}
+		
+		& > .menu{
+			padding: 0 20px;
+			
+			& > .item{
+				position: relative;
+				padding: 0 10px 0 20px;
+				height: 100px;
+				background-color: $color-green;
+				transition-property: background, color;
+				transition: 0.3s linear;
+				
+				& > .date{
+					font-size: 12px;
+					
+				}
+				
+				& > .title{
+					font-size: 12px;
+					
+				}
+				
+				&:not(:last-child){
+					border-bottom: solid 1px $color-green-light;
+					
+				}
+				
+				&.header > .title{
+					font-size: 18px;
+					
+				}
+				
+				&:not(.header):not(.bottom):hover{
+					background-color: $color-light;
+					color: $color-dark;
+					
+				}
+				
+				@media( min-width: map-get( $bpw, desktop ) ){
+					padding: 0 10px 0 50px;
+					
+				}
+				
+			}
+			
+			@media( min-width: map-get( $bpw, desktop ) ){
+				position: absolute;
+				padding: 0;
+				max-height: 100%;
+				top: 0;
+				left: 70%;
+				right: 0;
+				overflow: auto;
+				
+			}
+			
+		}
+		
+	}
+	
+}

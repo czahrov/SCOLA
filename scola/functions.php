@@ -42,7 +42,40 @@ function isAjax(){
 }
 
 function home_slider_top(){
-	return array(
+	$posts = get_posts(array(
+		'category_name' => 'slider-glowna',
+		'number_posts' => -1,
+		
+	));
+	
+	$ret = array();
+	
+	if( count( $posts ) > 0 ) foreach( $posts as $post ){
+		$t = array_merge(
+			array(
+				'title' => 'Lorem ipsum Title',
+				'img' => 'https://placeimg.com/500/300/tech',
+				'url' => home_url(),
+				'date' => '',
+				'cats' => '',
+				
+			),array(
+				'title' => $post->post_title,
+				'img' => wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), 'full' ),
+				'url' => get_permalink( $post->ID ),
+				'date' => get_the_date( "", $post->ID ),
+				'cats' => getCatsList( $post->ID ),
+				
+			)
+		);
+		
+		$ret[] = $t;
+		
+	}
+	
+	return $ret;
+	
+	/* return array(
 		array(
 			'title' => 'Kursy językowe dofinansowane ze środków UE w SCOLA',
 			'img' => 'https://placeimg.com/300/100/tech',
@@ -54,32 +87,124 @@ function home_slider_top(){
 			),
 			
 		),
-		array(
-			'title' => 'Lorem ipsum',
-			'img' => 'https://placeimg.com/300/101/tech',
-			'url' => home_url(),
-			'date' => time(),
-			'cats' => array(
-				'ważne informacje',
-				'ogłoszenia',
-				
-			),
-			
-		),
-		array(
-			'title' => 'Inne lorem ipsum',
-			'img' => 'https://placeimg.com/300/102/tech',
-			'url' => home_url(),
-			'date' => time(),
-			'cats' => array(
-				'ogłoszenia',
-				
-			),
-			
-		),
 		
-	);
+	); */
 	
+}
+
+function getCatsList( $id ){
+	$ret = array();
+	
+	$cats = wp_get_post_categories( $id );
+	
+	if( count( $cats ) > 0 ) foreach( $cats as $cat_id ){
+		$ret[] = get_the_category_by_id( $cat_id );
+		
+	}
+	
+	return $ret;
+}
+
+function aktualnosci_kafelki_najnowsze(){
+	$posts = get_posts(array(
+		'category_name' => 'blog',
+		'numberposts' => 3,
+		'order' => 'DESC',
+		'orderby' => 'date',
+		
+	));
+	
+	$ret = array();
+	
+	if( count( $posts ) > 0 ) foreach( array_slice( $posts, 0, 3 ) as $post ){
+		$ret[] = array_merge(
+			array(
+				'img' => 'https://placeimg.com/300/300/tech',
+				'date'=> 'Lorem ipsum data',
+				'title' => 'Lorem ipsum tytuł',
+				'url' => home_url(),
+				
+			),
+			array(
+				'img' => wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), 'full' ),
+				'date'=> get_the_date( "", $post->ID ),
+				'title' => $post->post_title,
+				'url' => get_permalink( $post->ID ),
+				
+			)
+		);
+		
+	}
+	
+	return $ret;
+}
+
+function aktualnosci_kafelki_informacje(){
+	$posts = get_posts(array(
+		'category_name' => 'informacje',
+		'number_posts' => -1,
+		'order' => 'DESC',
+		'orderby' => 'date',
+		
+	));
+	
+	$ret = array();
+	
+	if( count( $posts ) > 0 ) foreach( $posts as $post ){
+		$ret[] = array_merge(
+			array(
+				'img' => 'https://placeimg.com/300/300/tech',
+				'date'=> 'Lorem ipsum data',
+				'title' => 'Lorem ipsum tytuł',
+				'url' => home_url(),
+				
+			),
+			array(
+				'img' => wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), 'full' ),
+				'date'=> get_the_date( "", $post->ID ),
+				'title' => $post->post_title,
+				'url' => get_permalink( $post->ID ),
+				
+			)
+		);
+		
+	}
+	
+	return $ret;
+}
+
+function aktualnosci_kafelki_starsze(){
+	$posts = get_posts(array(
+		'category_name' => 'blog',
+		'numberposts' => -1,
+		'order' => 'DESC',
+		'orderby' => 'date',
+		
+	));
+	
+	$ret = array();
+	
+	if( count( $posts ) > 0 ) foreach( array_slice( $posts, 3 ) as $post ){
+		$ret[] = array_merge(
+			array(
+				'img' => 'https://placeimg.com/300/300/tech',
+				'date'=> 'Lorem ipsum data',
+				'title' => 'Lorem ipsum tytuł',
+				'url' => home_url(),
+				
+			),
+			array(
+				'img' => wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), 'full' ),
+				'date'=> get_the_date( "", $post->ID ),
+				'title' => $post->post_title,
+				'url' => get_permalink( $post->ID ),
+				
+			)
+		);
+		
+	}
+	
+	return $ret;
 }
 
 class NewsLetter{

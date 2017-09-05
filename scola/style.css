@@ -66,6 +66,18 @@
   border-color: #5e9104;
 }
 
+.font-green-light {
+  color: #7cc401;
+}
+
+.bg-green-light {
+  background-color: #7cc401;
+}
+
+.border-green-light {
+  border-color: #7cc401;
+}
+
 .font-red {
   color: #fe0000;
 }
@@ -76,6 +88,18 @@
 
 .border-red {
   border-color: #fe0000;
+}
+
+.font-gray-dark {
+  color: #a8a8a8;
+}
+
+.bg-gray-dark {
+  background-color: #a8a8a8;
+}
+
+.border-gray-dark {
+  border-color: #a8a8a8;
 }
 
 * {
@@ -179,7 +203,7 @@ a, img {
 .customButton {
   position: relative;
   padding: 0 20px;
-  min-width: 266px;
+  min-width: 170px;
   height: 52px;
   border-style: solid;
   border-width: 2px;
@@ -651,7 +675,7 @@ a, img {
 }
 #home > .slider > .view > .slide {
   position: relative;
-  background-image: url("https://placeimg.com/300/100/tech");
+  background-color: #eee;
 }
 #home > .slider > .view > .slide > .box {
   padding-bottom: 150px;
@@ -1765,6 +1789,240 @@ a, img {
 }
 #kursy > .bot > .box > ul > li > .content {
   font-size: 15px;
+}
+
+#aktualnosci {
+  position: relative;
+}
+#aktualnosci > .top {
+  margin: 60px 0 30px;
+  font-size: 36px;
+}
+#aktualnosci > .nowosci {
+  position: relative;
+  margin-bottom: 80px;
+  padding-top: 50px;
+  overflow: hidden;
+}
+#aktualnosci > .nowosci > .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 500px;
+}
+#aktualnosci > .nowosci > .box > .title {
+  margin-bottom: 20px;
+  font-size: 38px;
+}
+#aktualnosci > .nowosci > .box > .kafelki {
+  margin: 0 -12px;
+}
+#aktualnosci > .nowosci > .box > .kafelki > .item {
+  padding: 0 12px;
+  margin: 20px 0;
+}
+#aktualnosci > .nowosci > .box > .kafelki > .item > .inner {
+  position: relative;
+}
+#aktualnosci > .nowosci > .box > .kafelki > .item > .inner > .share {
+  height: 60px;
+}
+#aktualnosci > .nowosci > .box > .kafelki > .item > .inner > .share > .link > .icon {
+  padding-right: 20px;
+}
+#aktualnosci > .nowosci > .box > .kafelki > .item > .inner > .img {
+  min-height: 300px;
+  background-color: #eee;
+}
+#aktualnosci > .nowosci > .box > .kafelki > .item > .inner > .date {
+  margin: 20px 0;
+  font-size: 12px;
+  color: #a8a8a8;
+}
+#aktualnosci > .nowosci > .box > .kafelki > .item > .inner > .title {
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 2.5em;
+}
+#aktualnosci > .nowosci > .box > .kafelki > .item > .inner > .hitbox {
+  top: 60px;
+}
+#aktualnosci > .informacje {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 80px;
+}
+#aktualnosci > .informacje > .box > .title {
+  margin-bottom: 20px;
+  font-size: 38px;
+}
+#aktualnosci > .informacje > .box > .kafelki {
+  margin: 0 -12px;
+}
+#aktualnosci > .informacje > .box > .kafelki > .item {
+  padding: 0 12px;
+  margin: 20px 0;
+}
+#aktualnosci > .informacje > .box > .kafelki > .item > .inner {
+  position: relative;
+}
+#aktualnosci > .informacje > .box > .kafelki > .item > .inner > .share {
+  height: 60px;
+}
+#aktualnosci > .informacje > .box > .kafelki > .item > .inner > .share > .link > .icon {
+  padding-right: 20px;
+}
+#aktualnosci > .informacje > .box > .kafelki > .item > .inner > .img {
+  min-height: 300px;
+  background-color: #eee;
+}
+#aktualnosci > .informacje > .box > .kafelki > .item > .inner > .info > .date {
+  margin: 20px 0;
+  font-size: 12px;
+  color: #a8a8a8;
+}
+#aktualnosci > .informacje > .box > .kafelki > .item > .inner > .info > .title {
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 2.5em;
+}
+#aktualnosci > .informacje > .box > .kafelki > .item > .inner > .hitbox {
+  top: 60px;
+}
+#aktualnosci > .starsze {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 80px;
+}
+#aktualnosci > .starsze > .box > .title {
+  margin-bottom: 20px;
+  font-size: 38px;
+}
+#aktualnosci > .starsze > .box > .kafelki {
+  margin: 0 -12px;
+}
+#aktualnosci > .starsze > .box > .kafelki > .item {
+  padding: 0 12px;
+  margin: 20px 0;
+}
+#aktualnosci > .starsze > .box > .kafelki > .item > .inner {
+  position: relative;
+}
+#aktualnosci > .starsze > .box > .kafelki > .item > .inner > .share {
+  height: 60px;
+}
+#aktualnosci > .starsze > .box > .kafelki > .item > .inner > .share > .link > .icon {
+  padding-right: 20px;
+}
+#aktualnosci > .starsze > .box > .kafelki > .item > .inner > .img {
+  min-height: 300px;
+  background-color: #eee;
+}
+#aktualnosci > .starsze > .box > .kafelki > .item > .inner > .date {
+  margin: 20px 0;
+  font-size: 12px;
+  color: #a8a8a8;
+}
+#aktualnosci > .starsze > .box > .kafelki > .item > .inner > .title {
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 2.5em;
+}
+#aktualnosci > .starsze > .box > .kafelki > .item > .inner > .hitbox {
+  top: 60px;
+}
+
+#single > .top {
+  margin-bottom: 50px;
+}
+#single > .top > .title {
+  padding: 60px 0 30px;
+  font-size: 36px;
+}
+#single > .img {
+  position: relative;
+  padding-bottom: 30%;
+  min-height: 300px;
+}
+#single > .img > .tab {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+  background-color: #fff;
+}
+#single > .bot {
+  position: relative;
+  margin-top: 50px;
+}
+#single > .bot > .text {
+  min-height: 500px;
+}
+#single > .bot > .text > .box > .date {
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  max-width: 300px;
+  font-size: 12px;
+  border-bottom: solid 1px #3d3d3d;
+}
+#single > .bot > .text > .box > .content {
+  font-size: 15px;
+  line-height: 2em;
+  text-indent: 20px;
+}
+#single > .bot > .text > .box > .content > p {
+  padding-bottom: 50px;
+}
+#single > .bot > .text > .box > .share {
+  margin: 30px 0;
+}
+#single > .bot > .menu {
+  padding: 0 20px;
+}
+#single > .bot > .menu > .item {
+  position: relative;
+  padding: 0 10px 0 20px;
+  height: 100px;
+  background-color: #5e9104;
+  -webkit-transition-property: background, color;
+  transition-property: background, color;
+  -webkit-transition: 0.3s linear;
+  transition: 0.3s linear;
+}
+#single > .bot > .menu > .item > .date {
+  font-size: 12px;
+}
+#single > .bot > .menu > .item > .title {
+  font-size: 12px;
+}
+#single > .bot > .menu > .item:not(:last-child) {
+  border-bottom: solid 1px #7cc401;
+}
+#single > .bot > .menu > .item.header > .title {
+  font-size: 18px;
+}
+#single > .bot > .menu > .item:not(.header):not(.bottom):hover {
+  background-color: #fff;
+  color: #3d3d3d;
+}
+@media (min-width: 1024px) {
+  #single > .bot > .menu > .item {
+    padding: 0 10px 0 50px;
+  }
+}
+@media (min-width: 1024px) {
+  #single > .bot > .menu {
+    position: absolute;
+    padding: 0;
+    max-height: 100%;
+    top: 0;
+    left: 70%;
+    right: 0;
+    overflow: auto;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

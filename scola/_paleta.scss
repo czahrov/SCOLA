@@ -9,6 +9,7 @@ $color-dark: #3d3d3d;
 $color-filtr: transparentize( #000, 0.5 );
 $color-pagin-shadow: #b6aeac;
 $color-pagin-mark: #fff;
+$color-gray-dark: #a8a8a8;
 $color-gray: #eee;
 $color-gray-light: #f8f8f8;
 $color-gray-lighter: #adadad;
@@ -22,7 +23,9 @@ $generator: (
 	gray: $color-gray,
 	gray-light: $color-gray-light,
 	green: $color-green,
-	red: $color-red
+	green-light: $color-green-light,
+	red: $color-red,
+	gray-dark: $color-gray-dark
 	
 );
 

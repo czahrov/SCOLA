@@ -1641,6 +1641,147 @@
 					kursy: function(){
 						if(logger) console.log('page.kursy()');
 						
+						/* slider */
+						(function( slider, view, slides, info, info_title, info_link, nav ){
+							var current = 0;
+							var lock = false;
+							var itrv;
+							var tout;
+							var config = {
+								duration: .5,
+								delay: 2.5,
+								
+							};
+							
+							slider
+							.on({
+								set: function( e ){
+									if( current < 0 ) current = slides.length - 1;
+									current %= slides.length;
+									
+									new TimelineLite({
+										onComplete: function(){
+											info_link.attr( 'href', slides.eq( current ).attr( 'item-url' ) );
+											lock = false;
+											
+										},
+										
+									})
+									.add( 'start', 0 )
+									.add(
+										TweenLite.to(
+											view,
+											config.duration,
+											{
+												scrollLeft: function(){
+													return slides.first().outerWidth() * current;
+													
+												},
+												
+											}
+										), 'start'
+									)
+									.add(
+										TweenLite.to(
+											info_title,
+											config.duration,
+											{
+												text: function(){
+													return slides.eq( current ).attr( 'item-title' );
+													
+												},
+												
+											}
+										), 'start'
+									);
+									
+									
+								},
+								next: function( e ){
+									if( !lock ){
+										lock = true;
+										current++;
+										slider.triggerHandler( 'set' );
+										
+									}
+									
+								},
+								prev: function( e ){
+									if( !lock ){
+										lock = true;
+										current--;
+										slider.triggerHandler( 'set' );
+										
+									}
+									
+								},
+								stop: function( e ){
+									window.clearInterval( itrv );
+									
+								},
+								start: function( e ){
+									slider.triggerHandler( 'stop' );
+									
+									itrv = window.setInterval(function(){
+										slider.triggerHandler( 'next' );
+										
+									}, config.delay * 1000);
+									
+								},
+								mouseenter: function( e ){
+									slider.triggerHandler( 'stop' );
+									
+								},
+								mouseleave: function( e ){
+									slider.triggerHandler( 'start' );
+									
+								},
+								
+							})
+							.swipe({
+								swipeLeft: function( e ){
+									slider.triggerHandler( 'next' );
+									
+								},
+								swipeRight: function( e ){
+									slider.triggerHandler( 'prev' );
+									
+								},
+								
+							});
+							
+							nav.click(function( e ){
+								if( $(this).hasClass( 'next' ) ){
+									slider.triggerHandler( 'next' );
+									
+								}
+								else if( $(this).hasClass( 'prev' ) ){
+									slider.triggerHandler( 'prev' );
+									
+								}
+								
+							});
+							
+							$( window ).resize(function( e ){
+								window.clearTimeout( tout );
+								tout = window.setTimeout(function(){
+									slider.triggerHandler( 'set' );
+									
+								}, 200);
+								
+							});
+							
+							slider.triggerHandler( 'start' );
+							
+						})
+						( $( '#kursy > .top > .slider' ), 
+						$( '#kursy > .top > .slider > .view' ), 
+						$( '#kursy > .top > .slider > .view > .slide' ), 
+						$( '#kursy > .top > .slider > .info' ), 
+						$( '#kursy > .top > .slider > .info > .title' ), 
+						$( '#kursy > .top > .slider > .info > .link' ), 
+						$( '#kursy > .top > .slider > .info > .nav > .button' ) );
+						
 					},
 					
 				};
