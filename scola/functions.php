@@ -240,6 +240,26 @@ function opinie_slider(){
 	return $ret;
 }
 
+function menuOf( $arg, $include = false ){
+	$ret = array();
+	$parent = get_page_by_title( $arg );
+	
+	if( $parent !== null ){
+		if( $include === true ) $ret[] = $parent;
+		$children = get_pages(array(
+			'parent' => $parent->ID,
+			
+		));
+		
+		if( count( $children ) > 0 ) foreach( $children as $child ){
+			$ret[] = $child;
+		}
+		
+	}
+	
+	return $ret;
+}
+
 class NewsLetter{
 	/*		$data
 		array(

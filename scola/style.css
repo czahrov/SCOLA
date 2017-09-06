@@ -2033,4 +2033,80 @@ a, img {
   }
 }
 
+#cennik .tab {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+  background-color: #fff;
+  border-radius: 50%;
+}
+#cennik .table {
+  margin-bottom: 30px;
+}
+@media (min-width: 768px) {
+  #cennik .table > .head > .cell {
+    height: 100px;
+  }
+}
+@media (min-width: 768px) {
+  #cennik .table > .body > .cell:not(:first-child) {
+    border: solid #eee;
+    border-width: 0 0 1px 1px;
+  }
+}
+#cennik .table .cell {
+  padding: 0 10px;
+  height: 200px;
+  font-size: 16px;
+  border-bottom: solid 1px #eee;
+}
+@media (min-width: 768px) {
+  #cennik .table .cell {
+    padding: 0 20px;
+  }
+}
+#cennik .table .subcell:not(:last-child) {
+  border-bottom: solid 1px #eee;
+}
+#cennik .table .title {
+  font-size: 32px;
+}
+#cennik .table .subtitle {
+  font-size: 18px;
+}
+@media (min-width: 768px) {
+  #cennik .table {
+    margin-bottom: 0;
+  }
+}
+#cennik > .top > .box {
+  padding: 60px 0;
+}
+#cennik > .top > .box > .title {
+  margin-bottom: 30px;
+  max-width: 620px;
+  font-size: 36px;
+}
+#cennik .more {
+  margin-top: 50px;
+}
+#cennik > .dorosli, #cennik > .podstawowka, #cennik > .indywidualne {
+  margin-bottom: 100px;
+}
+#cennik > .dorosli > .box, #cennik > .podstawowka > .box, #cennik > .indywidualne > .box {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 100px;
+}
+#cennik > .dorosli > .box > .title, #cennik > .podstawowka > .box > .title, #cennik > .indywidualne > .box > .title {
+  margin-bottom: 30px;
+  font-size: 36px;
+}
+#cennik > .dorosli > .box > .subtitle, #cennik > .podstawowka > .box > .subtitle, #cennik > .indywidualne > .box > .subtitle {
+  margin-bottom: 100px;
+  font-size: 15px;
+}
+
 /*# sourceMappingURL=style.css.map */
