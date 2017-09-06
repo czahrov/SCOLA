@@ -10,7 +10,8 @@
 		}
 		else{		//podstrona
 			// var subpage = path.match(/([\w\-]+)\/$/)[1];
-			var subpage = path.match(/^\/([\w\-]+)\//)[1];
+			// var subpage = path.match(/^\/([\w\-]+)\//)[1];7
+			var subpage = path.match(/^\/([^\/]+)/)[1];
 			var t = subpage.replace(/\-/g,'_');
 			if(typeof subpage === 'string' && subpage.length){
 				if(typeof root.page[t] === 'function'){
@@ -948,6 +949,7 @@
 		testy: function(){
 			var addon = root.addon;
 			var logger = addon.isLogger();
+			var tout;
 			
 			if(logger) console.log('page.testy()');
 			
@@ -959,7 +961,7 @@
 				
 				slider
 				.on({
-					set: function(){
+					set: function( e ){
 						if( current < 0 ) current = 0;
 						if( current > max ) current = max;
 						if( current > slides.length - 1 ){
@@ -1028,21 +1030,21 @@
 						);
 						
 					},
-					next: function(){
+					next: function( e ){
 						if( lock ) return false;
 						lock = true;
 						current++;
 						slider.triggerHandler( 'set' );
 						
 					},
-					prev: function(){
+					prev: function( e ){
 						if( lock ) return false;
 						lock = true;
 						current--;
 						slider.triggerHandler( 'set' );
 						
 					},
-					end: function(){
+					end: function( e ){
 						var all = slides.length;
 						var good = input.filter( ".correct:checked" ).length;
 						var procent = Math.round( ( good / all ) * 1000 ) / 10;
@@ -1067,7 +1069,7 @@
 						}
 						
 						for( i = progi.length - 1; i >= 0; i-- ){
-							if( procent >= progi[ i ].value ) break;
+							if( good >= progi[ i ].value ) break;
 							
 						}
 						
@@ -1115,19 +1117,26 @@
 					}
 					else{
 						var self = $(this);
+						var parts = self.children( '.text' ).text().split( ', ' );
+						var holes = self.parents( '.item:first' ).find( '.title > .hole' );
 						
-						TweenLite.to(
-							self.parents( '.item:first' ).find( '.title > .hole' ),
-							.3,
-							{
-								text:{
-									value: self.children( '.text' ).text(),
-									delimiter: "",
+						$.each( parts, function( k, part ){
+							TweenLite.to(
+								holes.eq( k ),
+								.3,
+								{
+									text:{
+										value: part,
+										delimiter: "",
+										
+									},
 									
-								},
-								
-							}
-						);
+								}
+							);
+							
+							
+						} );
+						
 						
 					}
 					
@@ -1200,6 +1209,37 @@
 								
 							}
 						);
+						
+					}
+					
+				});
+				
+				$( window ).resize(function( e ){
+					window.clearTimeout( tout );
+					tout = window.setTimeout(function(){
+						slider.triggerHandler( 'set' );
+						
+					}, 200);
+					
+				});
+				
+				$( 'body' ).keyup(function( e ){
+					// console.log( e );
+					
+					switch( e.key ){
+						case "ArrowRight":
+							slider.triggerHandler( 'next' );
+						break;
+						case "ArrowLeft":
+							slider.triggerHandler( 'prev' );
+						break;
+						case "1":
+						case "2":
+						case "3":
+						case "4":
+							slides.eq( current ).find( '.anwser > label' ).eq( parseInt( e.key ) - 1 ).click();
+							
+						break;
 						
 					}
 					

@@ -44,7 +44,7 @@ function isAjax(){
 function home_slider_top(){
 	$posts = get_posts(array(
 		'category_name' => 'slider-glowna',
-		'number_posts' => -1,
+		'numberposts' => -1,
 		
 	));
 	
@@ -142,7 +142,7 @@ function aktualnosci_kafelki_najnowsze(){
 function aktualnosci_kafelki_informacje(){
 	$posts = get_posts(array(
 		'category_name' => 'informacje',
-		'number_posts' => -1,
+		'numberposts' => -1,
 		'order' => 'DESC',
 		'orderby' => 'date',
 		
@@ -200,6 +200,39 @@ function aktualnosci_kafelki_starsze(){
 				'url' => get_permalink( $post->ID ),
 				
 			)
+		);
+		
+	}
+	
+	return $ret;
+}
+
+function opinie_slider(){
+	$posts = get_posts(array(
+		'category_name' => 'opinie',
+		'numberposts' => -1,
+		'order' => 'DESC',
+		'orderby' => 'date',
+		
+	));
+	
+	$ret = array();
+	
+	if( count( $posts ) > 0 ) foreach( $posts as $post ){
+		$ret[] = array_merge(
+			array(
+				'title' => 'Lorem ipsum Tytuł',
+				'content' => 'Lorem ipsum Treść Lorem ipsum Treść Lorem ipsum Treść Lorem ipsum Treść Lorem ipsum Treść ',
+				'img_alt' => 'https://placeimg.com/100/100/people',
+				
+			),
+			array(
+				'title' => $post->post_title,
+				'content' => $post->post_content,
+				'img' => wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), 'full' ),
+				
+			)
+			
 		);
 		
 	}

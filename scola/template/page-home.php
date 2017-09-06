@@ -316,23 +316,25 @@
 			</div>
 			<div class='slider flex flex-column flex-items-center'>
 				<div class='view flex flex-self-stretch'>
-					<?php for($i=1; $i<=3; $i++): ?>
+					<?php
+						foreach( opinie_slider() as $item ):
+					?>
 					<div class='slide base1 no-shrink flex flex-column flex-row-mm flex-items-center'>
 						<div class='img base3 grow no-shrink flex flex-justify-end'>
-							<img class='img' src='<?php echo get_template_directory_uri(); ?>/img/person.png' />
+							<div class='pic bgimg full' style='background-image:url(<?php echo empty( $item[ 'img' ] )?( $item[ 'img_alt' ] ):( $item[ 'img' ] ); ?>);'></div>
 							
 						</div>
 						<div class='content text-center text-left-mm grow-mm flex flex-column flex-justify-around flex-self-stretch'>
 							<div class='tekst'>
-								Kurs daje mi możliwość poznania języka używanego na codzień. Zdecydowanie dobrym pomysłem jest nacisk na porozumiewanie się tylko w języku angielskim.
+								<?php echo $item[ 'content' ]; ?>
 							</div>
 							<div class='bold font-green'>
-								Anna Krztoniewicz - 25 lat
+								<?php echo $item[ 'title' ]; ?>
 							</div>
 						</div>
 						
 					</div>
-					<?php endfor; ?>
+					<?php endforeach; ?>
 					
 				</div>
 				<?php do_action( 'customButton', array(

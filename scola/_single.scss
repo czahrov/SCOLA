@@ -32,7 +32,6 @@
 		margin-top: 50px;
 		
 		& > .text{
-			min-height: 500px;
 			
 			& > .box{
 				
@@ -119,6 +118,11 @@
 				overflow: auto;
 				
 			}
+			
+		}
+		
+		@media( min-width: map-get( $bpw, desktop ) ){
+			min-height: 700px;
 			
 		}
 		

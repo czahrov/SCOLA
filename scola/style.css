@@ -1039,6 +1039,12 @@ a, img {
   padding-bottom: 100px;
   overflow: hidden;
 }
+#home > .opinie > .grid > .slider > .view > .slide > .img > .pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #eee;
+}
 @media (min-width: 768px) {
   #home > .opinie > .grid > .slider > .view > .slide > .img {
     padding: 0 65px 0 0;
@@ -1049,7 +1055,7 @@ a, img {
 }
 @media (min-width: 768px) {
   #home > .opinie > .grid > .slider > .view > .slide > .content > .tekst {
-    padding: 0;
+    padding: 0 0 20px;
   }
 }
 @media (min-width: 768px) {
@@ -1958,9 +1964,6 @@ a, img {
   position: relative;
   margin-top: 50px;
 }
-#single > .bot > .text {
-  min-height: 500px;
-}
 #single > .bot > .text > .box > .date {
   padding-bottom: 30px;
   margin-bottom: 30px;
@@ -2022,6 +2025,11 @@ a, img {
     left: 70%;
     right: 0;
     overflow: auto;
+  }
+}
+@media (min-width: 1024px) {
+  #single > .bot {
+    min-height: 700px;
   }
 }
 

@@ -52,9 +52,9 @@
 			<?php
 				$posts = get_posts(array(
 					'category_name' => 'blog',
-					'numberposts' => -1,
-					'order' => 'DESC',
-					'orderby' => 'date',
+					'numberposts' => 5,
+					'orderby' => 'rand',
+					'exclude' => $post->ID,
 					
 				));
 				foreach( $posts as $item ):
@@ -62,6 +62,8 @@
 			<div class='item flex flex-wrap flex-items-center'>
 				<div class='date base1 font-green-light'>
 					<?php echo get_the_date( "", $item->ID ); ?>
+					*
+					<?php echo implode( ", ", getCatsList( $item->ID ) ); ?>
 				</div>
 				<div class='title bold base1'>
 					<?php echo $item->post_title; ?>
