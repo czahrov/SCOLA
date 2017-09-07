@@ -8,6 +8,7 @@
 			</div>
 			<?php do_action( 'customButtonFill', array(
 				'title' => 'wypełnij test',
+				'url' => home_url( 'nasze-centrum/kursy' ),
 				
 			) ); ?>
 			
@@ -123,7 +124,7 @@
 				
 			) ); ?>
 			<div class='more'>
-				<a class='link arrow_slide flex pointer'>
+				<a class='link arrow_slide flex pointer' href='<?php echo home_url( 'nasze-centrum' ); ?>'>
 					<img class='icon arrow right' src='<?php echo get_template_directory_uri(); ?>/img/arrow_white.png' />
 					<div class='text'>
 						więcej o scola
@@ -227,7 +228,7 @@
 				
 			) ); ?>
 			<div class='more'>
-				<a class='link arrow_slide flex pointer'>
+				<a class='link arrow_slide flex pointer' href='<?php echo home_url( 'nasze-centrum' ); ?>'>
 					<img class='icon arrow right' src='<?php echo get_template_directory_uri(); ?>/img/arrow_white.png' />
 					<div class='text'>
 						więcej o scola
@@ -294,7 +295,7 @@
 				
 			</div>
 			<div class='more'>
-				<a class='link arrow_slide flex pointer'>
+				<a class='link arrow_slide flex pointer' href='<?php echo home_url( 'nasze-centrum' ); ?>'>
 					<img class='icon arrow right' src='<?php echo get_template_directory_uri(); ?>/img/arrow_white.png' />
 					<div class='text'>
 						więcej o scola

@@ -6,21 +6,23 @@
 	
 */
 
-@import 'paleta';
-@import 'setup';
+@import 'scss/paleta';
+@import 'scss/setup';
 
-@import 'top';
-@import 'footer';
-@import 'breadcrumb';
-@import 'popup';
-@import 'fb';
-@import 'home';
-@import 'nasze-centrum';
-@import 'jezyk';
-@import 'test';
-@import 'kontakt';
-@import 'tlumaczenia';
-@import 'kursy';
-@import 'aktualnosci';
-@import 'single';
-@import 'cennik';
+@import 'scss/top';
+@import 'scss/footer';
+@import 'scss/breadcrumb';
+@import 'scss/popup';
+@import 'scss/fb';
+@import 'scss/home';
+@import 'scss/nasze-centrum';
+@import 'scss/jezyk';
+@import 'scss/test';
+@import 'scss/kontakt';
+@import 'scss/tlumaczenia';
+@import 'scss/kursy';
+@import 'scss/aktualnosci';
+@import 'scss/single';
+@import 'scss/cennik';
+@import 'scss/metody-nauczania';
+@import 'scss/certyfikaty-jezykowe';

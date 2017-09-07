@@ -112,6 +112,11 @@
   line-height: 1.5em;
 }
 
+.grid {
+  max-width: 1240px;
+  padding: 0 20px;
+}
+
 .regular, #top > ul.menu > li > ul {
   font-family: 'sen-regular';
 }
@@ -132,11 +137,6 @@
 
 .pointer, .pointer * {
   cursor: pointer;
-}
-
-.grid {
-  max-width: 1200px;
-  padding: 0 20px;
 }
 
 a, img {
@@ -180,10 +180,14 @@ a, img {
 
 .tab {
   position: relative;
-  width: 74px;
   height: 74px;
-  border-radius: 36px 36px 0 0;
-  border-radius: 50%;
+  border-radius: 37px;
+}
+.tab > .icon {
+  padding: 0 28px;
+}
+.tab > .title {
+  padding-right: 20px;
 }
 
 .hitbox {
@@ -1195,7 +1199,8 @@ a, img {
   margin-bottom: 20px;
 }
 #nasze_centrum > .opis {
-  padding: 54px 0;
+  padding-top: 54px;
+  padding-bottom: 54px;
 }
 #nasze_centrum > .opis > .line {
   margin-bottom: 45px;
@@ -2082,7 +2087,8 @@ a, img {
   }
 }
 #cennik > .top > .box {
-  padding: 60px 0;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 #cennik > .top > .box > .title {
   margin-bottom: 30px;
@@ -2109,4 +2115,141 @@ a, img {
   font-size: 15px;
 }
 
-/*# sourceMappingURL=style.css.map */
+#metodynauczania {
+  font-size: 15px;
+}
+#metodynauczania .header {
+  font-size: 21px;
+}
+#metodynauczania .header.big {
+  font-size: 36px;
+}
+#metodynauczania .bar {
+  margin: 60px 0;
+  height: 60px;
+}
+#metodynauczania .bar > .inner {
+  width: 100%;
+  max-width: 1240px;
+}
+#metodynauczania .bar > .inner > .title {
+  padding-left: 20px;
+  padding-right: 40px;
+}
+#metodynauczania ul {
+  list-style-position: inside;
+  list-style-image: url(img/ikony/bullet_green.png);
+}
+#metodynauczania ul > li {
+  margin-bottom: 10px;
+}
+#metodynauczania > .naszecentrum {
+  position: relative;
+  padding-bottom: 40px;
+  margin-bottom: 100px;
+}
+#metodynauczania > .naszecentrum > .img {
+  margin: 0 20px;
+  min-height: 300px;
+  padding-bottom: 30%;
+  background-color: #eee;
+  background-image: url(img/metody_nauczania.jpg);
+}
+@media (min-width: 1024px) {
+  #metodynauczania > .naszecentrum > .img {
+    position: absolute;
+    margin: 0 0 0 50px;
+    padding: 0;
+    min-height: initial;
+    top: 0;
+    right: 0;
+    left: 50%;
+    bottom: 0;
+  }
+}
+#metodynauczania > .naszecentrum > .box > .info > .title {
+  padding: 60px 0 30px;
+}
+#metodynauczania > .naszecentrum > .box > .info > ul {
+  list-style-type: none;
+}
+#metodynauczania > .naszecentrum > .box > .info > ul > li {
+  margin-top: 15px;
+}
+#metodynauczania > .nowemetody {
+  padding: 80px 0 40px;
+}
+#metodynauczania > .nowemetody > .box > p {
+  padding-bottom: 40px;
+  line-height: 2em;
+}
+#metodynauczania > .nowosci > .box > .title {
+  padding-top: 70px;
+}
+#metodynauczania > .nowosci > .box > ul > li {
+  margin-bottom: 40px;
+  line-height: 2em;
+}
+#metodynauczania > .laboratorium > .box > .customButtonFill {
+  margin: 50px 0;
+}
+
+#certjezykowe {
+  font-size: 15px;
+}
+#certjezykowe .header {
+  font-size: 36px;
+}
+#certjezykowe > .top {
+  padding-bottom: 100px;
+}
+#certjezykowe > .top > .box > .title {
+  padding: 60px 0 30px;
+  max-width: 620px;
+}
+#certjezykowe > .typy {
+  padding: 50px 0;
+}
+#certjezykowe > .typy > .box > .title {
+  margin-bottom: 30px;
+}
+#certjezykowe > .typy > .box > .content {
+  margin-bottom: 45px;
+}
+#certjezykowe > .cambridge > .box > .title {
+  padding: 50px 0 30px;
+  max-width: 750px;
+}
+#certjezykowe > .cambridge > .info {
+  padding: 30px 0 50px;
+}
+#certjezykowe > .cambridge > .info > .box > .title {
+  margin-bottom: 30px;
+}
+#certjezykowe > .cambridge > .info > .box > .content {
+  padding-bottom: 45px;
+}
+#certjezykowe > .goethe ul {
+  margin-bottom: 50px;
+  list-style-position: inside;
+  list-style-image: url(img/ikony/bullet_white.png);
+}
+#certjezykowe > .goethe ul > li {
+  margin-bottom: 10px;
+}
+#certjezykowe > .goethe > .top {
+  padding: 50px 0 30px;
+}
+#certjezykowe > .goethe > .top > .box > .title {
+  max-width: 720px;
+}
+#certjezykowe > .goethe > .info {
+  padding: 30px 0 50px;
+}
+#certjezykowe > .goethe > .info > .box > .title {
+  margin-bottom: 30px;
+}
+#certjezykowe > .goethe > .info > .box > .content {
+  margin-bottom: 45px;
+  line-height: 2em;
+}

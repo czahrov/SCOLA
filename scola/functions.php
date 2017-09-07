@@ -510,6 +510,7 @@ add_action( 'bodyMarkup', function( $arg ){
 add_action( 'tab', function( $arg ){
 	$arg = array_merge(
 		array(
+			'title' => '',
 			'class' => '',
 			'to' => '',
 			'direction' => 'down',
@@ -521,8 +522,9 @@ add_action( 'tab', function( $arg ){
 	);
 	
 	printf(
-		"<div class='tab arrow_slide pointer flex flex-items-center flex-justify-center %s' slide-to='%s'>
+		"<div class='tab arrow_slide pointer flex flex-items-center flex-justify-center flex-self-start %s' slide-to='%s'>
 			<img class='icon arrow %s' src='%s/img/%s'/>
+			%s
 			%s
 		</div>",
 		$arg[ 'class' ],
@@ -530,6 +532,7 @@ add_action( 'tab', function( $arg ){
 		$arg[ 'direction' ],
 		get_template_directory_uri(),
 		$arg[ 'img' ],
+		empty( $arg[ 'title' ] )?( '' ):( "<div class='title'>{$arg[ 'title' ]}</div>" ),
 		empty( $arg[ 'url' ] )?( '' ):( "<a class='hitbox' href='{$arg[ 'url' ]}'></a>" )
 		
 	);

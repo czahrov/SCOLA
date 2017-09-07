@@ -107,7 +107,11 @@
 	}
 	
 	& > .opis{
-		padding: 54px 0;
+		padding:{
+			top: 54px;
+			bottom: 54px;
+			
+		};
 		
 		& > .line{
 			margin-bottom: 45px;
