@@ -1,0 +1,73 @@
+#regulamin{
+	font-size: 15px;
+	
+	.header{
+		font-size: 21px;
+		
+		&.big{
+			font-size: 36px;
+			
+		}
+		
+	}
+	
+	& > .top{
+		padding: 50px 0 30px;
+		
+		& > .box{
+			
+			& > .info{
+				
+				& > .title{
+					margin-bottom: 30px;
+					
+				}
+				
+				& > .subtitle{
+					margin-bottom: 30px;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .sekcja{
+		padding: 30px 0 50px;
+		margin-bottom: 100px;
+		
+		& > .box{
+			
+			& > .title{
+				margin-bottom: 50px;
+				
+			}
+			
+			ol{
+				padding-left: 20px;
+				margin-top: 20px;
+				
+				li{
+					margin-bottom: 20px;
+					
+				}
+				
+				ol{
+					list-style-type: lower-alpha;
+					
+					ol{
+						list-style-type: disc;
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

@@ -1,0 +1,78 @@
+#program{
+	font-size: 15px;
+	
+	.header{
+		font-size: 21px;
+		
+		&.big{
+			font-size: 36px;
+			
+		}
+		
+	}
+	
+	& > .top{
+		
+		& > .box{
+			
+			& > .info{
+				position: relative;
+				padding: 50px 0;
+				
+				& > .title{
+					margin-bottom: 30px;
+					
+				}
+				
+				& > .subtitle{
+					margin-bottom: 50px;
+					
+				}
+				
+				& > .content{
+					margin-bottom: 40px;
+					
+				}
+				
+				& > .tab{
+					
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .optymalizacja{
+		padding: 30px 0 50px;
+		
+		& > .box{
+			
+			& > .title{
+				margin-bottom: 30px;
+				
+			}
+			
+			& > .content{
+				margin-bottom: 45px;
+				
+			}
+			
+			& > ul{
+				list-style-position: inside;
+				list-style-image: url(img/ikony/bullet_white.png);
+				
+				& > li{
+					margin-bottom: 10px;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

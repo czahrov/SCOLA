@@ -28,10 +28,10 @@
 					<div class='cell base3 flex flex-items-center'>
 						Poziom zaawansowania
 					</div>
-					<div class='cell base3 flex flex-items-center'>
+					<div class='cell base3 flex flex-items-center flex-justify-center-mm'>
 						Cena kursu w grupie 4-8 osobowej
 					</div>
-					<div class='cell base3 flex flex-items-center'>
+					<div class='cell base3 flex flex-items-center flex-justify-center-mm'>
 						Cena kursu w grupie 9-12 osobowej
 					</div>
 					
@@ -76,10 +76,10 @@
 					<div class='cell base3 flex flex-items-center'>
 						Poziom zaawansowania
 					</div>
-					<div class='cell base3 flex flex-items-center'>
+					<div class='cell base3 flex flex-items-center flex-justify-center-mm'>
 						Cena kursu w grupie 4-8 osobowej
 					</div>
-					<div class='cell base3 flex flex-items-center'>
+					<div class='cell base3 flex flex-items-center flex-justify-center-mm'>
 						Cena kursu w grupie 9-12 osobowej
 					</div>
 					
@@ -150,10 +150,10 @@
 					<div class='cell base3 flex flex-items-center'>
 						Liczba osób w grupie
 					</div>
-					<div class='cell base3 flex flex-items-center'>
+					<div class='cell base3 flex flex-items-center flex-justify-center-mm'>
 						Ilość godzin tygodniowo
 					</div>
-					<div class='cell base3 flex flex-items-center'>
+					<div class='cell base3 flex flex-items-center flex-justify-center-mm'>
 						Cena kursu
 					</div>
 					
@@ -189,10 +189,10 @@
 					<div class='cell base3 flex flex-items-center'>
 						Liczba osób w grupie
 					</div>
-					<div class='cell base3 flex flex-items-center'>
+					<div class='cell base3 flex flex-items-center flex-justify-center-mm'>
 						Ilość godzin tygodniowo
 					</div>
-					<div class='cell base3 flex flex-items-center'>
+					<div class='cell base3 flex flex-items-center flex-justify-center-mm'>
 						Cena kursu
 					</div>
 					
@@ -251,7 +251,7 @@
 					<div class='cell base2 flex flex-items-center'>
 						Długość jednej lekcji
 					</div>
-					<div class='cell base2 flex flex-items-center'>
+					<div class='cell base2 flex flex-items-center flex-justify-center-mm'>
 						Cena
 					</div>
 					
@@ -275,7 +275,7 @@
 					<div class='cell base2 flex flex-items-center'>
 						Długość jednej lekcji
 					</div>
-					<div class='cell base2 flex flex-items-center'>
+					<div class='cell base2 flex flex-items-center flex-justify-center-mm'>
 						Cena
 					</div>
 					

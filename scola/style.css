@@ -261,6 +261,47 @@ a, img {
   z-index: 10;
 }
 
+.sticky_menu > .item {
+  padding-left: 20px;
+  height: 80px;
+  -webkit-transition-property: background, color;
+  transition-property: background, color;
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
+}
+.sticky_menu > .item > .icon {
+  width: 40px;
+  height: 40px;
+  background-image: url(img/arrow_small_white.png);
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transition: -webkit-transform .3s linear;
+  transition: -webkit-transform .3s linear;
+  transition: transform .3s linear;
+  transition: transform .3s linear, -webkit-transform .3s linear;
+}
+.sticky_menu > .item:hover, .sticky_menu > .item.active {
+  color: #5e9104;
+  background-color: #fff;
+}
+.sticky_menu > .item:hover > .icon, .sticky_menu > .item.active > .icon {
+  background-image: url(img/arrow_small.png);
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+@media (min-width: 1024px) {
+  .sticky_menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .sticky_menu.pin {
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+}
+
 #top {
   position: relative;
   margin-bottom: 50px;
@@ -1025,9 +1066,38 @@ a, img {
   }
 }
 #home > .opinie {
+  position: relative;
   min-height: 650px;
   padding-top: 140px;
   padding-bottom: 50px;
+  overflow: hidden;
+}
+#home > .opinie > .moon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+#home > .opinie > .moon div {
+  position: absolute;
+  border-radius: 50%;
+}
+#home > .opinie > .moon > .gray {
+  width: 660px;
+  height: 660px;
+  left: -2%;
+  bottom: -20%;
+}
+#home > .opinie > .moon > .gray > .light {
+  width: 700px;
+  height: 700px;
+  left: -50%;
+  bottom: 24%;
+}
+#home > .opinie > .grid {
+  z-index: 10;
 }
 #home > .opinie > .grid > .top {
   font-size: 21px;
@@ -2009,7 +2079,7 @@ a, img {
 #single > .bot > .menu > .item:not(:last-child) {
   border-bottom: solid 1px #7cc401;
 }
-#single > .bot > .menu > .item.header > .title {
+#single > .bot > .menu > .item.header > .title, #certyfikaty.toeic-bridge #single > .bot > ul.menu > li.item > .title {
   font-size: 18px;
 }
 #single > .bot > .menu > .item:not(.header):not(.bottom):hover {
@@ -2118,10 +2188,10 @@ a, img {
 #metodynauczania {
   font-size: 15px;
 }
-#metodynauczania .header {
+#metodynauczania .header, #metodynauczania #certyfikaty.toeic-bridge ul > li, #certyfikaty.toeic-bridge #metodynauczania ul > li {
   font-size: 21px;
 }
-#metodynauczania .header.big {
+#metodynauczania .header.big, #metodynauczania #certyfikaty.toeic-bridge ul > li.big, #certyfikaty.toeic-bridge #metodynauczania ul > li.big {
   font-size: 36px;
 }
 #metodynauczania .bar {
@@ -2197,7 +2267,7 @@ a, img {
 #certjezykowe {
   font-size: 15px;
 }
-#certjezykowe .header {
+#certjezykowe .header, #certjezykowe #certyfikaty.toeic-bridge ul > li, #certyfikaty.toeic-bridge #certjezykowe ul > li {
   font-size: 36px;
 }
 #certjezykowe > .top {
@@ -2252,4 +2322,582 @@ a, img {
 #certjezykowe > .goethe > .info > .box > .content {
   margin-bottom: 45px;
   line-height: 2em;
+}
+
+#centrumegzamin {
+  font-size: 15px;
+}
+#centrumegzamin .header, #centrumegzamin #certyfikaty.toeic-bridge ul > li, #certyfikaty.toeic-bridge #centrumegzamin ul > li {
+  font-size: 21px;
+}
+#centrumegzamin .header.big, #centrumegzamin #certyfikaty.toeic-bridge ul > li.big, #certyfikaty.toeic-bridge #centrumegzamin ul > li.big {
+  font-size: 36px;
+}
+#centrumegzamin ul {
+  list-style-position: inside;
+  list-style-image: url(img/ikony/bullet_white.png);
+}
+#centrumegzamin ul > li {
+  margin-bottom: 40px;
+}
+#centrumegzamin > .top {
+  position: relative;
+}
+#centrumegzamin > .top > .box > .info > .title {
+  padding: 30px 0 50px;
+}
+#centrumegzamin > .top > .box > .info > .content {
+  padding-bottom: 50px;
+  line-height: 2em;
+}
+#centrumegzamin > .top > .ramka {
+  margin: 0 20px 40px;
+  border: solid 3px #5e9104;
+}
+#centrumegzamin > .top > .ramka > .box {
+  padding: 40px 30px;
+}
+#centrumegzamin > .top > .ramka > .box > .img {
+  height: 72px;
+}
+#centrumegzamin > .top > .ramka > .box > .img.epa {
+  background-image: url(img/epa.jpg);
+}
+#centrumegzamin > .top > .ramka > .box > .img.ets {
+  background-image: url(img/ets.jpg);
+}
+#centrumegzamin > .top > .ramka > .box > .content {
+  line-height: 2em;
+  padding-top: 30px;
+}
+@media (min-width: 1024px) {
+  #centrumegzamin > .top > .ramka {
+    position: absolute;
+    margin: 0 0 40px;
+    top: 140px;
+    left: 50%;
+    right: 0;
+  }
+  #centrumegzamin > .top > .ramka > .box {
+    max-width: 620px;
+  }
+}
+#centrumegzamin > .dokonania {
+  padding: 30px 0 50px;
+}
+#centrumegzamin > .dokonania > .box > .title {
+  margin-bottom: 70px;
+  max-width: 700px;
+}
+#centrumegzamin > .toeic {
+  padding: 54px 0;
+}
+#centrumegzamin > .toeic > .box > .title {
+  margin-bottom: 40px;
+}
+#centrumegzamin > .toeic > .box > .content {
+  margin-bottom: 45px;
+}
+#centrumegzamin > .egzaminy {
+  padding: 40px 0 50px;
+}
+#centrumegzamin > .egzaminy > .box > .title {
+  margin-bottom: 50px;
+}
+#centrumegzamin > .egzaminy > .box > .buttons {
+  margin: 0 -20px;
+}
+#centrumegzamin > .egzaminy > .box > .buttons > .customButton {
+  margin: 0 20px;
+}
+
+#certyfikaty .header, #certyfikaty.toeic-bridge ul > li {
+  font-size: 21px;
+}
+#certyfikaty .header.big, #certyfikaty.toeic-bridge ul > li.big {
+  font-size: 36px;
+}
+#certyfikaty > .top {
+  position: relative;
+}
+#certyfikaty > .top > .box > .info {
+  padding-right: 20px;
+}
+#certyfikaty > .top > .box > .info > .title {
+  padding: 30px 0 50px;
+}
+#certyfikaty > .top > .box > .info > .content {
+  line-height: 2em;
+}
+#certyfikaty > .top > .ramka {
+  margin: 0 20px 40px;
+  border: solid 3px #5e9104;
+}
+#certyfikaty > .top > .ramka > .box {
+  padding: 40px 30px;
+}
+#certyfikaty > .top > .ramka > .box > .img {
+  height: 72px;
+}
+#certyfikaty > .top > .ramka > .box > .img.epa {
+  background-image: url(img/epa.jpg);
+}
+#certyfikaty > .top > .ramka > .box > .img.ets {
+  background-image: url(img/ets.jpg);
+}
+#certyfikaty > .top > .ramka > .box > .content {
+  line-height: 2em;
+  padding-top: 30px;
+}
+@media (min-width: 1024px) {
+  #certyfikaty > .top > .ramka {
+    position: absolute;
+    margin: 0 0 40px;
+    top: 200px;
+    left: 50%;
+    right: 0;
+  }
+  #certyfikaty > .top > .ramka > .box {
+    max-width: 620px;
+  }
+}
+#certyfikaty > .toeic {
+  position: relative;
+  padding: 40px 0 100px;
+}
+#certyfikaty > .toeic > .box > .title {
+  margin-bottom: 30px;
+}
+#certyfikaty > .toeic > .box > .content {
+  margin-bottom: 10px;
+  line-height: 2em;
+}
+#certyfikaty > .toeic > .box > .link {
+  margin-bottom: 50px;
+}
+#certyfikaty > .toeic > .box > .info {
+  margin-top: 30px;
+}
+#certyfikaty > .toeic > .tab {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+}
+#certyfikaty .title {
+  margin-bottom: 40px;
+  max-width: 700px;
+}
+#certyfikaty .content {
+  margin-bottom: 60px;
+}
+#certyfikaty .customButton {
+  margin-bottom: 50px;
+  max-width: 260px;
+}
+#certyfikaty .customButton .content {
+  margin: 0;
+}
+#certyfikaty .link {
+  margin-bottom: 50px;
+}
+#certyfikaty .ramka {
+  margin-bottom: 50px;
+}
+#certyfikaty .ramka > .space.before {
+  border: solid 2px #5e9104;
+  border-right: none;
+}
+#certyfikaty .ramka > .inner {
+  width: 100%;
+  max-width: 1240px;
+}
+#certyfikaty .ramka > .inner > .box {
+  padding: 20px;
+  border: solid 2px #5e9104;
+  border-left: none;
+}
+#certyfikaty .ramka > .inner > .box > .line {
+  margin-bottom: 10px;
+}
+@media (min-width: 768px) {
+  #certyfikaty .ramka > .inner > .box {
+    min-width: 450px;
+  }
+}
+#certyfikaty .short {
+  max-width: 750px;
+}
+@media (min-width: 1280px) {
+  #certyfikaty .short {
+    max-width: 1000px;
+  }
+}
+#certyfikaty .table {
+  margin-top: 30px;
+}
+#certyfikaty .table .cell {
+  padding: 0 20px;
+  min-height: 90px;
+  border: solid 1px #eee;
+}
+@media (min-width: 1024px) {
+  #certyfikaty .table {
+    margin-top: 0;
+  }
+}
+#certyfikaty ul {
+  list-style-position: inside;
+}
+#certyfikaty ul > li {
+  margin-bottom: 10px;
+}
+#certyfikaty > .informacje {
+  position: relative;
+  padding: 70px 0;
+}
+#certyfikaty > .informacje ul.font-green {
+  list-style-image: url(img/ikony/bullet_green.png);
+}
+#certyfikaty > .format {
+  position: relative;
+  padding: 40px 0 100px;
+}
+#certyfikaty > .format .table > .header > .cell, #certyfikaty > .format #certyfikaty.toeic-bridge ul.table > li > .cell, #certyfikaty.toeic-bridge #certyfikaty > .format ul.table > li > .cell {
+  padding: 0 20px;
+}
+#certyfikaty > .format ul {
+  list-style-image: url(img/ikony/bullet_white.png);
+}
+#certyfikaty > .format .tab {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+}
+#certyfikaty.toefl ul {
+  list-style-image: none;
+  list-style-type: none;
+}
+#certyfikaty.widaf > .informacje .slider {
+  position: relative;
+}
+#certyfikaty.widaf > .informacje .slider > .view {
+  overflow: hidden;
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item {
+  height: 200px;
+  padding: 20px;
+  border: solid 1px #eee;
+  background-origin: content-box;
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.agfa {
+  background-image: url(img/logotypy/agfa.png);
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.alcatel {
+  background-image: url(img/logotypy/alcatel.png);
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.alstom {
+  background-image: url(img/logotypy/alstom.png);
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.canalp {
+  background-image: url(img/logotypy/canal_.png);
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.deloitte {
+  background-image: url(img/logotypy/deloitte.png);
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.dura {
+  background-image: url(img/logotypy/Dura.png);
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.francetel {
+  background-image: url(img/logotypy/FranceTelecom.png);
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.marks_spencer {
+  background-image: url(img/logotypy/marks_spencer.png);
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.marsh {
+  background-image: url(img/logotypy/marsh.png);
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.miele {
+  background-image: url(img/logotypy/miele.png);
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.stelmi {
+  background-image: url(img/logotypy/aptarStelmi.png);
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.valeo {
+  background-image: url(img/logotypy/Valeo.png);
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.deutsche {
+  background-image: url("img/logotypy/Doutsche Bank.png");
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.siemens {
+  background-image: url(img/logotypy/siemens.png);
+}
+#certyfikaty.widaf > .informacje .slider > .view > .item.bre {
+  background-image: url(img/logotypy/Bre_Bank_Sa.png);
+}
+@media (min-width: 1024px) {
+  #certyfikaty.widaf > .informacje .slider > .view > .item {
+    background-size: contain;
+  }
+}
+#certyfikaty.widaf > .informacje .slider > .navs {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+#certyfikaty.widaf > .informacje .slider > .navs > .nav {
+  margin: 0 10px;
+}
+#certyfikaty.widaf > .informacje .slider > .navs > .nav.prev {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+#program {
+  font-size: 15px;
+}
+#program .header, #program #certyfikaty.toeic-bridge ul > li, #certyfikaty.toeic-bridge #program ul > li {
+  font-size: 21px;
+}
+#program .header.big, #program #certyfikaty.toeic-bridge ul > li.big, #certyfikaty.toeic-bridge #program ul > li.big {
+  font-size: 36px;
+}
+#program > .top > .box > .info {
+  position: relative;
+  padding: 50px 0;
+}
+#program > .top > .box > .info > .title {
+  margin-bottom: 30px;
+}
+#program > .top > .box > .info > .subtitle {
+  margin-bottom: 50px;
+}
+#program > .top > .box > .info > .content {
+  margin-bottom: 40px;
+}
+#program > .optymalizacja {
+  padding: 30px 0 50px;
+}
+#program > .optymalizacja > .box > .title {
+  margin-bottom: 30px;
+}
+#program > .optymalizacja > .box > .content {
+  margin-bottom: 45px;
+}
+#program > .optymalizacja > .box > ul {
+  list-style-position: inside;
+  list-style-image: url(img/ikony/bullet_white.png);
+}
+#program > .optymalizacja > .box > ul > li {
+  margin-bottom: 10px;
+}
+
+#kadra {
+  font-size: 15px;
+}
+#kadra .header, #kadra #certyfikaty.toeic-bridge ul > li, #certyfikaty.toeic-bridge #kadra ul > li {
+  font-size: 36px;
+}
+#kadra > .top {
+  position: relative;
+  padding: 50px 0 150px;
+  margin-bottom: 100px;
+}
+#kadra > .top > .slider {
+  position: relative;
+  min-height: 300px;
+  padding: 0 20px;
+}
+#kadra > .top > .slider > .view {
+  overflow: hidden;
+}
+#kadra > .top > .slider > .info {
+  position: absolute;
+  padding: 20px;
+  left: 0;
+  bottom: 0;
+}
+#kadra > .top > .slider > .info > .title {
+  margin: 20px 0 40px;
+  font-size: 36px;
+}
+#kadra > .top > .slider > .info > .link {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+#kadra > .top > .slider > .info > .nav {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+}
+#kadra > .top > .slider > .info > .nav > .button {
+  width: 62px;
+  height: 30px;
+  -webkit-box-shadow: 0px 0px 0px 1px #fff inset;
+          box-shadow: 0px 0px 0px 1px #fff inset;
+}
+#kadra > .top > .slider > .info > .nav > .button.prev {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+@media (min-width: 1024px) {
+  #kadra > .top > .slider {
+    position: absolute;
+    padding: 0;
+    margin-left: 20px;
+    top: 0;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+  }
+}
+#kadra > .top > .box > .info > .title {
+  margin-bottom: 30px;
+}
+#kadra > .top > .box > .info > .content {
+  line-height: 3em;
+}
+#kadra > .jezyk {
+  padding: 80px 0 30px;
+  margin-bottom: 90px;
+}
+#kadra > .jezyk > .box {
+  position: relative;
+}
+#kadra > .jezyk > .box > .icon {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  bottom: 100%;
+  left: 0;
+  -webkit-transform: translate(0, -40%);
+          transform: translate(0, -40%);
+}
+#kadra > .jezyk > .box > .title {
+  margin-bottom: 30px;
+}
+#kadra > .jezyk > .box > .content {
+  margin-bottom: 45px;
+  line-height: 2em;
+}
+#kadra > .jezyk > .box > ul {
+  margin-bottom: 40px;
+  list-style-position: inside;
+  list-style-image: url(img/ikony/bullet_white.png);
+}
+#kadra > .jezyk > .box > ul > li {
+  margin-bottom: 26px;
+  line-height: 2em;
+}
+#kadra > .jezyk.niemiecki .icon {
+  background-image: url(img/flagi/niemiecki.png);
+}
+#kadra > .jezyk.angielski .icon {
+  background-image: url(img/flagi/angielski_v2.png);
+}
+#kadra > .jezyk.hiszpanski .icon {
+  background-image: url(img/flagi/hiszpanski.png);
+}
+#kadra > .jezyk.francuski .icon {
+  background-image: url(img/flagi/francuski.png);
+}
+#kadra > .jezyk.wloski .icon {
+  background-image: url(img/flagi/wloski.png);
+}
+#kadra > .jezyk.rosyjski .icon {
+  background-image: url(img/flagi/rosyjski.png);
+}
+#kadra > .jezyk.slowacki .icon {
+  background-image: url(img/flagi/slowacki.png);
+}
+
+#regulamin {
+  font-size: 15px;
+}
+#regulamin .header, #regulamin #certyfikaty.toeic-bridge ul > li, #certyfikaty.toeic-bridge #regulamin ul > li {
+  font-size: 21px;
+}
+#regulamin .header.big, #regulamin #certyfikaty.toeic-bridge ul > li.big, #certyfikaty.toeic-bridge #regulamin ul > li.big {
+  font-size: 36px;
+}
+#regulamin > .top {
+  padding: 50px 0 30px;
+}
+#regulamin > .top > .box > .info > .title {
+  margin-bottom: 30px;
+}
+#regulamin > .top > .box > .info > .subtitle {
+  margin-bottom: 30px;
+}
+#regulamin > .sekcja {
+  padding: 30px 0 50px;
+  margin-bottom: 100px;
+}
+#regulamin > .sekcja > .box > .title {
+  margin-bottom: 50px;
+}
+#regulamin > .sekcja > .box ol {
+  padding-left: 20px;
+  margin-top: 20px;
+}
+#regulamin > .sekcja > .box ol li {
+  margin-bottom: 20px;
+}
+#regulamin > .sekcja > .box ol ol {
+  list-style-type: lower-alpha;
+}
+#regulamin > .sekcja > .box ol ol ol {
+  list-style-type: disc;
+}
+
+#referencje {
+  font-size: 15px;
+}
+#referencje .header, #referencje #certyfikaty.toeic-bridge ul > li, #certyfikaty.toeic-bridge #referencje ul > li {
+  font-size: 21px;
+}
+#referencje .header.big, #referencje #certyfikaty.toeic-bridge ul > li.big, #certyfikaty.toeic-bridge #referencje ul > li.big {
+  font-size: 36px;
+}
+#referencje > .popup {
+  position: fixed;
+  padding: 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+}
+#referencje > .popup > .img {
+  max-width: 100%;
+  max-height: 100%;
+}
+#referencje > .popup:not(.open) {
+  display: none;
+}
+#referencje > .top {
+  padding: 30px 0 50px;
+  margin-bottom: 100px;
+}
+#referencje > .kafelki {
+  padding: 30px 0 50px;
+}
+#referencje > .kafelki > .box > .item {
+  padding: 20px;
+  border: solid 1px #a8a8a8;
+  -webkit-transition: padding .5s ease-out;
+  transition: padding .5s ease-out;
+}
+#referencje > .kafelki > .box > .item > .img {
+  padding-bottom: 100%;
+  background-color: #fff;
+}
+#referencje > .kafelki > .box > .item:hover {
+  padding: 5px;
 }

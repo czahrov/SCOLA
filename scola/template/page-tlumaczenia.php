@@ -31,11 +31,9 @@
 				<div class='bot arrow_slide pointer flex flex-items-center'>
 					<?php do_action( 'tab', array(
 						'to' => '#tlumaczenia > .bot',
+						'title' => 'czytaj więcej',
 						
 					) ); ?>
-					<div class=''>
-						czytaj więcej
-					</div>
 					
 				</div>
 				

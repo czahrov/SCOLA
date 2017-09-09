@@ -196,7 +196,7 @@
 			/* obsługa strzałek przewijania */
 			(function( link ){
 				link.click(function( e ){
-					if( typeof $(this).attr( 'slide-to' ) !== 'string' ) return false;
+					if( typeof $(this).attr( 'slide-to' ) !== 'string' || $( $(this).attr( 'slide-to' ) ).length === 0 ) return false;
 					var self = $(this);
 					
 					TweenLite.to(
@@ -1821,6 +1821,361 @@
 						$( '#kursy > .top > .slider > .info > .title' ), 
 						$( '#kursy > .top > .slider > .info > .link' ), 
 						$( '#kursy > .top > .slider > .info > .nav > .button' ) );
+						
+					},
+					centrum_egzaminacyjne: function(){
+						if(logger) console.log('page.centrum-egzaminacyjne()');
+						
+						/* sticky menu */
+						(function( menu, anchor ){
+							var pin = false;
+							var posY = function(){
+								if( $( 'body' ).prop( 'scrollTop' ) === 0 ){
+									return $( 'html' ).prop( 'scrollTop' );
+									
+								}
+								else{
+									return $( 'body' ).prop( 'scrollTop' );
+									
+								}
+								
+							};
+							
+							menu.on({
+								check: function( e ){
+									if( !pin && posY() >= anchor.offset().top ){
+										menu.triggerHandler( 'pin' );
+										
+									}
+									else if( pin && posY() < anchor.offset().top ){
+										menu.triggerHandler( 'pinOut' );
+										
+									}
+									
+								},
+								pin: function( e ){
+									menu.addClass( 'pin' );
+									menu.css({
+										'top': '',
+										
+									});
+									
+									pin = true;
+									
+								},
+								pinOut: function( e ){
+									menu.removeClass( 'pin' );
+									menu.triggerHandler( 'set' );
+									pin = false;
+									
+								},
+								set: function( e ){
+									menu.css({
+										'top': function(){
+											return anchor.position().top;
+											
+										},
+										
+									});
+								},
+								
+							});
+							
+							menu.triggerHandler( 'set' );
+							
+							$( window ).scroll(function( e ){
+								menu.triggerHandler( 'check' );
+								
+							});
+							
+						})
+						( $( '.sticky_menu' ), $( '.anchor' ) );
+						
+						/* slider widaf */
+						(function( slider, view, slides, navs ){
+							var current = 0;
+							var lock = false;
+							
+							slider.on({
+								set: function( e ){
+									if( current < 0 ) current = slides.length - 1;
+									current %= slides.length;
+									
+									new TimelineLite({
+										onComplete: function(){
+											lock = false;
+											
+										},
+										
+									})
+									.add( 'start', 0 )
+									.add( TweenLite.to(
+										view,
+										.5,
+										{
+											scrollLeft: function(){
+												return slides.first().outerWidth( true ) * current;
+												
+											},
+											ease: Power2.easeInOut,
+											
+										}
+									), 'start' )
+									
+								},
+								next: function( e ){
+									if( !lock ){
+										lock = true;
+										current++;
+										slider.triggerHandler( 'set' );
+										
+									}
+									
+								},
+								prev: function( e ){
+									if( !lock ){
+										lock = true;
+										current--;
+										slider.triggerHandler( 'set' );
+										
+									}
+									
+								},
+								
+							})
+							.swipe({
+								swipeLeft: function( e ){
+									slider.triggerHandler( 'next' );
+									
+								},
+								swipeRight: function( e ){
+									slider.triggerHandler( 'prev' );
+									
+								},
+								
+							});
+							
+							navs.click(function( e ){
+								if( $(this).hasClass( 'next' ) ){
+									slider.triggerHandler( 'next' );
+									
+								}
+								else if( $(this).hasClass( 'prev' ) ){
+									slider.triggerHandler( 'prev' );
+									
+								}
+								
+							});
+							
+						})
+						( $( '#certyfikaty > .informacje .slider' ), 
+						$( '#certyfikaty > .informacje .slider > .view' ), 
+						$( '#certyfikaty > .informacje .slider > .view > .item' ),
+						$( '#certyfikaty > .informacje .slider > .navs > .nav' ) );
+						
+					},
+					kadra: function(){
+						
+						if(logger) console.log('page.nasze_centrum()');
+						
+						/* slider */
+						(function( slider, view, slides, info, info_title, info_link, nav ){
+							var current = 0;
+							var lock = false;
+							var itrv;
+							var tout;
+							var config = {
+								duration: .5,
+								delay: 2.5,
+								
+							};
+							
+							slider
+							.on({
+								set: function( e ){
+									if( current < 0 ) current = slides.length - 1;
+									current %= slides.length;
+									
+									new TimelineLite({
+										onComplete: function(){
+											info_link.attr( 'href', slides.eq( current ).attr( 'item-url' ) );
+											lock = false;
+											
+										},
+										
+									})
+									.add( 'start', 0 )
+									.add(
+										TweenLite.to(
+											view,
+											config.duration,
+											{
+												scrollLeft: function(){
+													return slides.first().outerWidth() * current;
+													
+												},
+												
+											}
+										), 'start'
+									)
+									.add(
+										TweenLite.to(
+											info_title,
+											config.duration,
+											{
+												text: function(){
+													return slides.eq( current ).attr( 'item-title' );
+													
+												},
+												
+											}
+										), 'start'
+									);
+									
+									
+								},
+								next: function( e ){
+									if( !lock ){
+										lock = true;
+										current++;
+										slider.triggerHandler( 'set' );
+										
+									}
+									
+								},
+								prev: function( e ){
+									if( !lock ){
+										lock = true;
+										current--;
+										slider.triggerHandler( 'set' );
+										
+									}
+									
+								},
+								stop: function( e ){
+									window.clearInterval( itrv );
+									
+								},
+								start: function( e ){
+									slider.triggerHandler( 'stop' );
+									
+									itrv = window.setInterval(function(){
+										slider.triggerHandler( 'next' );
+										
+									}, config.delay * 1000);
+									
+								},
+								mouseenter: function( e ){
+									slider.triggerHandler( 'stop' );
+									
+								},
+								mouseleave: function( e ){
+									slider.triggerHandler( 'start' );
+									
+								},
+								
+							})
+							.swipe({
+								swipeLeft: function( e ){
+									slider.triggerHandler( 'next' );
+									
+								},
+								swipeRight: function( e ){
+									slider.triggerHandler( 'prev' );
+									
+								},
+								
+							});
+							
+							nav.click(function( e ){
+								if( $(this).hasClass( 'next' ) ){
+									slider.triggerHandler( 'next' );
+									
+								}
+								else if( $(this).hasClass( 'prev' ) ){
+									slider.triggerHandler( 'prev' );
+									
+								}
+								
+							});
+							
+							$( window ).resize(function( e ){
+								window.clearTimeout( tout );
+								tout = window.setTimeout(function(){
+									slider.triggerHandler( 'set' );
+									
+								}, 200);
+								
+							});
+							
+							slider.triggerHandler( 'start' );
+							
+						})
+						( $( '#kadra > .top > .slider' ), 
+						$( '#kadra > .top > .slider > .view' ), 
+						$( '#kadra > .top > .slider > .view > .slide' ), 
+						$( '#kadra > .top > .slider > .info' ), 
+						$( '#kadra > .top > .slider > .info > .title' ), 
+						$( '#kadra > .top > .slider > .info > .link' ), 
+						$( '#kadra > .top > .slider > .info > .nav > .button' ) );
+						
+						
+					},
+					referencje: function(){
+						if(logger) console.log('page.referencje()');
+						
+						/* popup kafelków */
+						(function( popup, view, kafelki ){
+							popup.on({
+								open: function( e ){
+									popup.addClass( 'open' );
+									
+								},
+								close: function( e ){
+									popup.removeClass( 'open' );
+									
+								},
+								load: function( e, url ){
+									popup.triggerHandler( 'open' );
+										
+									view.attr({
+										'src': url,
+									});
+									
+								},
+								
+							});
+							
+							popup.click(function( e ){
+								popup.triggerHandler( 'close' );
+								
+							});
+							
+							view.click(function( e ){
+								e.stopPropagation();
+								var url = $(this).attr( 'src' );
+								window.open( url );
+								
+							});
+							
+							kafelki.click(function( e ){
+								var url = $(this).children( '.img' ).css( 'background-image' ).match(/[^"]+/g);
+								try{
+									if( url.length < 3 ) throw "Błędny url";
+									popup.triggerHandler( 'load', url[1] );
+									
+								}
+								catch( err ){
+									console.error( [ err, url ] );
+									
+								}
+								
+							});
+							
+						})
+						( $( '#referencje > .popup' ), 
+						$( '#referencje > .popup > .img' ),
+						$( '#referencje > .kafelki .item' ) );
 						
 					},
 					

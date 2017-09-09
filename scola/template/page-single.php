@@ -15,7 +15,7 @@
 	</div>
 	<div class='img bgimg full' style='background-image:url(<?php echo $img; ?>);'>
 		<?php do_action( 'tab', array(
-			'to' => '',
+			'to' => '#single > .bot',
 			
 		) ); ?>
 		

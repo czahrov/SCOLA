@@ -271,3 +271,55 @@ a, img{
 	
 }
 
+.sticky_menu{
+	
+	& > .item{
+		padding-left: 20px;
+		height: 80px;
+		transition-property: background, color;
+		transition: .3s linear;
+		
+		& > .text{
+			
+		}
+		
+		& > .icon{
+			width: 40px;
+			height: 40px;
+			background-image: url(img/arrow_small_white.png);
+			transform: rotate(-90deg);
+			transition: transform .3s linear;
+			
+		}
+		
+		&:hover,
+		&.active{
+			color: $color-green;
+			background-color: $color-light;
+			
+			& > .icon{
+				background-image: url(img/arrow_small.png);
+				transform: rotate(0deg);
+				
+			}
+			
+		}
+		
+	}
+	
+	@media(min-width: map-get( $bpw, desktop ) ){
+		position: absolute;
+		top: 0;
+		right: 0;
+		
+		&.pin{
+			position: fixed;
+			top: 0;
+			right: 0;
+			
+		}
+		
+	}
+	
+}
+

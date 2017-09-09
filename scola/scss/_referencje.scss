@@ -1,0 +1,86 @@
+#referencje{
+	font-size: 15px;
+	
+	.header{
+		font-size: 21px;
+		
+		&.big{
+			font-size: 36px;
+			
+		}
+		
+	}
+	
+	& > .popup{
+		position: fixed;
+		padding: 50px;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: $color-filtr;
+		z-index: 20;
+		
+		& > .img{
+			max-width: 100%;
+			max-height: 100%;
+			
+		}
+		
+		&:not(.open){
+			display: none;
+			
+		}
+		
+	}
+	
+	& > .top{
+		padding: 30px 0 50px;
+		margin-bottom: 100px;
+		
+		& > .box{
+			
+			& > .info{
+				
+				& > .title{
+					
+				}
+				
+				& > .subtitle{
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .kafelki{
+		padding: 30px 0 50px;
+		
+		& > .box{
+			
+			& > .item{
+				padding: 20px;
+				border: solid 1px $color-gray-dark;
+				transition: padding .5s ease-out;
+				
+				& > .img{
+					padding-bottom: 100%;
+					background-color: $color-light;
+					
+				}
+				
+				&:hover{
+					padding: 5px;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

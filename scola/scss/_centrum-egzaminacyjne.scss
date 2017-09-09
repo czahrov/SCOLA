@@ -1,0 +1,157 @@
+#centrumegzamin{
+	font-size: 15px;
+	
+	.header{
+		font-size: 21px;
+		
+		&.big{
+			font-size: 36px;
+			
+		}
+		
+	}
+	
+	ul{
+		list-style-position: inside;
+		list-style-image: url(img/ikony/bullet_white.png);
+		
+		& > li{
+			margin-bottom: 40px;
+			
+		}
+		
+	}
+	
+	& > .top{
+		position: relative;
+		
+		& > .box{
+			
+			& > .info{
+				
+				& > .title{
+					padding: 30px 0 50px;
+					
+				}
+				
+				& > .content{
+					padding-bottom: 50px;
+					line-height: 2em;
+					
+				}
+				
+			}
+			
+		}
+		
+		& > .ramka{
+			margin: 0 20px 40px;
+			border: solid 3px $color-green;
+			
+			& > .box{
+				padding: 40px 30px;
+				
+				& > .img{
+					height: 72px;
+					
+					&.epa{
+						background-image: url(img/epa.jpg);
+						
+					}
+					
+					&.ets{
+						background-image: url(img/ets.jpg);
+						
+					}
+					
+				}
+				
+				& > .content{
+					line-height: 2em;
+					padding-top: 30px;
+					
+				}
+				
+			}
+			
+			@media(min-width: map-get( $bpw, desktop ) ){
+				position: absolute;
+				margin: 0 0 40px;
+				top: 140px;
+				left: 50%;
+				right: 0;
+				
+				& > .box{
+					max-width: $grid/2;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .dokonania{
+		padding: 30px 0 50px;
+		
+		& > .box{
+			
+			& > .title{
+				margin-bottom: 70px;
+				max-width: 700px;
+				
+			}
+			
+			& > ul{
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .toeic{
+		padding: 54px 0;
+		
+		& > .box{
+			
+			& > .title{
+				margin-bottom: 40px;
+				
+			}
+			
+			& > .content{
+				margin-bottom: 45px;
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .egzaminy{
+		padding: 40px 0 50px;
+		
+		& > .box{
+			
+			& > .title{
+				margin-bottom: 50px;
+				
+			}
+			
+			& > .buttons{
+				margin: 0 -20px;
+				
+				& > .customButton{
+					margin: 0 20px;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

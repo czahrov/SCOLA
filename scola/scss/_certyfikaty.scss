@@ -1,0 +1,416 @@
+#certyfikaty{
+	
+	.header{
+		font-size: 21px;
+		
+		&.big{
+			font-size: 36px;
+			
+		}
+		
+	}
+	
+	& > .top{
+		position: relative;
+		
+		& > .box{
+			
+			& > .info{
+				padding-right: 20px;
+				
+				& > .title{
+					padding: 30px 0 50px;
+					
+				}
+				
+				& > .content{
+					line-height: 2em;
+					
+				}
+				
+			}
+			
+		}
+		
+		& > .ramka{
+			margin: 0 20px 40px;
+			border: solid 3px $color-green;
+			
+			& > .box{
+				padding: 40px 30px;
+				
+				& > .img{
+					height: 72px;
+					
+					&.epa{
+						background-image: url(img/epa.jpg);
+						
+					}
+					
+					&.ets{
+						background-image: url(img/ets.jpg);
+						
+					}
+					
+				}
+				
+				& > .content{
+					line-height: 2em;
+					padding-top: 30px;
+					
+				}
+				
+			}
+			
+			@media(min-width: map-get( $bpw, desktop ) ){
+				position: absolute;
+				margin: 0 0 40px;
+				top: 200px;
+				left: 50%;
+				right: 0;
+				
+				& > .box{
+					max-width: $grid/2;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .toeic{
+		position: relative;
+		padding: 40px 0 100px;
+		
+		& > .box{
+			
+			& > .title{
+				margin-bottom: 30px;
+				
+			}
+			
+			& > .content{
+				margin-bottom: 10px;
+				line-height: 2em;
+				
+			}
+			
+			& > .link{
+				margin-bottom: 50px;
+				
+			}
+			
+			& > .info{
+				margin-top: 30px;
+				
+			}
+			
+		}
+		
+		& > .tab{
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			transform: translate(-50%,50%);
+			
+		}
+		
+	}
+	
+	.title{
+			margin-bottom: 40px;
+			max-width: 700px;
+			
+		}
+	
+	.content{
+		margin-bottom: 60px;
+		
+	}
+	
+	.customButton{
+		margin-bottom: 50px;
+		max-width: 260px;
+		
+		.content{
+			margin: 0;
+			
+		}
+		
+	}
+	
+	.link{
+		margin-bottom: 50px;
+		
+	}
+	
+	.ramka{
+		margin-bottom: 50px;
+		
+		& > .space{
+			
+			&.before{
+				border: solid 2px $color-green;
+				border-right: none;
+				
+			}
+			
+		}
+		
+		& > .inner{
+			width: 100%;
+			max-width: $grid;
+			
+			& > .box{
+				padding: 20px;
+				border: solid 2px $color-green;
+				border-left: none;
+				
+				& > .line{
+					margin-bottom: 10px;
+					
+				}
+				
+				@media(min-width: map-get( $bpw, tablet ) ){
+					min-width: 450px;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	.short{
+		max-width: 750px;
+		
+		@media(min-width: map-get( $bpw, large ) ){
+			max-width: 1000px;
+			
+		}
+		
+	}
+	
+	.table{
+		margin-top: 30px;
+		
+		& > .header{
+			
+		}
+		
+		& > .body{
+			
+		}
+		
+		.cell{
+			padding: 0 20px;
+			min-height: 90px;
+			border: solid 1px $color-gray;
+			
+		}
+		
+		@media(min-width: map-get( $bpw, desktop ) ){
+			margin-top: 0;
+			
+		}
+		
+	}
+	
+	ul{
+		list-style-position: inside;
+		
+		& > li{
+			margin-bottom: 10px;
+			
+		}
+		
+	}
+	
+	& > .informacje{
+		position: relative;
+		padding: 70px 0;
+		
+		ul.font-green{
+			list-style-image: url(img/ikony/bullet_green.png);
+			
+		}
+		
+	}
+	
+	& > .format{
+		position: relative;
+		padding: 40px 0 100px;
+		
+		.table > .header > .cell{
+			padding: 0 20px;
+			
+		}
+		
+		ul{
+			list-style-image: url(img/ikony/bullet_white.png);
+			
+			& > li{
+			}
+			
+		}
+		
+		.tab{
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			transform: translate(-50%,50%);
+			
+		}
+		
+	}
+	
+	&.toeic-bridge{
+		ul{
+			
+			& > li{
+				@extend .header;
+				
+			}
+			
+		}
+		
+	}
+	
+	&.toefl{
+		
+		ul{
+			list-style-image: none;
+			list-style-type: none;
+			
+		}
+		
+	}
+	
+	&.widaf{
+		
+		& > .informacje{
+			
+			.slider{
+				position: relative;
+				
+				& > .view{
+					overflow: hidden;
+					
+					& > .item{
+						height: 200px;
+						padding: 20px;
+						border: solid 1px $color-gray;
+						background-origin: content-box;
+						
+						&.agfa{
+							background-image: url(img/logotypy/agfa.png);
+							
+						}
+						
+						&.alcatel{
+							background-image: url(img/logotypy/alcatel.png);
+							
+						}
+						
+						&.alstom{
+							background-image: url(img/logotypy/alstom.png);
+							
+						}
+						
+						&.canalp{
+							background-image: url(img/logotypy/canal_.png);
+							
+						}
+						
+						&.deloitte{
+							background-image: url(img/logotypy/deloitte.png);
+							
+						}
+						
+						&.dura{
+							background-image: url(img/logotypy/Dura.png);
+							
+						}
+						
+						&.francetel{
+							background-image: url(img/logotypy/FranceTelecom.png);
+							
+						}
+						
+						&.marks_spencer{
+							background-image: url(img/logotypy/marks_spencer.png);
+							
+						}
+						
+						&.marsh{
+							background-image: url(img/logotypy/marsh.png);
+							
+						}
+						
+						&.miele{
+							background-image: url(img/logotypy/miele.png);
+							
+						}
+						
+						&.stelmi{
+							background-image: url(img/logotypy/aptarStelmi.png);
+							
+						}
+						
+						&.valeo{
+							background-image: url(img/logotypy/Valeo.png);
+							
+						}
+						
+						&.deutsche{
+							background-image: url('img/logotypy/Doutsche Bank.png');
+							
+						}
+						
+						&.siemens{
+							background-image: url(img/logotypy/siemens.png);
+							
+						}
+						
+						&.bre{
+							background-image: url(img/logotypy/Bre_Bank_Sa.png);
+							
+						}
+						
+						@media(min-width: map-get( $bpw, desktop )){
+							background-size: contain;
+							
+						}
+						
+					}
+					
+				}
+				
+				& > .navs{
+					position: absolute;
+					left: 50%;
+					bottom: 0;
+					transform: translate(-50%,0);
+					
+					& > .nav{
+						margin: 0 10px;
+						
+						&.prev{
+							transform: rotateY(180deg);
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

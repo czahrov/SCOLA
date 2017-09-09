@@ -10,14 +10,14 @@
 		<div class='linki font-green bold flex flex-wrap flex-items-center'>
 			<div class='item arrow_slide'>
 				<img class='icon arrow right' src='<?php echo get_template_directory_uri(); ?>/img/arrow_green.png' />
-				<a href='<?php home_url(); ?>'>
+				<a href='<?php home_url( 'nasze-centrum' ); ?>'>
 					więcej o SCOLA
 				</a>
 				
 			</div>
 			<div class='item arrow_slide'>
 				<img class='icon arrow right' src='<?php echo get_template_directory_uri(); ?>/img/arrow_green.png' />
-				<a href='<?php home_url(); ?>'>
+				<a href='<?php home_url( 'kursy' ); ?>'>
 					sprawdź ofertę językową
 				</a>
 				
@@ -124,37 +124,37 @@
 						array(
 							'title' => 'angielski',
 							'img' => 'angielski_v2.png',
-							'url' => home_url( 'jezyki/angielski' ),
+							'url' => home_url( 'angielski' ),
 						),
 						array(
 							'title' => 'niemiecki',
 							'img' => 'niemiecki.png',
-							'url' => home_url( 'jezyki/niemiecki' ),
+							'url' => home_url( 'niemiecki' ),
 						),
 						array(
 							'title' => 'hiszpański',
 							'img' => 'hiszpanski.png',
-							'url' => home_url( 'jezyki/hiszpanski' ),
+							'url' => home_url( 'hiszpanski' ),
 						),
 						array(
 							'title' => 'włoski',
 							'img' => 'wloski.png',
-							'url' => home_url( 'jezyki/wloski' ),
+							'url' => home_url( 'wloski' ),
 						),
 						array(
 							'title' => 'francuski',
 							'img' => 'francuski.png',
-							'url' => home_url( 'jezyki/francuski' ),
+							'url' => home_url( 'francuski' ),
 						),
 						array(
 							'title' => 'rosyjski',
 							'img' => 'rosyjski.png',
-							'url' => home_url( 'jezyki/rosyjski' ),
+							'url' => home_url( 'rosyjski' ),
 						),
 						array(
 							'title' => 'słowacki',
 							'img' => 'slowacki.png',
-							'url' => home_url( 'jezyki/slowacki' ),
+							'url' => home_url( 'slowacki' ),
 						),
 						
 					);
@@ -299,6 +299,13 @@
 		
 	</div>
 	<div class='opinie flex flex-column'>
+		<div class='moon'>
+			<div class='gray bg-gray-light'>
+				<div class='light bg-light'></div>
+				
+			</div>
+			
+		</div>
 		<div class='grid'>
 			<div class='top flex flex-justify-center flex-justify-start-mm'>
 				<div class='fake base3 hide block-mm'></div>

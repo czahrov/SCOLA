@@ -1,0 +1,178 @@
+#kadra{
+	font-size: 15px;
+	
+	.header{
+		font-size: 36px;
+		
+	}
+	
+	& > .top{
+		position: relative;
+		padding: 50px 0 150px;
+		margin-bottom: 100px;
+		
+		& > .slider{
+			position: relative;
+			min-height: 300px;
+			padding: 0 20px;
+			
+			& > .view{
+				overflow: hidden;
+				
+				& > .slide{
+					
+				}
+				
+			}
+			
+			& > .info{
+				position: absolute;
+				padding: 20px;
+				left: 0;
+				bottom: 0;
+				
+				& > .title{
+					margin: 20px 0 40px;
+					font-size: 36px;
+				}
+				
+				& > .link{
+					margin-bottom: 20px;
+					font-size: 15px;
+				}
+				
+				& > .nav{
+					position: absolute;
+					left: 0;
+					bottom: 100%;
+					
+					& > .button{
+						width: 62px;
+						height: 30px;
+						box-shadow: 0px 0px 0px 1px $color-light inset;
+						
+						&.prev{
+							transform: rotateY(180deg);
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+			@media(min-width: map-get( $bpw, desktop ) ){
+				position: absolute;
+				padding: 0;
+				margin-left: 20px;
+				top: 0;
+				left: 50%;
+				right: 0;
+				bottom: 0
+				
+			}
+			
+		}
+		
+		& > .box{
+			
+			& > .info{
+				
+				& > .title{
+					margin-bottom: 30px;
+					
+				}
+				
+				& > .content{
+					line-height: 3em;
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	& > .jezyk{
+		padding: 80px 0 30px;
+		margin-bottom: 90px;
+		
+		& > .box{
+			position: relative;
+			
+			& > .icon{
+				position: absolute;
+				width: 90px;
+				height: 90px;
+				bottom: 100%;
+				left: 0;
+				transform: translate(0,-40%);
+				
+			}
+			
+			& > .title{
+				margin-bottom: 30px;
+				
+			}
+			
+			& > .content{
+				margin-bottom: 45px;
+				line-height: 2em;
+				
+			}
+			
+			& > ul{
+				margin-bottom: 40px;
+				list-style-position: inside;
+				list-style-image: url(img/ikony/bullet_white.png);
+				
+				& > li{
+					margin-bottom: 26px;
+					line-height: 2em;
+					
+				}
+				
+			}
+			
+		}
+		
+		&.niemiecki .icon{
+			background-image: url(img/flagi/niemiecki.png);
+			
+		}
+		
+		&.angielski .icon{
+			background-image: url(img/flagi/angielski_v2.png);
+			
+		}
+		
+		&.hiszpanski .icon{
+			background-image: url(img/flagi/hiszpanski.png);
+			
+		}
+		
+		&.francuski .icon{
+			background-image: url(img/flagi/francuski.png);
+			
+		}
+		
+		&.wloski .icon{
+			background-image: url(img/flagi/wloski.png);
+			
+		}
+		
+		&.rosyjski .icon{
+			background-image: url(img/flagi/rosyjski.png);
+			
+		}
+		
+		&.slowacki .icon{
+			background-image: url(img/flagi/slowacki.png);
+			
+		}
+		
+	}
+	
+}

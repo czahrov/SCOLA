@@ -260,6 +260,27 @@ function menuOf( $arg, $include = false ){
 	return $ret;
 }
 
+function egzaminyMenu(){
+	$root = get_page_by_title( 'Centrum egzaminacyjne' );
+	$ret = array();
+	
+	$children = get_pages(array(
+		'parent' => $root->ID,
+		
+	));
+	
+	if( count( $children ) > 0 ) foreach( $children as $page ){
+		$ret[] = array(
+			'title' => $page->post_title,
+			'url' => get_permalink( $page->ID ),
+			
+		);
+		
+	}
+	
+	return $ret;
+}
+
 class NewsLetter{
 	/*		$data
 		array(

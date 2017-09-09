@@ -73,11 +73,9 @@
 				<div class='pointer arrow_slide flex flex-items-center'>
 					<?php do_action( 'tab', array(
 						'to' => '#kursy > .bot',
+						'title' => 'czytaj więcej',
 						
 					) ); ?>
-					<div class='title'>
-						czytaj więcej
-					</div>
 					
 				</div>
 				
