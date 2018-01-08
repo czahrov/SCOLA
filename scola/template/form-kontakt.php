@@ -57,8 +57,9 @@ else{
 	$mailer->CharSet = 'utf-8';
 	$mailer->Encoding = 'base64';
 	$mailer->setLanguage( 'pl' );
-	$mailer->setFrom( 'noreply@poligon.scepter.pl', 'Formularz kontaktowy - SCOLA' );
-	$mailer->addAddress( $mail, 'test' );
+	$mailer->setFrom( "noreply@{$_SERVER[ 'HTTP_HOST' ]}", 'Formularz kontaktowy - SCOLA' );
+	// $mailer->addAddress( $mail, 'test' );
+	$mailer->addAddress( "info@scola.pl" );
 	$mailer->Subject = sprintf( "%s %s przesyła wiadomość", $imie, $nazwisko );
 	$mailer->Body = sprintf( "%s %s <%s> (%s) przesyła wiadomość: \r\n%s\r\n\r\n---\r\nWiadomość wygenerowana automatycznie na stronie %s",
 	$imie,

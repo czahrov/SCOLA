@@ -32,7 +32,7 @@
 	<div class='dokonania bg-green font-light bold'>
 		<div class='box grid'>
 			<div class='title header big'>
-				Czego możesz dokonać w naszym centrum językowym
+				Czego możesz dokonać w naszym Centrum Językowym
 			</div>
 			<ul class='header'>
 				<li>

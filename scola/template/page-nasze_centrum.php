@@ -8,13 +8,13 @@
 			<div class='img bgimg full base1 hide-ml'></div>
 			<div class='text bold base1 base2-ml'>
 				<div class='title'>
-					Centrum językowe <span class='font-green'>Scola</span>
+					Centrum Językowe <span class='font-green'>Scola</span>
 				</div>
 				<div class='subtitle'>
 					to gwarancja podniesienia twoich kompetencji językowych
 				</div>
 				<div class='mid'>
-					Centrum językowe Scola specjalizuje się w dwóch zakresach:
+					Centrum Językowe Scola specjalizuje się w dwóch zakresach:
 				</div>
 				<ol class='zakres'>
 					<li class='font-green'>

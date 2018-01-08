@@ -2,7 +2,7 @@
 	<div class='top'>
 		<div class='box grid flex flex-column flex-items-start'>
 			<div class='title bold header'>
-				Certyfikaty językowe w centrum językowym 
+				Certyfikaty językowe w Centrum Językowym 
 				<span class='font-green'>Scola</span>
 				
 			</div>

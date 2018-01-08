@@ -36,7 +36,7 @@
 				<div class='img bgimg full base1 hide-ml'></div>
 				<div class='text bold base1 base2-ml'>
 					<div class='title bold'>
-						Centrum języka <?php echo $title; ?>ego <span class='font-green'>Scola</span>
+						Centrum Języka <?php echo $title; ?>ego <span class='font-green'>Scola</span>
 					</div>
 					<div class='buttons flex flex-wrap flex-items-center'>
 						<?php do_action( 'customButtonFill', array(

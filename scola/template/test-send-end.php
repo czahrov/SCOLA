@@ -54,8 +54,9 @@ if( $safe !== false ){
 	$mailer->CharSet = "utf-8";
 	$mailer->Encoding = "base64";
 	$mailer->setLanguage( 'pl' );
-	$mailer->setFrom( 'noreply@poligon.scepter.pl', 'Testy online - SCOLA' );
-	$mailer->addAddress( $safe[ 'mail' ] );
+	$mailer->setFrom( "noreply@{$_SERVER['SERVER_NAME']}", 'Testy online - SCOLA' );
+	// $mailer->addAddress( $safe[ 'mail' ] );
+	$mailer->addAddress( 'info@scola.pl' );
 	$mailer->Subject = sprintf( "%s %s uzyskał/a wynik %u%% poprawnych odpowiedzi z języka %sego!", 
 	$safe[ 'imie' ], 
 	$safe[ 'nazwisko' ], 

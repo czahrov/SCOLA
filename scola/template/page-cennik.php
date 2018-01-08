@@ -2,7 +2,7 @@
 	<div class='top'>
 		<div class='box grid flex flex-column flex-items-start'>
 			<div class='title bold'>
-				Cennik kursów dla osób dorosłych i młodzieży w 
+				Cennik kursów dla osób dorosłych i młodzieży 
 				<span class='font-green'>Scola</span>
 				
 			</div>
@@ -18,8 +18,8 @@
 	<div class='dorosli bg-green font-light'>
 		<div class='box grid'>
 			<div class='title bold'>
-				Cennik kursów dla dorosłych i uczniów szkół średnich
-			</div>
+Cennik kursów dla osób dorosłych i młodzieży			
+</div>
 			<div class='subtitle'>
 				całość kursu obejmuje 120 godzin lekcyjnych / więcej informacji:
 			</div>
@@ -160,7 +160,7 @@
 				</div>
 				<div class='body font-dark bg-light base2 flex flex-column flex-row-mm'>
 					<div class='cell title text-left flex flex-column base3 flex flex-items-center flex-items-start-mm flex-justify-center'>
-						4-8 osób
+						5-8 osób
 					</div>
 					<div class='cell base3 flex flex-column flex-justify-center flex-items-center'>
 						<div class='title'>
@@ -286,7 +286,7 @@
 					</div>
 					<div class='cell base2 flex flex-column flex-justify-center flex-items-center'>
 						<div class='title'>
-							70 zł
+							65 zł
 						</div>
 						
 					</div>

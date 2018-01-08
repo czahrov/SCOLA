@@ -39,7 +39,7 @@
 			<a href="<?php echo home_url( 'aktualnosci' ); ?>">Aktualności</a>
 		</li>
 		<li>
-			<a href="<?php echo home_url( 'e-learning' ); ?>">E-learning</a>
+			<a href="<?php echo home_url( 'msues' ); ?>">Znak jakości MSUES</a>
 		</li>
 		<li>
 			<a href="<?php echo home_url( 'cennik' ); ?>">Cennik</a>

@@ -81,7 +81,7 @@ else{
 		$mailer->CharSet = 'utf-8';
 		$mailer->Encoding = 'base64';
 		$mailer->setLanguage( 'pl' );
-		$mailer->setFrom( 'noreply@scepter.pl', 'Wycena tłumaczenie - SCOLA' );
+		$mailer->setFrom( "noreply@{$_SERVER[ 'HTTP_HOST' ]}", 'Wycena tłumaczenie - SCOLA' );
 		
 		$text = "%s <%s> (tel: %s) prosi o wycenę tłumaczenia z języka %sego na %s\r\nWiadomość:\r\n%s\r\n\r\n---\r\nMail wygenerowany automatycznie na stronie %s";
 		
@@ -108,7 +108,8 @@ else{
 			home_url( 'tlumaczenia' )
 		);
 		
-		$mailer->AddAddress( $mail );
+		// $mailer->AddAddress( $mail );
+		$mailer->AddAddress( "info@scola.pl" );
 		$mailer->Subject = sprintf( "%s prosi o wycenę tłumaczenia", $imie );
 		$mailer->Body = $msg;
 		

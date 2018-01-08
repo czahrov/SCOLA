@@ -49,7 +49,7 @@
 	</div>
 	<div class='copyright grid flex flex-wrap flex-items-center flex-justify-between'>
 		<div class='copy base1 base0-mm'>
-			&copy;Scola Centrum językowe, 2017
+			&copy;Scola Centrum Językowe, 2017
 		</div>
 		<div class='design base1 base0-mm flex flex-wrap flex-justify-end'>
 			Projekt i wykonanie: 

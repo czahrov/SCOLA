@@ -2,7 +2,7 @@
 	<div class='top'>
 		<div class='box grid'>
 			<div class='title bold'>
-				Aktualności w centrum językowym
+				Aktualności w centrum Językowym
 			</div>
 			<div class='subtitle font-green'>
 				Scola

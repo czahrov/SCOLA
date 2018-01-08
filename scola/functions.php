@@ -7,9 +7,9 @@ if( !is_admin() ){
 	wp_enqueue_style( "fonts", get_template_directory_uri() . "/css/fonts.css", array() );
 	wp_enqueue_style( "font-awesome", get_template_directory_uri() . "/css/font-awesome.min.css", array() );
 	if( $develop ){
-		wp_enqueue_style( "facepalm", get_template_directory_uri() . "/css/facepalm.css", array() );
+		wp_enqueue_style( "facepalm", get_template_directory_uri() . "/css/facepalm.css", array(), time() );
 		// wp_enqueue_style( "piotr", get_template_directory_uri() . "/css/piotr.css", array() );
-		wp_enqueue_style( "style", get_template_directory_uri() . "/style.css", array() );
+		wp_enqueue_style( "style", get_template_directory_uri() . "/style.css", array(), time() );
 	}
 	else{
 		wp_enqueue_style( "facepalm", get_template_directory_uri() . "/css/facepalm.min.css", array() );
@@ -17,7 +17,7 @@ if( !is_admin() ){
 		wp_enqueue_style( "style", get_template_directory_uri() . "/style.min.css", array() );
 	}
 	
-	wp_enqueue_script( "googleapis", "https://maps.googleapis.com/maps/api/js?key=AIzaSyBOweaY6BOQgd9-6_eNaUTj4sq-3WRmFd4" );
+	wp_enqueue_script( "googleapis", "https://maps.googleapis.com/maps/api/js?key=AIzaSyAQuUnVbVYtyhbwfWdtONQ7bvBAho8l0ao" );
 	wp_enqueue_script( "jQ", get_template_directory_uri() . "/js/jquery-1.12.4.min.js" );
 	wp_enqueue_script( "jQTS", get_template_directory_uri() . "/js/jquery.touchSwipe.min.js" );
 	wp_enqueue_script( "jQMW", get_template_directory_uri() . "/js/jquery.mousewheel.min.js" );
@@ -29,10 +29,10 @@ if( !is_admin() ){
 	wp_enqueue_script( "TextPlugin", get_template_directory_uri() . "/js/TextPlugin.min.js" );
 	wp_enqueue_script( "gmap3", get_template_directory_uri() . "/js/gmap3.min.js" );
 	if( $develop ){
-		wp_enqueue_script( "FP", get_template_directory_uri() . "/js/facepalm.js" );
+		wp_enqueue_script( "FP", get_template_directory_uri() . "/js/facepalm.js", array(), time() );
 	}
 	else{
-		wp_enqueue_script( "FP", get_template_directory_uri() . "/js/facepalm.min.js" );
+		wp_enqueue_script( "FP", get_template_directory_uri() . "/js/facepalm.min.js", array(), time() );
 	}
 	
 }
@@ -279,6 +279,20 @@ function egzaminyMenu(){
 	}
 	
 	return $ret;
+}
+
+function checkAccess(){
+	if( $_SESSION[ 'go' ] === true ){
+		return true;
+		
+	}
+	elseif( isset( $_GET[ 'sprytne' ] ) ){
+		$_SESSION[ 'go' ] = true;
+		return true;
+		
+	}
+	else return false;
+	
 }
 
 class NewsLetter{

@@ -1,7 +1,7 @@
 <div id='home'>
 	<div class='top grid'>
 		<h1 class='tekst naglowek bold'>
-			Centrum językowe SCOLA to przełom na rynku
+			Centrum Językowe SCOLA to przełom na rynku
 			<span class='font-green'>
 				edukacji obcojęzycznej
 			</span>
@@ -186,7 +186,7 @@
 	</div>
 	<div class='tlumaczenia text-center bg-green bold font-light flex flex-column flex-items-center flex-justify-center'>
 		<div class='top'>
-			Centrum językowe SCOLA oferuje
+			Centrum Językowe SCOLA oferuje
 		</div>
 		<div class='mid'>
 			tłumaczenia na języki obce
@@ -202,7 +202,7 @@
 	</div>
 	<div class='umysly text-center flex flex-column flex-items-center flex-justify-center'>
 		<div class='line1 hand'>
-			"Niema martwych języków, są tylko uśpione umysły."
+			"Nie ma martwych języków, są tylko uśpione umysły."
 		</div>
 		<div class='line2 hand'>
 			Carlos Ruiz Zafón
@@ -233,7 +233,7 @@
 			<div class='tekst text-center text-left-ml base2-ml flex flex-column flex-items-center flex-items-start-ml'>
 				<div class='title bold'>
 					<div class='line1'>
-						Centrum językowe SCOLA jako
+						Centrum Językowe SCOLA jako
 					</div>
 					<div class='line2'>
 						Centrum egzaminacyjne

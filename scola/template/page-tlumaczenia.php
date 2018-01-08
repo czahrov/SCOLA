@@ -4,7 +4,7 @@
 		<div class='box grid flex'>
 			<div class='info base1 base2-ml'>
 				<div class='title bold'>
-					Centrum językowe <span class='font-green'>Scola</span> oferuje tłumaczenia z/na języki:
+					Centrum Językowe <span class='font-green'>Scola</span> oferuje tłumaczenia z/na języki:
 					
 				</div>
 				<ul class='bold font-green'>

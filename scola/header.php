@@ -1,4 +1,12 @@
-<?php session_start(); ?>
+<?php
+	session_start();
+	/* if( !checkAccess() ){
+		include "wbudowie.php";
+		die();
+		
+	} */
+	
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>

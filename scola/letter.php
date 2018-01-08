@@ -18,7 +18,7 @@ if( isset( $_GET[ 'reg' ] ) ){
 		$mailer->CharSet = "utf-8";
 		$mailer->Encoding = "base64";
 		$mailer->setLanguage( 'pl' );
-		$mailer->setFrom( 'noreply@poligon.scepter.pl', 'Centrum Językowe SCOLA' );
+		$mailer->setFrom( "noreply@{$_SERVER[ 'HTTP_HOST' ]}", 'Centrum Językowe SCOLA' );
 		$mailer->addAddress( $nl->getMail( $id ) );
 		$mailer->Subject = "Potwierdzenie aktywacji usługi newsletter";
 		$msg = sprintf( "Witaj ponownie!\r\nZ radością informujemy iż aktywacja usługi newsletter została pomyślnie aktywowana!\r\nOd teraz będziesz na bieżąco ze wszystkimi nowościami i promocjami na naszej stronie.\r\nPamiętaj że w każdej chwili możesz zrezygnować z usługi klkając w poniższy link\r\n%s\r\n\r\n---\r\nMail został wygenerowany automatycznie na stronie %s", $nl->getUnregLink( $id ), home_url() );
@@ -62,7 +62,7 @@ elseif( isset( $_GET[ 'unregmail' ] ) ){
 		$mailer->CharSet = "utf-8";
 		$mailer->Encoding = "base64";
 		$mailer->setLanguage( 'pl' );
-		$mailer->setFrom( 'noreply@poligon.scepter.pl', 'Centrum Językowe SCOLA' );
+		$mailer->setFrom( "noreply@{$_SERVER[ 'HTTP_HOST' ]}", 'Centrum Językowe SCOLA' );
 		$mailer->addAddress( $nl->getMail( $_GET[ 'unregmail' ] ) );
 		$mailer->Subject = "Potwierdzenie wyrejestrowania adresu e-mail";
 		$msg = sprintf( "Witaj ponownie!\r\nOtrzymujesz tego maila, ponieważ ktoś ( mamy nadzieję, że to Ty ) zgłosił wyrejestrowanie tego adresu z usługi newsletter. Kliknij link poniżej aby ukończyć proces i usunąć ten e-mail z naszej bazy.\r\n%s\r\n\r\n---\r\nMail został wygenerowany automatycznie na stronie %s", $nl->getUnregLink( $_GET[ 'unregmail' ] ), home_url() );
@@ -128,7 +128,7 @@ else{
 				$mailer->CharSet = "utf-8";
 				$mailer->Encoding = "base64";
 				$mailer->setLanguage( 'pl' );
-				$mailer->setFrom( 'noreply@poligon.scepter.pl', 'Centrum Językowe SCOLA' );
+				$mailer->setFrom( "noreply@{$_SERVER[ 'HTTP_HOST' ]}", 'Centrum Językowe SCOLA' );
 				$mailer->addAddress( $safe[ 'mail' ] );
 				$mailer->Subject = "Aktywacja usługi newsletter";
 				$msg = sprintf( "Witaj!\r\nOtrzymujesz tego maila ponieważ ktoś ( mamy nadzieję, że to Ty ) dodał ten adres e-mail do naszej bazy. Aby zakończyć proces aktywacji usługi kliknij link poniżej.\r\n\r\n%s\r\n\r\n---\r\nMail został wygenerowany automatycznie na stronie %s", $nl->getRegLink( $safe[ 'mail' ] ), home_url() );
