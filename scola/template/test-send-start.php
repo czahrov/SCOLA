@@ -50,7 +50,9 @@ else{
 		$mailer->Encoding = "base64";
 		$mailer->setLanguage( 'pl' );
 		$mailer->setFrom( 'noreply@poligon.scepter.pl', 'Testy online - SCOLA' );
-		$mailer->addAddress( $safe[ 'mail' ] );
+		// $mailer->addAddress( $safe[ 'mail' ] );
+		$mailer->addAddress( 'info@scola.pl' );
+		// $mailer->addAddress( 'sprytne@scepter.pl' );
 		$mailer->Subject = sprintf( "%s %s rozpoczyna test z języka %sego!", 
 		$safe[ 'imie' ], 
 		$safe[ 'nazwisko' ], 

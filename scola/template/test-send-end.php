@@ -40,9 +40,9 @@ $filters = array(
 	'all' => array(
 		'filter' => 'FILTER_SANITIZE_STRING',
 	),
-	'level' => array(
+	/* 'level' => array(
 		'filter' => 'FILTER_SANITIZE_STRING',
-	),
+	), */
 	
 );
 
@@ -57,18 +57,19 @@ if( $safe !== false ){
 	$mailer->setFrom( "noreply@{$_SERVER['SERVER_NAME']}", 'Testy online - SCOLA' );
 	// $mailer->addAddress( $safe[ 'mail' ] );
 	$mailer->addAddress( 'info@scola.pl' );
+	// $mailer->addAddress( 'sprytne@scepter.pl' );
 	$mailer->Subject = sprintf( "%s %s uzyskał/a wynik %u%% poprawnych odpowiedzi z języka %sego!", 
 	$safe[ 'imie' ], 
 	$safe[ 'nazwisko' ], 
 	100 * (int)$safe[ 'good' ] / (int)$safe[ 'all' ], 
 	$safe[ 'lang' ] );
-	$msg = sprintf( "%s %s ukończył/a właśnie test z języka %sego uzyskując wynik %s/%s poprawnych odpowiedzi, co odpowiada stopniu zaawansowania: %s.\r\nDane kontaktowe:\r\nE-mail: %s\r\nTelefon: %s\r\n\r\n---\r\nMail został wygenerowany automatycznie na stronie %s",
+	$msg = sprintf( "%s %s ukończył/a właśnie test z języka %sego uzyskując wynik %s/%s poprawnych odpowiedzi.\r\nDane kontaktowe:\r\nE-mail: %s\r\nTelefon: %s\r\n\r\n---\r\nMail został wygenerowany automatycznie na stronie %s",
 	$safe[ 'imie' ],
 	$safe[ 'nazwisko' ],
 	$safe[ 'lang' ],
 	$safe[ 'good' ],
 	$safe[ 'all' ],
-	$safe[ 'level' ],
+	// $safe[ 'level' ],
 	$safe[ 'mail' ],
 	$safe[ 'tel' ],
 	home_url() );

@@ -1057,7 +1057,7 @@
 						slider.slideUp();
 						summary.slideDown();
 						
-						if( typeof progi === 'undefined' ){
+						/* if( typeof progi === 'undefined' ){
 							progi = [
 								{
 									value: 0,
@@ -1074,7 +1074,7 @@
 							
 						}
 						
-						note.text( progi[ i ].name );
+						note.text( progi[ i ].name ); */
 						
 					},
 					
@@ -1181,19 +1181,19 @@
 						var good = input.filter( ".correct:checked" ).length;
 						var procent = Math.round( ( good / all ) * 1000 ) / 10;
 						
-						for( i = progi.length - 1; i >= 0; i-- ){
+						/* for( i = progi.length - 1; i >= 0; i-- ){
 							if( procent >= progi[ i ].value ) break;
 							
-						}
+						} */
 						
-						var level = progi[ i ].name;
+						// var level = progi[ i ].name;
 						
 						$.post(
 							root.bazar.basePath + '/test-koniec',
 							{
 								good: input.filter( '.correct:checked' ).length,
 								all: slides.length,
-								level: level,
+								// level: level,
 								
 							},
 							function( data ){

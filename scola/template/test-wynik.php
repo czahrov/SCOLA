@@ -15,9 +15,11 @@
 			</li>
 			
 		</ul>
+		<!--
 		<div class='note'>
 			Wynik sugeruje, że Twój poziom to: <span class='value font-green'>...</span>
 		</div>
+		-->
 		<div class='buttons flex flex-items-center'>
 			<?php do_action( 'customButton', array(
 				'title' => 'wyślij wynik z testu',

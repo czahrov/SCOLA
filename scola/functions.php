@@ -2,21 +2,17 @@
 add_theme_support('post-thumbnails');
 
 $develop = true;
+define( 'DMODE', isset( $_COOKIE[ 'sprytne' ] )?( true ):( false ) );
 
 if( !is_admin() ){
+	$infix = DMODE?( ".min" ):( "" );
+	$buster = DMODE?( time() ):( false );
+	
 	wp_enqueue_style( "fonts", get_template_directory_uri() . "/css/fonts.css", array() );
 	wp_enqueue_style( "font-awesome", get_template_directory_uri() . "/css/font-awesome.min.css", array() );
-	if( $develop ){
-		wp_enqueue_style( "facepalm", get_template_directory_uri() . "/css/facepalm.css", array(), time() );
-		// wp_enqueue_style( "piotr", get_template_directory_uri() . "/css/piotr.css", array() );
-		wp_enqueue_style( "style", get_template_directory_uri() . "/style.css", array(), time() );
-	}
-	else{
-		wp_enqueue_style( "facepalm", get_template_directory_uri() . "/css/facepalm.min.css", array() );
-		// wp_enqueue_style( "piotr", get_template_directory_uri() . "/css/piotr.min.css", array() );
-		wp_enqueue_style( "style", get_template_directory_uri() . "/style.min.css", array() );
-	}
-	
+	wp_enqueue_style( "facepalm", get_template_directory_uri() . "/css/facepalm{$infix}.css", array(), $buster );
+	// wp_enqueue_style( "piotr", get_template_directory_uri() . "/css/piotr{$infix}.css", array(), $buster );
+	wp_enqueue_style( "style", get_template_directory_uri() . "/style{$infix}.css", array(), $buster );
 	wp_enqueue_script( "googleapis", "https://maps.googleapis.com/maps/api/js?key=AIzaSyAQuUnVbVYtyhbwfWdtONQ7bvBAho8l0ao" );
 	wp_enqueue_script( "jQ", get_template_directory_uri() . "/js/jquery-1.12.4.min.js" );
 	wp_enqueue_script( "jQTS", get_template_directory_uri() . "/js/jquery.touchSwipe.min.js" );
@@ -28,12 +24,7 @@ if( !is_admin() ){
 	wp_enqueue_script( "RoundProps", get_template_directory_uri() . "/js/RoundPropsPlugin.min.js" );
 	wp_enqueue_script( "TextPlugin", get_template_directory_uri() . "/js/TextPlugin.min.js" );
 	wp_enqueue_script( "gmap3", get_template_directory_uri() . "/js/gmap3.min.js" );
-	if( $develop ){
-		wp_enqueue_script( "FP", get_template_directory_uri() . "/js/facepalm.js", array(), time() );
-	}
-	else{
-		wp_enqueue_script( "FP", get_template_directory_uri() . "/js/facepalm.min.js", array(), time() );
-	}
+	wp_enqueue_script( "FP", get_template_directory_uri() . "/js/facepalm{$infix}.js", array(), $buster );
 	
 }
 

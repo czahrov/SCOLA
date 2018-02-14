@@ -64,7 +64,9 @@
 		
 		</div>
 		
-		<?php endif; ?>
+		<?php
+			endif;
+		?>
 		
 		
 		<?php @include_once get_template_directory() . "/template/test-wynik.php"; ?>
