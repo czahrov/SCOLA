@@ -262,7 +262,7 @@ Cennik kursów dla osób dorosłych i młodzieży
 					</div>
 					<div class='cell base2 flex flex-column flex-justify-center flex-items-center'>
 						<div class='title'>
-							55 zł
+							60 zł
 						</div>
 						
 					</div>
@@ -286,7 +286,7 @@ Cennik kursów dla osób dorosłych i młodzieży
 					</div>
 					<div class='cell base2 flex flex-column flex-justify-center flex-items-center'>
 						<div class='title'>
-							65 zł
+							70 zł
 						</div>
 						
 					</div>
