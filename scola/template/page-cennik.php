@@ -282,6 +282,30 @@ Cennik kursów dla osób dorosłych i młodzieży
 				</div>
 				<div class='body font-dark bg-gray base2 flex flex-column flex-row-mm'>
 					<div class='cell title text-left flex flex-column base2 flex  flex-items-center flex-items-start-mm flex-justify-center'>
+						45 minut
+					</div>
+					<div class='cell base2 flex flex-column flex-justify-center flex-items-center'>
+						<div class='title'>
+							78 zł<br>( język specjalistyczny )
+						</div>
+						
+					</div>
+					
+				</div>
+				
+			</div>
+			<div class='table bold text-center flex flex-column-mm'>
+				<div class='head bg-dark base2 hide-mm flex flex-column flex-row-mm'>
+					<div class='cell base2 flex flex-items-center'>
+						Długość jednej lekcji
+					</div>
+					<div class='cell base2 flex flex-items-center flex-justify-center-mm'>
+						Cena
+					</div>
+					
+				</div>
+				<div class='body font-dark bg-gray base2 flex flex-column flex-row-mm'>
+					<div class='cell title text-left flex flex-column base2 flex  flex-items-center flex-items-start-mm flex-justify-center'>
 						60 minut
 					</div>
 					<div class='cell base2 flex flex-column flex-justify-center flex-items-center'>
