@@ -333,5 +333,24 @@ Cennik kursów dla osób dorosłych i młodzieży
 		</div>
 		
 	</div>
+	<div class='indywidualne bg-green font-light'>
+		<div class='box grid'>
+			<div class='title bold'>
+				zajęcia w siedzibie firmy/klienta dodatkowo 10 zł za lekcję.
+			</div>
+			<div class='more'>
+				<a class='link arrow_slide flex pointer' href='<?php echo home_url( 'nasze-centrum' ); ?>'>
+					<img class='icon arrow right' src='<?php echo get_template_directory_uri(); ?>/img/arrow_white.png' />
+					<div class='text'>
+						więcej o scola
+					</div>
+					
+				</a>
+				
+			</div>
+			
+		</div>
+		
+	</div>
 	
 </div>
