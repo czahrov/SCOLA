@@ -17,10 +17,10 @@
 				(wejście naprzeciwko Urzędu Wojewódzkiego)
 			</div>
 			<div class='line'>
-				<a href='tel:+4818531107'>Tel. +48 18 53 11 07</a>
+				<a href='tel:+48185311007'>Tel. +48 18 53 11 007</a>
 			</div>
 			<div class='line'>
-				Fax +48 18 53 11 07
+				Fax +48 18 53 11 007
 			</div>
 			<div class='line'>
 				info@scola.pl
