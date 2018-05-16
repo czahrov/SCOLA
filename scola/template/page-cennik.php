@@ -160,7 +160,7 @@ Cennik kursów dla osób dorosłych i młodzieży
 				</div>
 				<div class='body font-dark bg-light base2 flex flex-column flex-row-mm'>
 					<div class='cell title text-left flex flex-column base3 flex flex-items-center flex-items-start-mm flex-justify-center'>
-						5-8 osób
+						4-8 osób
 					</div>
 					<div class='cell base3 flex flex-column flex-justify-center flex-items-center'>
 						<div class='title'>
