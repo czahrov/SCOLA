@@ -56,8 +56,13 @@ if( $safe !== false ){
 	$mailer->setLanguage( 'pl' );
 	$mailer->setFrom( "noreply@{$_SERVER['SERVER_NAME']}", 'Testy online - SCOLA' );
 	// $mailer->addAddress( $safe[ 'mail' ] );
-	$mailer->addAddress( 'info@scola.pl' );
-	// $mailer->addAddress( 'sprytne@scepter.pl' );
+	if( DMODE ){
+		$mailer->addAddress( 'sprytne@scepter.pl' );
+	}
+	else{
+		$mailer->addAddress( 'info@scola.pl' );
+	}
+		
 	$mailer->Subject = sprintf( "%s %s uzyskał/a wynik %u%% poprawnych odpowiedzi z języka %sego!", 
 	$safe[ 'imie' ], 
 	$safe[ 'nazwisko' ], 

@@ -8,22 +8,22 @@
 	if( !isset( $quest ) ){
 		$quest = array(
 			array(
-				'pytanie' => '- Idziemy na piwo?<br>- ...',
+				'pytanie' => '- Pytanie<br>- ...',
 				'odpowiedzi' => array(
 					array(
-						'text' => 'tak',
+						'text' => 'odpowiedź 1',
 						'correct' => false,
 					),
 					array(
-						'text' => 'oczywiście',
+						'text' => 'odpowiedź 2',
 						'correct' => false,
 					),
 					array(
-						'text' => 'naturalnie',
+						'text' => 'odpowiedź 3',
 						'correct' => false,
 					),
 					array(
-						'text' => 'zjadłbym kebsa :)',
+						'text' => 'odpowiedź 4',
 						'correct' => true,
 					),
 					

@@ -12,7 +12,11 @@ session_start();
 
 // print_r( $_POST );
 
-if( empty( $_POST[ 'imie' ] ) or empty( $_POST[ 'nazwisko' ] ) or empty( $_POST[ 'mail' ] ) or empty( $_POST[ 'tel' ] ) ){
+if( empty( $_POST[ 'imie' ] ) or 
+	empty( $_POST[ 'nazwisko' ] ) or 
+	empty( $_POST[ 'mail' ] ) or 
+	empty( $_POST[ 'tel' ] ) or 
+	empty( $_POST[ 'zgoda' ] ) ){
 	echo json_encode(array(
 		'status' => 'fail',
 		'title' => 'Niepoprawne dane',
@@ -50,20 +54,32 @@ else{
 		$mailer->Encoding = "base64";
 		$mailer->setLanguage( 'pl' );
 		$mailer->setFrom( 'noreply@poligon.scepter.pl', 'Testy online - SCOLA' );
-		// $mailer->addAddress( $safe[ 'mail' ] );
-		$mailer->addAddress( 'info@scola.pl' );
-		// $mailer->addAddress( 'sprytne@scepter.pl' );
+		if( DMODE ){
+			$mailer->addAddress( 'sprytne@scepter.pl' );
+		}
+		else{
+			$mailer->addAddress( 'info@scola.pl' );
+		}
+			
 		$mailer->Subject = sprintf( "%s %s rozpoczyna test z języka %sego!", 
 		$safe[ 'imie' ], 
 		$safe[ 'nazwisko' ], 
 		$safe[ 'lang' ] );
 		
-		$msg = sprintf( "%s %s rozpoczyna właśnie test z języka %sego.\r\nDane kontaktowe:\r\nE-mail: %s\r\nTelefon: %s\r\n\r\n---\r\nMail został wygenerowany automatycznie na stronie %s",
+		$msg = sprintf( "%s %s rozpoczyna właśnie test z języka %sego.
+Dane kontaktowe:
+E-mail: %s
+Telefon: %s
+Wyraża zgodę na przetwarzanie danych osobowych na potrzeby informacyjne i handlowe: %s
+
+---
+Mail został wygenerowany automatycznie na stronie %s",
 		$safe[ 'imie' ],
 		$safe[ 'nazwisko' ],
 		$safe[ 'lang' ],
 		$safe[ 'mail' ],
 		$safe[ 'tel' ],
+		$_POST[ 'zgoda' ] === 'tak'?( 'tak' ):( 'nie' ),
 		home_url() );
 		$mailer->Body = $msg;
 		
