@@ -3,17 +3,13 @@
 		<img class='img' src='<?php echo get_template_directory_uri(); ?>/img/logo_scola_black.png' />
 		<div class='adres text-center flex flex-column flex-items-center'>
 			<div class='line1'>
-				ul. Jagiellońska 39, 33-300 Nowy Sącz (wejście naprzeciwko Urzędu Wojewódzkiego)
+				Aleje Wolności 6, 33-300 Nowy Sącz
 				
 			</div>
 			<div class='line2'>
-				Tel. 
-				<a href='tel:+48 18 53 11 007'>
-					+48 18 53 11 007
-				</a>, Fax
-				<a href='tel:+48 18 53 11 007'>
-					+48 18 53 11 007
-				</a>, info@scola.pl
+				<a href='tel:+48185477017'>Tel. +48 18 547 70 17</a>, <br>
+				<a href='tel:+48886400573'>Tel. +48 886 400 573</a>, <br>
+				<a href='mailto:info@scola.pl'>E-mail: info@scola.pl</a>
 				
 			</div>
 			

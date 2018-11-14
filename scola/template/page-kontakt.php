@@ -8,22 +8,23 @@
 				CENTRUM JĘZYKOWE SCOLA
 			</div>
 			<div class='line'>
-				ul. Jagiellońska 39
-			</div>
+Aleje Wolności 6, 33-300 Nowy Sącz			</div>
 			<div class='line'>
 				33-300 Nowy Sącz
 			</div>
 			<div class='line'>
-				(wejście naprzeciwko Urzędu Wojewódzkiego)
 			</div>
 			<div class='line'>
-				<a href='tel:+48185311007'>Tel. +48 18 53 11 007</a>
+				<a href='tel:+48185477017'>Tel. +48 18 547 70 17</a>
 			</div>
 			<div class='line'>
-				Fax +48 18 53 11 007
+				<a href='tel:+48886400573'>Tel. +48 886 400 573</a>
 			</div>
 			<div class='line'>
-				info@scola.pl
+		
+			</div>
+			<div class='line'>
+				<a href='mailto:info@scola.pl'>info@scola.pl</a>
 			</div>
 			<?php do_action( 'customButton', array(
 				'title' => 'nasze kompetencje',
